@@ -58,7 +58,7 @@ module fifo(
         else if (!buf_empty && rd_en) begin
             fifo_counter <= fifo_counter - 1;
         end
-        else v
+        else begin
             fifo_counter <= fifo_counter;
         end
     end

@@ -4,7 +4,7 @@
 module uart_tx_buffer_tb();
    
 	// Declare inputs as regs and outputs as wires
-	reg clk;
+	reg clk, rst;
 	reg[7:0] data;
 	reg dataReady;
 	reg txBusy;
@@ -14,6 +14,7 @@ module uart_tx_buffer_tb();
 
 	uart_tx_buffer U0(
         .clk(clk),
+		  .rst(rst),
         .data(data),
         .dataReady(dataReady),
         .txBusy(txBusy),
@@ -27,6 +28,7 @@ module uart_tx_buffer_tb();
 			clk, data, dataReady, txBusy, txStart, txData);	
 
         clk = 1;
+		  rst = 0;
         data = 0;
         dataReady = 0;
         txBusy = 0;
