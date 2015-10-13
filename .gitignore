@@ -1,0 +1,12 @@
+*.bak
+*.qws
+*.rpt
+
+# ignore Quartus II generated folders
+db/
+incremental_db/
+greybox_tmp/
+output_files/
+simulation/
+timing/
+testbench/
