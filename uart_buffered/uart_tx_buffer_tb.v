@@ -28,86 +28,118 @@ module uart_tx_buffer_tb();
 			clk, data, dataReady, txBusy, txStart, txData);	
 
         clk = 1;
-		  rst = 0;
+	rst = 1;
         data = 0;
         dataReady = 0;
         txBusy = 0;
-// 01234567890123456789
-        #10
-        data = 8'b01000001;
+        
+        
+        #2
+        rst = 0;
+        
+        
+
+        #2
+        data = 8'b01000001; // A
         dataReady = 1;
         txBusy = 0;
 
-        #10
-        data = 8'b01000010;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01000010; // B
         dataReady = 1;
         txBusy = 0;
 
+	#2
+	dataReady = 0;
 
-        #10
-        data = 8'b01000011;
+        #2
+        data = 8'b01000011; // C
         dataReady = 1;
         txBusy = 0;
 
-        #10
-        data = 8'b01000100;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01000100; // D
         dataReady = 1;
         txBusy = 1;
 
-        #10
-        data = 8'b01000101;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01000101; // E
         dataReady = 1;
         txBusy = 0;
 
-        #10
-        data = 8'b01000110;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01000110; // F
         dataReady = 1;
         txBusy = 0;
 
-        #10
-        data = 8'b01000111;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01000111; // G
         dataReady = 1;
         txBusy = 0;
 
-        #10
-        data = 8'b01001000;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01001000; // H
         dataReady = 1;
         txBusy = 0;
 
-        #10
-        data = 8'b01001001;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01001001; // I
         dataReady = 1;
         txBusy = 0;
 
-        #10
-        data = 8'b01001010;
+	#2
+	dataReady = 0;
+
+        #2
+        data = 8'b01001010; // J
         dataReady = 1;
         txBusy = 0;
 
-        #10
+        #2
         dataReady = 0;
         txBusy = 0;
 
-        #10
+        #2
         dataReady = 0;
         txBusy = 0;
 
-        #10
+        #2
         dataReady = 0;
         txBusy = 0;
 
-        #10
+        #2
         dataReady = 0;
         txBusy = 0;
 
-
-        #10
+        #2
         dataReady = 0;
         txBusy = 0;
 
-        #10
+        #2
         dataReady = 0;
         txBusy = 0;
+
 
         #10
         $stop;      // Terminate simulation
@@ -115,7 +147,7 @@ module uart_tx_buffer_tb();
 	end
 
     always begin
-        #5 clk <= !clk;
+        #1 clk = !clk;
     end
 	
 endmodule
