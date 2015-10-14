@@ -14,12 +14,14 @@ module uart_tx_buffer_tb();
 
 	uart_tx_buffer U0(
         .clk(clk),
-		  .rst(rst),
+	.rst(rst),
         .data(data),
         .dataReady(dataReady),
         .txBusy(txBusy),
         .txStart(txStart),
-        .txData(txData)
+        .txData(txData),
+	.empty(empty),
+	.full(full)
 	);
 
 	// Initialize all variables
