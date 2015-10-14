@@ -16,38 +16,40 @@ module uart_tx_buffer(
 	output reg[7:0] txData;
     
 	reg wr_en, rd_en;
+	reg empty, full;
 	wire[7:0] buf_out;
-    wire buf_full;
+   wire buf_full;
 	wire buf_empty;
 	wire [6:0] fifo_counter;
     
 
 	// Input
-    always @(posedge clk) begin
-		if (dataReady && !buf_full) begin
+	always @(posedge clk) begin
+		if (dataReady && !full) begin
 			wr_en <= 1;
 		end 
 		else begin
 			wr_en <= 0;
 		end
-    end
+	end
     
     // Output
     always @(posedge clk) begin
-        if (txStart) begin
-            txStart <= 0;
-            rd_en <= 0;
-        end 
-        else if (!txBusy && !buf_empty) begin
-			rd_en <= 1;
-            txStart <= 1;
-            txData <= buf_out;
-		end /*
-		else begin
+		if (txStart) begin
+			txStart <= 0;
 			rd_en <= 0;
-            txStart <= 0;
-		end */
+		end 
+		else if (!txBusy && !empty) begin
+			rd_en <= 1;
+			txStart <= 1;
+			txData <= buf_out;
+		end
+		
+		// Have local versions of buf_empty & buf_full as they will change on the same clock edge.
+		empty <= buf_empty;
+		full <= buf_full;
     end
+	 
   
  	fifo ff( .clk(clk), .rst(rst), .buf_in(data), .buf_out(buf_out), 
          .wr_en(wr_en), .rd_en(rd_en), .buf_empty(buf_empty), 

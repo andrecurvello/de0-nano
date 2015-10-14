@@ -140,6 +140,14 @@ module uart_tx_buffer_tb();
         dataReady = 0;
         txBusy = 0;
 
+        #2
+        dataReady = 0;
+        txBusy = 0;
+
+        #2
+        dataReady = 0;
+        txBusy = 0;
+
 
         #10
         $stop;      // Terminate simulation
