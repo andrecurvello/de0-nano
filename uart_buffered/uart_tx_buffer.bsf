@@ -73,6 +73,20 @@ agreement for further details.
 		(text "txData[7..0]" (rect 125 43 171 55)(font "Arial" ))
 		(line (pt 192 48)(pt 176 48)(line_width 3))
 	)
+	(port
+		(pt 192 64)
+		(output)
+		(text "empty" (rect 0 0 25 12)(font "Arial" ))
+		(text "empty" (rect 146 59 171 71)(font "Arial" ))
+		(line (pt 192 64)(pt 176 64)(line_width 1))
+	)
+	(port
+		(pt 192 80)
+		(output)
+		(text "full" (rect 0 0 10 12)(font "Arial" ))
+		(text "full" (rect 161 75 171 87)(font "Arial" ))
+		(line (pt 192 80)(pt 176 80)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 176 128)(line_width 1))
 	)

@@ -6,7 +6,9 @@ module uart_tx_buffer(
 	data, 
 	txBusy, 
 	txStart, 
-	txData
+	txData,
+    empty,
+    full
 );
 	input clk, rst;
 	input[7:0] data;
@@ -14,9 +16,10 @@ module uart_tx_buffer(
 	input txBusy;
 	output reg txStart;
 	output reg[7:0] txData;
+    output reg empty, full;
     
 	reg wr_en, rd_en;
-	reg empty, full;
+	
 	wire[7:0] buf_out;
    wire buf_full;
 	wire buf_empty;
