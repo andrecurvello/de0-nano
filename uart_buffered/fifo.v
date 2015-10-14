@@ -1,5 +1,5 @@
 
-// BUF_WIDTH 6 = buffer size of 64 (same as Arduino)
+// BUF_WIDTH 6 = buffer size of 64 (same as Arduino in software)
 `define BUF_WIDTH 6    // BUF_SIZE = 16 -> BUF_WIDTH = 4, no. of bits to be used in pointer
 //`define BUF_WIDTH 2
 `define BUF_SIZE ( 1<<`BUF_WIDTH )

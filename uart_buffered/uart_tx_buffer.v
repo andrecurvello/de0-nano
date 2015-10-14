@@ -38,6 +38,7 @@ module uart_tx_buffer(
     
     // Output
     always @(posedge clk) begin
+    
 		if (txStart) begin
 			txStart <= 0;
 			rd_en <= 0;
@@ -47,7 +48,11 @@ module uart_tx_buffer(
 			txStart <= 1;
 			txData <= buf_out;
 		end
-		
+        else begin
+            txStart <= 0;
+            rd_en <= 0;
+        end
+        
 		// Have local versions of buf_empty & buf_full as they will change on the same clock edge.
 		empty <= buf_empty;
 		full <= buf_full;
