@@ -2,8 +2,8 @@
 
 //`include "vga.v"
 
-`timescale 1ns/1ns
-module vga_tb();
+`timescale 10ns/10ns
+module vga_demo_tb();
    
 	// Declare inputs as regs and outputs as wires
 	reg clk;
@@ -15,7 +15,7 @@ module vga_tb();
     wire hsync;
     wire vsync;
     
-    vga U0(
+    vga_demo U0(
         .CLOCK_50(clk),
         .RESET(rst),
         .VGA_RED(red),
@@ -36,8 +36,8 @@ module vga_tb();
         #2
         rst = 0;
         
-        #110
-        $stop;      // Terminate simulation
+        //#110
+        //$stop;      // Terminate simulation
 
 	end
 

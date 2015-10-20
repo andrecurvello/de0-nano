@@ -1,5 +1,7 @@
 
 /*
+VGA Demo 800x600 at 72Hz
+
 http://www-mtl.mit.edu/Courses/6.111/labkit/vga.shtml
 
 800x600, 72Hz	50.000	800	56	120	64	600	37	6	23
@@ -11,11 +13,11 @@ Horizontal (in Pixels)
     Sync Pulse:   120 (2.4us)
     Back Porch:    64 (1.28us)
         Total pixel clock ticks: 1040 (20.8us)
-Vertical (in Lines)
-    Active Video: 600 (12us)
-    Front Porch:   37 (0.75us)
-    Sync Pulse:     6 (0.12us)
-    Back Porch:    23 (0.46us)
+Vertical (in Lines, so x20.8us)
+    Active Video: 600 (12480us)
+    Front Porch:   37 (769.6us)
+    Sync Pulse:     6 (124.8us)
+    Back Porch:    23 (478.4us)
         Total pixel clock ticks: 666 (13.32us)
 
 Total pixel clock ticks: 692,640
@@ -25,7 +27,7 @@ Total pixel clock ticks: 692,640
 
 */
 
-module vga
+module vga_demo
     (
         CLOCK_50,
         RESET,
@@ -92,9 +94,9 @@ module vga
                 hor_sync <= 0;       // turn off horizontal sync pulse
 
             /* Generating the vertical sync signal */
-            if (ver_reg == 637)      // video (600) +  front porch (37)
+            if (ver_reg == 637)      // LINES: video (600) +  front porch (37)
                 ver_sync <= 1;       // turn on vertical sync pulse
-            else if (ver_reg == 643) // video (600) + front porch (37) + Sync Pulse (6)
+            else if (ver_reg == 643) // LINES: video (600) + front porch (37) + Sync Pulse (6)
                 ver_sync <= 0;       // turn off vertical sync pulse
 
         end
