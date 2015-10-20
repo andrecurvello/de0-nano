@@ -1,3 +1,30 @@
+
+/*
+http://www-mtl.mit.edu/Courses/6.111/labkit/vga.shtml
+
+800x600, 72Hz	50.000	800	56	120	64	600	37	6	23
+
+Pixel Clock (MHz): 50.000 
+Horizontal (in Pixels)
+    Active Video: 800 (16us)
+    Front Porch:   56 (1.12us)
+    Sync Pulse:   120 (2.4us)
+    Back Porch:    64 (1.28us)
+        Total pixel clock ticks: 1040 (20.8us)
+Vertical (in Lines)
+    Active Video: 600 (12us)
+    Front Porch:   37 (0.75us)
+    Sync Pulse:     6 (0.12us)
+    Back Porch:    23 (0.46us)
+        Total pixel clock ticks: 666 (13.32us)
+
+Total pixel clock ticks: 692,640
+50,000,000 / 692,640 = 72.187572188 = 72Hz
+
+1 pixel clock = 1/50Mhz = 20ns = 0.02us
+
+*/
+
 module vga
     (
         CLOCK_50,
@@ -59,23 +86,25 @@ module vga
         else begin
 
             /* Generating the horizontal sync signal */
-            if (hor_reg == 856)
-                hor_sync <= 1;
-            else if (hor_reg == 976)
-                hor_sync <= 0;
+            if (hor_reg == 856)      // video (800) + front porch (56)
+                hor_sync <= 1;       // turn on horizontal sync pulse
+            else if (hor_reg == 976) // video (800) + front porch (56) + Sync Pulse (120)
+                hor_sync <= 0;       // turn off horizontal sync pulse
 
             /* Generating the vertical sync signal */
-            if (ver_reg == 637)
-                ver_sync <= 1;
-            else if (ver_reg == 643)
-                ver_sync <= 0;
+            if (ver_reg == 637)      // video (600) +  front porch (37)
+                ver_sync <= 1;       // turn on vertical sync pulse
+            else if (ver_reg == 643) // video (600) + front porch (37) + Sync Pulse (6)
+                ver_sync <= 0;       // turn off vertical sync pulse
 
         end
     end
 
+    // Send the sync signals to the output, inverted as the sync pulse is low.
     assign VGA_HS = ~hor_sync;
     assign VGA_VS = ~ver_sync;
     
+    // Send a pattern of colours (based on the registry bits) but do not output anything during the synchronization periods
     assign VGA_RED = (!hor_reg[0] && !ver_reg[0] && ver_reg < 600 && hor_reg < 800);
     assign VGA_GREEN = (!hor_reg[1] && !ver_reg[1] && ver_reg < 600 && hor_reg < 800);
     assign VGA_BLUE = (!hor_reg[2] && !ver_reg[2] && ver_reg < 600 && hor_reg < 800);
@@ -83,3 +112,4 @@ module vga
     // http://gerfficient.com/2013/02/11/fpga-to-vga-using-de0-nano/
     
 endmodule
+
