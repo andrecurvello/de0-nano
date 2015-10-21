@@ -103,6 +103,7 @@ module vga_demo
     end
 
     // Send the sync signals to the output, inverted as the sync pulse is low.
+    // Maybe wrong as this doc says pulse id positive http://tinyvga.com/vga-timing/800x600@72Hz
     assign VGA_HS = ~hor_sync;
     assign VGA_VS = ~ver_sync;
     
