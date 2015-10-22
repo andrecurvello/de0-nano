@@ -16,7 +16,7 @@ module vga_demo_tb();
     wire vsync;
     
     vga_demo U0(
-        .CLOCK_50(clk),
+        .CLOCK_PIXEL(clk),
         .RESET(rst),
         .VGA_RED(red),
         .VGA_GREEN(green),

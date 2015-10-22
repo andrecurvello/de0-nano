@@ -58,7 +58,7 @@ agreement for further details.
 	(output)
 	(rect 760 376 936 392)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
-	(text "F13" (rect 90 0 111 11)(font "Arial" ))
+	(text "VGA_RED" (rect 90 0 111 11)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -75,7 +75,7 @@ agreement for further details.
 	(output)
 	(rect 760 360 936 376)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
-	(text "T15" (rect 90 0 111 11)(font "Arial" ))
+	(text "VGA_GREEN" (rect 90 0 111 11)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -92,7 +92,7 @@ agreement for further details.
 	(output)
 	(rect 760 344 936 360)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
-	(text "T13" (rect 90 0 111 11)(font "Arial" ))
+	(text "VGA_BLUE" (rect 90 0 111 11)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -109,7 +109,7 @@ agreement for further details.
 	(output)
 	(rect 760 328 936 344)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
-	(text "T12" (rect 90 0 111 11)(font "Arial" ))
+	(text "VGA_VSYNC" (rect 90 0 111 11)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -126,7 +126,7 @@ agreement for further details.
 	(output)
 	(rect 760 312 936 328)
 	(text "OUTPUT" (rect 1 0 41 10)(font "Arial" (font_size 6)))
-	(text "T11" (rect 90 0 111 11)(font "Arial" ))
+	(text "VGA_HSYNC" (rect 90 0 111 11)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))

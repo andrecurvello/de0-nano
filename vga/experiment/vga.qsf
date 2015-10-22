@@ -59,19 +59,19 @@ set_global_assignment -name VERILOG_FILE vga_demo_tb.v
 set_global_assignment -name CDF_FILE Chain1.cdf
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_location_assignment PIN_R8 -to CLOCK_50
-set_location_assignment PIN_T15 -to T15
-set_location_assignment PIN_T13 -to T13
-set_location_assignment PIN_T12 -to T12
-set_location_assignment PIN_T11 -to T11
-set_location_assignment PIN_F13 -to F13
+set_location_assignment PIN_T15 -to VGA_GREEN
+set_location_assignment PIN_T13 -to VGA_BLUE
+set_location_assignment PIN_T12 -to VGA_VSYNC
+set_location_assignment PIN_T11 -to VGA_HSYNC
+set_location_assignment PIN_F13 -to VGA_RED
 set_location_assignment PIN_J15 -to KEY[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to T15
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to T13
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_GREEN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_BLUE
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to T12
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to T11
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to F13
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_VSYNC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_HSYNC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_RED
 
 set_global_assignment -name ENABLE_OCT_DONE OFF
 set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
@@ -81,4 +81,5 @@ set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

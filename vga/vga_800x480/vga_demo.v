@@ -28,7 +28,7 @@ Total pixel clock ticks: 692,640
 
 module vga_demo
     (
-        CLOCK_50,
+        CLOCK_PIXEL,
         RESET,
         VGA_RED,
         VGA_GREEN,
@@ -36,7 +36,7 @@ module vga_demo
         VGA_HS,
         VGA_VS
     );
-    input CLOCK_50;
+    input CLOCK_PIXEL;
     input RESET;
     output VGA_RED;
     output VGA_GREEN;
@@ -56,13 +56,8 @@ module vga_demo
 
     // Code
 
-    
-    
-    // @TODO: 30mhz clock!!
-    
-    
     /* Running through line */
-    always @ (posedge CLOCK_50 or posedge RESET) begin
+    always @ (posedge CLOCK_PIXEL or posedge RESET) begin
 
         if (RESET) begin 
             hor_reg <= 0;
@@ -82,7 +77,7 @@ module vga_demo
 
     end
     
-    always @ (posedge CLOCK_50 or posedge RESET) begin
+    always @ (posedge CLOCK_PIXEL or posedge RESET) begin
     
         if (RESET) begin 
             hor_sync <= 0;
@@ -99,7 +94,7 @@ module vga_demo
             /* Generating the vertical sync signal */
             if (ver_reg == 493)      // LINES: video (480) +  front porch (13)
                 ver_sync <= 1;       // turn on vertical sync pulse
-            else if (ver_reg == 493) // LINES: video (480) + front porch (13) + Sync Pulse (3)
+            else if (ver_reg == 496) // LINES: video (480) + front porch (13) + Sync Pulse (3)
                 ver_sync <= 0;       // turn off vertical sync pulse
 
         end
