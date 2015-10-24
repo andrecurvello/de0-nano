@@ -53,6 +53,7 @@ module vga_demo
     /* Internal registers for vertical signal timing */
     reg [9:0] ver_reg; // to count 666 different values up to 665
     reg ver_sync;
+    reg red, green, blue;
     wire ver_max = (ver_reg == 665); // to tell when a line is full
 
     // Code
@@ -99,6 +100,19 @@ module vga_demo
             else if (ver_reg == 643) // LINES: video (600) + front porch (37) + Sync Pulse (6)
                 ver_sync <= 0;       // turn off vertical sync pulse
 
+                
+            // Draw a single square.
+            if (hor_reg >= 100 && hor_reg <= 200 && ver_reg >= 100 && ver_reg <= 200) begin
+                red <= 1;
+                green <= 0;
+                blue <= 0;
+            end 
+            else begin
+                red <= 1;
+                green <= 1;
+                blue <= 1;
+            end
+                
         end
     end
 
@@ -108,9 +122,13 @@ module vga_demo
     assign VGA_VS = ~ver_sync;
     
     // Send a pattern of colours (based on the registry bits) but do not output anything during the synchronization periods
-    assign VGA_RED = (!hor_reg[0] && !ver_reg[0] && ver_reg < 600 && hor_reg < 800);
-    assign VGA_GREEN = (!hor_reg[1] && !ver_reg[1] && ver_reg < 600 && hor_reg < 800);
-    assign VGA_BLUE = (!hor_reg[2] && !ver_reg[2] && ver_reg < 600 && hor_reg < 800);
+    //assign VGA_RED = (!hor_reg[0] && !ver_reg[0] && ver_reg < 600 && hor_reg < 800);
+    //assign VGA_GREEN = (!hor_reg[1] && !ver_reg[1] && ver_reg < 600 && hor_reg < 800);
+    //assign VGA_BLUE = (!hor_reg[2] && !ver_reg[2] && ver_reg < 600 && hor_reg < 800);
+    
+    assign VGA_RED =  red && ver_reg < 600 && hor_reg < 800;
+    assign VGA_GREEN = green && ver_reg < 600 && hor_reg < 800;
+    assign VGA_BLUE = blue && ver_reg < 600 && hor_reg < 800;    
     
     // http://gerfficient.com/2013/02/11/fpga-to-vga-using-de0-nano/
     
