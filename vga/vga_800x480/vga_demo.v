@@ -128,7 +128,7 @@ module vga_demo
                 end
                 
                 // bottom border
-                else if (ver_reg == 476 ) begin // Not quite 480 visable
+                else if (ver_reg == 478 ) begin // Not quite 480 visable
                     red <= 0;
                     green <= 1;
                     blue <= 0;
