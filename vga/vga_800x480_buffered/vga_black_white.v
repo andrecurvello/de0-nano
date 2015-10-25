@@ -27,13 +27,13 @@ module vga_bw
 
     /* Internal registers for horizontal signal timing */
     reg [10:0] hor_reg; // to count up to 975
-    reg [10:0] hor_pixel;
+    reg [10:0] hor_pixel; // the next pixel
     reg hor_sync;
     wire hor_max = (hor_reg == 975); // to tell when a line is full
 
     /* Internal registers for vertical signal timing */
     reg [9:0] ver_reg; // to count up to 527
-    reg [10:0] ver_pixel;
+    reg [10:0] ver_pixel; // the next pixel
     reg ver_sync;
     reg red, green, blue;
     wire ver_max = (ver_reg == 527); // to tell when a line is full
