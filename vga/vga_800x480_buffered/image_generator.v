@@ -37,18 +37,24 @@
             ver_reg <= 0;
             buffer_addr <= 0;
             pixel_bit <= 0;
-        end
-        else if (hor_max) begin
-            hor_reg <= 0;
-
-            /* Running through frame */
-            if (ver_max) begin
-                ver_reg <= 0;
-            end else begin
-                ver_reg <= ver_reg + 1;
-            end
         end else begin
-            hor_reg <= hor_reg + 1;
+        
+            if (hor_max) begin
+                hor_reg <= 0;
+
+                /* Running through frame */
+                if (ver_max) begin
+                    ver_reg <= 0;
+                end else begin
+                    ver_reg <= ver_reg + 1;
+                end
+            end else begin
+                hor_reg <= hor_reg + 1;
+            end
+            
+            buffer_addr <= (hor_reg + ver_reg) / 16;
+            pixel_bit <= (hor_reg + ver_reg) % 16;
+            
         end
 
     end  
