@@ -72,6 +72,9 @@ module vga_bw
             red <= 0;
             green <= 0;
             blue <= 0;
+            
+            hor_pixel <= 0;
+            ver_pixel <= 0;
         end
         else begin
 
@@ -94,8 +97,20 @@ module vga_bw
                 red <= 0;
                 green <= 0;
                 blue <= 0;
+                
+                if (ver_reg > 480) begin
+                    ver_pixel <= 0;
+                end 
+                if (hor_reg > 800) begin
+                    hor_pixel <= 0;
+                end 
+                
             end
+            
             else begin
+                hor_pixel <= hor_reg;
+                ver_pixel <= ver_reg;
+                
                 
                 // Draw the pixel.
                 if (PIXEL) begin
@@ -124,8 +139,8 @@ module vga_bw
     assign VGA_GREEN = green;
     assign VGA_BLUE = blue;
     
-    assign PIXEL_H = hor_reg;
-    assign PIXEL_V = ver_reg;
+    assign PIXEL_H = hor_pixel;
+    assign PIXEL_V = ver_pixel;
     
 endmodule
 

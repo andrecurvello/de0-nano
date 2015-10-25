@@ -5,10 +5,11 @@ module clock_25 (
 );
     input CLOCK_50;
     output CLOCK_25;
-    reg CLOCK_25;
+    reg clk = 0;
 
     always @(posedge CLOCK_50) begin
-        CLOCK_25 <= ~CLOCK_25;
+        clk <= ~clk;
     end
  
+    assign CLOCK_25 = clk;
 endmodule
