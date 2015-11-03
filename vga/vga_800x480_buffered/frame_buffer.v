@@ -36,9 +36,9 @@
     
     wire[15:0] read_address;
      
-    assign read_address = (vga_h + (vga_v * 800) ) / 16;
-    assign pixel_bit = (vga_h + vga_v) % 16;
-    assign pixel_out = read_value[pixel_bit];
+    assign read_address = (vga_h + (vga_v * 800) ) >> 4; // divide by 16
+    assign pixel_bit = vga_h + vga_v;
+    assign pixel_out = read_value[pixel_bit[3:0]];
 
     
     
