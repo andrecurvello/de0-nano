@@ -36,15 +36,18 @@ module quadrature_clocked(
     wire count_enable = quadA_delayed[1] ^ quadA_delayed[2] ^ quadB_delayed[1] ^ quadB_delayed[2];
     wire count_direction = quadA_delayed[1] ^ quadB_delayed[2];
 
-    reg [7:0] count;
+    reg [31:0] total;
     always @(posedge clk or posedge reset) begin
         if (reset) begin 
-            count <= 0;
+            total <= 0;
         end else if(count_enable) begin
-            if(count_direction) count <= count+1; 
-            else count <= count-1;
+            if(count_direction) total <= total+1; 
+            else total <= total-1;
         end
     end
-
+    
+    wire [31:0] clicks;
+    assign clicks = total >> 2; // divide by 4 as the encoder has 4 edges per "click"
+    assign count = clicks[7:0];
 
 endmodule
