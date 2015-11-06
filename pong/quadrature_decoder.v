@@ -41,8 +41,8 @@ module quadrature_decoder(
             total <= 0;
         end 
         else if (count_enable) begin
-            // only want a final count between 0 & 255
-            if (count_direction && total < 1020) begin 
+            // only want a final count between 0 & 27 (x4 for the clicks)
+            if (count_direction && total < 109) begin 
                 total <= total+1; 
             end
             else if (total > 0) begin 
