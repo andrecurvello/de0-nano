@@ -39,11 +39,18 @@ module quadrature_decoder(
     always @(posedge CLOCK or posedge RESET) begin
         if (RESET) begin 
             total <= 0;
-        end else if(count_enable) begin
-            if(count_direction) total <= total+1; 
-            else total <= total-1;
+        end 
+        else if (count_enable) begin
+            // only want a final count between 0 & 255
+            if (count_direction && total < 1020) begin 
+                total <= total+1; 
+            end
+            else if (total > 0) begin 
+                total <= total-1;
+            end
         end
     end
+    
     
     wire [31:0] clicks;
     assign clicks = total >> 2; // divide by 4 as the encoder has 4 edges per "click"
