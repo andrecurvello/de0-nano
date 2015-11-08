@@ -25,7 +25,7 @@
 
     wire border = (PIXEL_V <= 4 || PIXEL_V >= 474 || PIXEL_H <= 4 || PIXEL_H >= 774);
     wire net = (PIXEL_V[4] == 1 && (PIXEL_H == 389 || PIXEL_H == 390));
-    wire paddle = (PIXEL_H >= 10 && PIXEL_H <= 20 && PIXEL_V >= paddle_pos && PIXEL_V <= (paddle_pos + 50));
+    wire paddle = (PIXEL_H >= 10 && PIXEL_H <= 20 && PIXEL_V >= paddle_pos && PIXEL_V <= (paddle_pos + 75));
     wire ball = PIXEL_H >= ball_h && PIXEL_H <= (ball_h + 16) && PIXEL_V >= ball_v && PIXEL_V <= (ball_v + 16);
 
 
@@ -36,7 +36,8 @@
     
 
     // Ball position
-    reg [15:0] ball_timer;
+    reg [16:0] ball_timer;
+    /*
     always @ (posedge VGA_CLOCK or posedge RESET) begin
         if (RESET) begin 
             ball_timer <= 0;
@@ -45,6 +46,7 @@
             ball_timer <= ball_timer + 1;
         end
     end
+    */
     
     reg ball_h_direction;
     reg ball_v_direction;
@@ -89,17 +91,22 @@
             ball_v <= 240;
             ball_h_direction <= 1;
             ball_v_direction <= 1;
+            ball_timer <= 0;
         end else begin
-        
+            ball_timer <= ball_timer + 1;
         
             // Only move the ball when timer says so.
-            if (ball_timer == 16'd5000) begin 
+            if (ball_timer == 17'd91071) begin 
+                ball_timer <= 0;
             
                 if (ball_v == 474 || ball_v == 1) begin
-                    ball_v_direction = ~ball_v_direction; // Ermmm blocking
+                    ball_v_direction = ~ball_v_direction; //  blocking
                 end
                 if (ball_h == 774 ) begin
-                    ball_h_direction = ~ball_h_direction; // Ermmm blocking
+                    ball_h_direction = ~ball_h_direction; //  blocking
+                end
+                if (ball_h <= 20 && ball_v >= paddle_pos && ball_v <= (paddle_pos + 75)) begin
+                    ball_h_direction = ~ball_h_direction; //  blocking
                 end
                 if (ball_h < 15) begin
                     // Missed the ball; serve a new one. 
@@ -125,9 +132,7 @@
                 
                
                
-                if (ball_h <= 20 && ball_v >= paddle_pos && ball_v <= (paddle_pos + 50)) begin
-                    ball_h_direction = ~ball_h_direction; // Ermmm blocking
-                end
+                
             
             /*
                 if (ball_h <= 20) begin
