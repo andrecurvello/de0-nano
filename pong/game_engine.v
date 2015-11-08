@@ -26,7 +26,7 @@
     // Border logic
     reg border;
     always @ (posedge VGA_CLOCK) begin
-        if (PIXEL_V == 0 || PIXEL_V == 478 || PIXEL_H == 0 || PIXEL_H == 778) begin
+        if (PIXEL_V <= 4 || PIXEL_V >= 474 || PIXEL_H <= 4 || PIXEL_H >= 774) begin
             border <= 1;
         end
         else begin
@@ -69,10 +69,119 @@
         end
     end
     
+    // Ball position
+    reg [15:0] ball_timer;
+    always @ (posedge VGA_CLOCK or posedge RESET) begin
+        if (RESET) begin 
+            ball_timer <= 0;
+        end else begin
+            ball_timer <= ball_timer + 1;
+        end
+    end
+    
+    reg ball_h_direction;
+    reg ball_v_direction;
+    reg [10:0] ball_h;
+    reg [10:0] ball_v;
+    /*
+    always @ (ball or paddle or border) begin
+        if (ball & border) begin
+            ball_v_direction = ~ball_v_direction;
+            ball_h_direction = ~ball_h_direction;
+        end
+    end
+    */
+    /*
+    always @ (ball_h or ball_v or ball_v_direction or ball_h_direction or paddle or border) begin
+        if (ball_v == 474 || ball_v == 1) begin
+            ball_v_direction = ~ball_v_direction;
+        end
+        if (ball_h == 774 || ball_h == 1) begin
+            ball_h_direction = ~ball_h_direction;
+        end
+    end
+    */
+    /*
+    always @ (posedge VGA_CLOCK or posedge RESET) begin
+        if (RESET) begin 
+            ball_h_direction <= 0;
+            ball_v_direction <= 0;
+        end else begin
+            if (ball_v == 474 || ball_v == 1) begin
+                ball_v_direction <= ~ball_v_direction;
+            end 
+            else if (ball_h == 774 || ball_h == 1) begin
+                ball_h_direction <= ~ball_h_direction;
+            end
+        end
+    end
+    */
+    always @ (posedge VGA_CLOCK or posedge RESET) begin
+        if (RESET) begin 
+            ball_h <= 390;
+            ball_v <= 240;
+            ball_h_direction <= 0;
+            ball_v_direction <= 0;
+        end else begin
+        
+        
+            // Only move the ball when timer says so.
+            if (ball_timer == 16'd5000) begin 
+            
+                if (ball_v == 474 || ball_v == 1) begin
+                    ball_v_direction = ~ball_v_direction; // Ermmm blocking
+                end
+                if (ball_h == 774 ) begin
+                    ball_h_direction = ~ball_h_direction; // Ermmm blocking
+                end
+                
+               
+                if (ball_h <= 20 && ball_v >= paddle_pos && ball_v <= (paddle_pos + 50)) begin
+                    ball_h_direction = ~ball_h_direction; // Ermmm blocking
+                end
+            
+            
+                // Move the ball
+                if (ball_h_direction) begin
+                    ball_h <= ball_h + 1;
+                end
+                else begin
+                    ball_h <= ball_h - 1;
+                end
+                
+                if (ball_v_direction) begin
+                    ball_v <= ball_v + 1;
+                end
+                else begin
+                    ball_v <= ball_v - 1;
+                end
+            end
+        end
+    end
+    
+    // Ball logic
+    reg ball;
+    always @ (posedge VGA_CLOCK) begin
+        // The ball is 16 x 16 pixels.
+        if (PIXEL_H >= ball_h && PIXEL_H <= (ball_h + 16)) begin
+            if (PIXEL_V >= ball_v && PIXEL_V <= (ball_v + 16)) begin
+                // Within the ball.
+                ball <= 1;
+            end
+        end
+        // No ball at this pixel.
+        else begin
+            ball <= 0;
+        end
+    end
+    
     // Draw the pixel for the requested vga location.
     always @ (posedge VGA_CLOCK) begin
         if (border) begin
             pixel <= 3'b100; // red border
+        end
+        else if (ball) begin
+            pixel <= 3'b001; // blue ball
         end
         else if (net) begin
             pixel <= 3'b110; // yellow net
