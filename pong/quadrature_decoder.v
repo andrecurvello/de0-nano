@@ -8,10 +8,14 @@ module quadrature_decoder(
     RESET,
     A, 
     B, 
-    COUNT
+    COUNT_ENABLE,
+    DIRECTION, 
+    SPEED
 );
     input CLOCK, RESET, A, B;
-    output [7:0] COUNT;
+    output COUNT_ENABLE;
+    output DIRECTION;
+    output [3:0] SPEED;
 
     reg [2:0] A_delayed;
     reg [2:0] B_delayed;
@@ -31,10 +35,16 @@ module quadrature_decoder(
             B_delayed <= {B_delayed[1:0], B};
         end
     end
+    
+    assign COUNT_ENABLE = A_delayed[1] ^ A_delayed[2] ^ B_delayed[1] ^ B_delayed[2];
+    assign DIRECTION =  A_delayed[1] ^ B_delayed[2];
+    assign SPEED = 4'd0;
 
+    /*
     wire count_enable = A_delayed[1] ^ A_delayed[2] ^ B_delayed[1] ^ B_delayed[2];
     wire count_direction = A_delayed[1] ^ B_delayed[2];
 
+    
     reg [31:0] total;
     always @(posedge CLOCK or posedge RESET) begin
         if (RESET) begin 
@@ -56,4 +66,5 @@ module quadrature_decoder(
     assign clicks = total >> 2; // divide by 4 as the encoder has 4 edges per "click"
     assign COUNT = clicks[7:0];
 
+    */
 endmodule
