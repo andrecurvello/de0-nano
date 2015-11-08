@@ -23,52 +23,18 @@
     reg [10:0] paddle_pos;
 
 
-    // Border logic
-    reg border;
-    always @ (posedge VGA_CLOCK) begin
-        if (PIXEL_V <= 4 || PIXEL_V >= 474 || PIXEL_H <= 4 || PIXEL_H >= 774) begin
-            border <= 1;
-        end
-        else begin
-            border <= 0;
-        end
-    end
-    
-    // Net logic
-    reg net;
-    always @ (posedge VGA_CLOCK) begin
-        if (PIXEL_V[4] == 1 && (PIXEL_H == 389 || PIXEL_H == 390)) begin
-            net <= 1;
-        end
-        else begin
-            net <= 0;
-        end
-    end
-    
+    wire border = (PIXEL_V <= 4 || PIXEL_V >= 474 || PIXEL_H <= 4 || PIXEL_H >= 774);
+    wire net = (PIXEL_V[4] == 1 && (PIXEL_H == 389 || PIXEL_H == 390));
+    wire paddle = (PIXEL_H >= 10 && PIXEL_H <= 20 && PIXEL_V >= paddle_pos && PIXEL_V <= (paddle_pos + 50));
+    wire ball = PIXEL_H >= ball_h && PIXEL_H <= (ball_h + 16) && PIXEL_V >= ball_v && PIXEL_V <= (ball_v + 16);
+
+
     // Paddle position
-    always @ (posedge SYSTEM_CLOCK) begin
+    always @ (posedge VGA_CLOCK) begin
         paddle_pos <= PADDLE_POSITION << 4;
     end
     
-    // Paddle logic
-    reg paddle;
-    always @ (posedge VGA_CLOCK) begin
-        // The paddle lives at row 10 and is 20 x 50 pixels.
-        // The paddle is referenced from its top left corner 0,0
-        // to its bottom right corner 20,50
-        if (PIXEL_H >= 10 && PIXEL_H <= 20) begin
-            // Now within the paddle's region.
-            if (PIXEL_V >= paddle_pos && PIXEL_V <= (paddle_pos + 50)) begin
-                // Within the paddle.
-                paddle <= 1;
-            end
-        end
-        // No paddle at this pixel.
-        else begin
-            paddle <= 0;
-        end
-    end
-    
+
     // Ball position
     reg [15:0] ball_timer;
     always @ (posedge VGA_CLOCK or posedge RESET) begin
@@ -179,21 +145,6 @@
         end
     end
     
-    // Ball logic
-    reg ball;
-    always @ (posedge VGA_CLOCK) begin
-        // The ball is 16 x 16 pixels.
-        if (PIXEL_H >= ball_h && PIXEL_H <= (ball_h + 16)) begin
-            if (PIXEL_V >= ball_v && PIXEL_V <= (ball_v + 16)) begin
-                // Within the ball.
-                ball <= 1;
-            end
-        end
-        // No ball at this pixel.
-        else begin
-            ball <= 0;
-        end
-    end
     
     // Draw the pixel for the requested vga location.
     always @ (posedge VGA_CLOCK) begin
