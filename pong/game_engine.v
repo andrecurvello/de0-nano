@@ -74,7 +74,8 @@
     always @ (posedge VGA_CLOCK or posedge RESET) begin
         if (RESET) begin 
             ball_timer <= 0;
-        end else begin
+        end 
+        else begin
             ball_timer <= ball_timer + 1;
         end
     end
@@ -120,8 +121,8 @@
         if (RESET) begin 
             ball_h <= 390;
             ball_v <= 240;
-            ball_h_direction <= 0;
-            ball_v_direction <= 0;
+            ball_h_direction <= 1;
+            ball_v_direction <= 1;
         end else begin
         
         
@@ -134,15 +135,15 @@
                 if (ball_h == 774 ) begin
                     ball_h_direction = ~ball_h_direction; // Ermmm blocking
                 end
-                
-               
-                if (ball_h <= 20 && ball_v >= paddle_pos && ball_v <= (paddle_pos + 50)) begin
-                    ball_h_direction = ~ball_h_direction; // Ermmm blocking
+                if (ball_h < 15) begin
+                    // Missed the ball; serve a new one. 
+                    ball_h <= 390;
+                    ball_v <= 240;
+                    ball_h_direction = 1;
+                    ball_v_direction = 1;
                 end
-            
-            
-                // Move the ball
-                if (ball_h_direction) begin
+                 // Move the ball
+                else if (ball_h_direction) begin
                     ball_h <= ball_h + 1;
                 end
                 else begin
@@ -155,6 +156,25 @@
                 else begin
                     ball_v <= ball_v - 1;
                 end
+                
+               
+               
+                if (ball_h <= 20 && ball_v >= paddle_pos && ball_v <= (paddle_pos + 50)) begin
+                    ball_h_direction = ~ball_h_direction; // Ermmm blocking
+                end
+            
+            /*
+                if (ball_h <= 20) begin
+                    if (ball_v >= paddle_pos && ball_v <= (paddle_pos + 50)) begin
+                        ball_h_direction = ~ball_h_direction; // Ermmm blocking
+                    end
+                    else begin
+                        
+                    end
+                end
+            */
+            
+                
             end
         end
     end
