@@ -6,34 +6,48 @@
 module player(
     CLOCK, 
     RESET,
-    COUNT_ENABLE,
-    DIRECTION, 
-    SPEED, 
+    A, 
+    B,
     POSITION
 );
-    input CLOCK, RESET, COUNT_ENABLE, DIRECTION;
-    input [3:0] SPEED;
+    input CLOCK, RESET, A, B;
     output [7:0] POSITION;
     
+    wire [3:0] speed;
+    wire direction;
+    wire count_enable;
+    
+    // Read the rotary encoder.
+    quadrature_decoder quad_1(
+        CLOCK, 
+        RESET,
+        A, 
+        B, 
+        count_enable,
+        direction, 
+        speed
+    );
+    
 
-    reg [31:0] total;
+    reg [7:0] total;
     always @(posedge CLOCK or posedge RESET) begin
         if (RESET) begin 
             total <= 0;
         end 
-        else if (COUNT_ENABLE) begin
+        // Change the total only if a valid change has happened on the rotary encoder.
+        else if (count_enable) begin
             // only want a final count between 0 & 27 (x4 for the clicks)
-            if (DIRECTION && total < 109) begin 
-                total <= total+1; 
+            if (direction && total < 8'd109) begin 
+                total <= total + 8'd1; 
             end
             else if (total > 0) begin 
-                total <= total-1;
+                total <= total - 8'd1;
             end
         end
     end
     
     
-    wire [31:0] clicks;
+    wire [7:0] clicks;
     assign clicks = total >> 2; // divide by 4 as the encoder has 4 edges per "click"
     assign POSITION = clicks[7:0];
 
