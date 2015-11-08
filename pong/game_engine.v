@@ -22,38 +22,68 @@
     reg [2:0] pixel;
     reg [10:0] paddle_pos;
 
+
+    // Border logic
+    reg border;
+    always @ (posedge VGA_CLOCK) begin
+        if (PIXEL_V == 0 || PIXEL_V == 478 || PIXEL_H == 0 || PIXEL_H == 778) begin
+            border <= 1;
+        end
+        else begin
+            border <= 0;
+        end
+    end
+    
+    // Net logic
+    reg net;
+    always @ (posedge VGA_CLOCK) begin
+        if (PIXEL_V[4] == 1 && (PIXEL_H == 389 || PIXEL_H == 390)) begin
+            net <= 1;
+        end
+        else begin
+            net <= 0;
+        end
+    end
+    
     // Paddle position
     always @ (posedge SYSTEM_CLOCK) begin
         paddle_pos <= PADDLE_POSITION << 4;
     end
     
+    // Paddle logic
+    reg paddle;
     always @ (posedge VGA_CLOCK) begin
-        // Draw a border 
-        if (PIXEL_V == 0 || PIXEL_V == 478 || PIXEL_H == 0 || PIXEL_H == 778) begin
-            pixel <= 3'b100; // red 1 pixel border
+        // The paddle lives at row 10 and is 20 x 50 pixels.
+        // The paddle is referenced from its top left corner 0,0
+        // to its bottom right corner 20,50
+        if (PIXEL_H >= 10 && PIXEL_H <= 20) begin
+            // Now within the paddle's region.
+            if (PIXEL_V >= paddle_pos && PIXEL_V <= (paddle_pos + 50)) begin
+                // Within the paddle.
+                paddle <= 1;
+            end
         end
-
+        // No paddle at this pixel.
         else begin
-        
-            // The paddle lives at row 10 and is 20 x 50 pixels.
-            // The paddle is referenced from its top left corner 0,0
-            // to its bottom right corner 20,50
-            if (PIXEL_H >= 10 && PIXEL_H <= 20) begin
-                // Now within the paddle's region.
-                if (PIXEL_V >= paddle_pos && PIXEL_V <= (paddle_pos + 50)) begin
-                    // Within the paddle.
-                    pixel <= 3'b111; // white paddle
-                end
-                else begin
-                    //pixel <= 3'b100; // background
-                end
-            end
-            
-            else begin
-                pixel <= 3'b000; // background (black)
-            end
-            
+            paddle <= 0;
         end
+    end
+    
+    // Draw the pixel for the requested vga location.
+    always @ (posedge VGA_CLOCK) begin
+        if (border) begin
+            pixel <= 3'b100; // red border
+        end
+        else if (net) begin
+            pixel <= 3'b110; // yellow net
+        end
+        else if (paddle) begin
+            pixel <= 3'b111; // white paddle
+        end
+        else begin
+            pixel <= 3'b000; // black
+        end
+        
     end
 
     assign PIXEL = pixel;
