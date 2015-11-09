@@ -95,19 +95,16 @@
             ball_v_direction <= 0;
             ball_timer <= 0;
         end else begin
-            // update ball time once per screen draw. (todo create blanking notification)
-            if (PIXEL_V == 480 && PIXEL_H == 800) begin
-                ball_timer <= ball_timer + 1;
-            end
+            ball_timer <= ball_timer + 1;
         
             // Only move the ball when timer says so.
-            if (ball_timer == 17'd1) begin 
+            if (ball_timer == 17'd91071) begin 
                 ball_timer <= 0;
             
-                if (ball_v == 474 || ball_v == 1) begin
+                if (ball_v >= 470 || ball_v <= 4) begin
                     ball_v_direction = ~ball_v_direction; //  blocking
                 end
-                if (ball_h == 774 ) begin
+                if (ball_h >= 770 ) begin
                     ball_h_direction = ~ball_h_direction; //  blocking
                 end
                 if (ball_h <= 20 && ball_v >= paddle_pos && ball_v <= (paddle_pos + 75)) begin
@@ -120,6 +117,8 @@
                     ball_h_direction = 1;
                     ball_v_direction = 1;
                 end
+                
+                
                  // Move the ball
                 else if (ball_h_direction) begin
                     ball_h <= ball_h + 1;
@@ -135,21 +134,6 @@
                     ball_v <= ball_v - 1;
                 end
                 
-               
-               
-                
-            
-            /*
-                if (ball_h <= 20) begin
-                    if (ball_v >= paddle_pos && ball_v <= (paddle_pos + 50)) begin
-                        ball_h_direction = ~ball_h_direction; // Ermmm blocking
-                    end
-                    else begin
-                        
-                    end
-                end
-            */
-            
                 
             end
         end

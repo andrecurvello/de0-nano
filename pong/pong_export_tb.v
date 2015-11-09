@@ -1,4 +1,4 @@
-`include "pong_export.v"
+//`include "pong_export.v"
 
 `timescale 10ns/10ns
 
