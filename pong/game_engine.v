@@ -21,6 +21,9 @@
 
     reg [2:0] pixel;
     reg [10:0] paddle_pos;
+    
+    reg [10:0] ball_h;
+    reg [10:0] ball_v;
 
 
     wire border = (PIXEL_V <= 4 || PIXEL_V >= 474 || PIXEL_H <= 4 || PIXEL_H >= 774);
@@ -50,8 +53,7 @@
     
     reg ball_h_direction;
     reg ball_v_direction;
-    reg [10:0] ball_h;
-    reg [10:0] ball_v;
+    
     /*
     always @ (ball or paddle or border) begin
         if (ball & border) begin
@@ -88,15 +90,18 @@
     always @ (posedge VGA_CLOCK or posedge RESET) begin
         if (RESET) begin 
             ball_h <= 390;
-            ball_v <= 240;
-            ball_h_direction <= 1;
-            ball_v_direction <= 1;
+            ball_v <= 5; // low for test bench
+            ball_h_direction <= 0;
+            ball_v_direction <= 0;
             ball_timer <= 0;
         end else begin
-            ball_timer <= ball_timer + 1;
+            // update ball time once per screen draw. (todo create blanking notification)
+            if (PIXEL_V == 480 && PIXEL_H == 800) begin
+                ball_timer <= ball_timer + 1;
+            end
         
             // Only move the ball when timer says so.
-            if (ball_timer == 17'd91071) begin 
+            if (ball_timer == 17'd1) begin 
                 ball_timer <= 0;
             
                 if (ball_v == 474 || ball_v == 1) begin
