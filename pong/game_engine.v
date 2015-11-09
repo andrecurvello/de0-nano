@@ -24,6 +24,8 @@
     
     reg [10:0] ball_h;
     reg [10:0] ball_v;
+    wire [10:0] ball_h_wire;
+    wire [10:0] ball_v_wire;
 
 
     wire border = (PIXEL_V <= 4 || PIXEL_V >= 474 || PIXEL_H <= 4 || PIXEL_H >= 774);
@@ -40,53 +42,11 @@
 
     // Ball position
     reg [16:0] ball_timer;
-    /*
-    always @ (posedge VGA_CLOCK or posedge RESET) begin
-        if (RESET) begin 
-            ball_timer <= 0;
-        end 
-        else begin
-            ball_timer <= ball_timer + 1;
-        end
-    end
-    */
     
     reg ball_h_direction;
     reg ball_v_direction;
+
     
-    /*
-    always @ (ball or paddle or border) begin
-        if (ball & border) begin
-            ball_v_direction = ~ball_v_direction;
-            ball_h_direction = ~ball_h_direction;
-        end
-    end
-    */
-    /*
-    always @ (ball_h or ball_v or ball_v_direction or ball_h_direction or paddle or border) begin
-        if (ball_v == 474 || ball_v == 1) begin
-            ball_v_direction = ~ball_v_direction;
-        end
-        if (ball_h == 774 || ball_h == 1) begin
-            ball_h_direction = ~ball_h_direction;
-        end
-    end
-    */
-    /*
-    always @ (posedge VGA_CLOCK or posedge RESET) begin
-        if (RESET) begin 
-            ball_h_direction <= 0;
-            ball_v_direction <= 0;
-        end else begin
-            if (ball_v == 474 || ball_v == 1) begin
-                ball_v_direction <= ~ball_v_direction;
-            end 
-            else if (ball_h == 774 || ball_h == 1) begin
-                ball_h_direction <= ~ball_h_direction;
-            end
-        end
-    end
-    */
     always @ (posedge VGA_CLOCK or posedge RESET) begin
         if (RESET) begin 
             ball_h <= 390;
@@ -100,38 +60,39 @@
             // Only move the ball when timer says so.
             if (ball_timer == 17'd91071) begin 
                 ball_timer <= 0;
-            
-                if (ball_v >= 470 || ball_v <= 4) begin
-                    ball_v_direction = ~ball_v_direction; //  blocking
-                end
-                if (ball_h >= 770 ) begin
-                    ball_h_direction = ~ball_h_direction; //  blocking
-                end
-                if (ball_h <= 20 && ball_v >= paddle_pos && ball_v <= (paddle_pos + 75)) begin
-                    ball_h_direction = ~ball_h_direction; //  blocking
-                end
-                if (ball_h < 15) begin
-                    // Missed the ball; serve a new one. 
-                    ball_h <= 390;
-                    ball_v <= 240;
-                    ball_h_direction = 1;
-                    ball_v_direction = 1;
-                end
-                
                 
                  // Move the ball
-                else if (ball_h_direction) begin
+                if (ball_h_direction) begin
                     ball_h <= ball_h + 1;
+                    // Right border collision
+                    if (ball_h > 770) ball_h_direction <= 0;
                 end
                 else begin
                     ball_h <= ball_h - 1;
+                    // Paddle detection
+                    if (ball_h < 20) begin
+                        if (ball_v >= paddle_pos && ball_v < (paddle_pos + 75)) begin
+                            // Hit the paddle (todo score)
+                            ball_h_direction <= 1;
+                        end
+                        else begin 
+                            // Missed the paddle - new serve
+                            ball_h <= 390;
+                            ball_v <= 240; 
+                            ball_h_direction <= 0;
+                        end
+                    end
                 end
                 
                 if (ball_v_direction) begin
                     ball_v <= ball_v + 1;
+                    // Bottom border collision
+                    if (ball_v > 470) ball_v_direction <= 0;
                 end
                 else begin
                     ball_v <= ball_v - 1;
+                    // Top border collision
+                    if (ball_v < 4) ball_v_direction <= 1;
                 end
                 
                 
@@ -142,7 +103,10 @@
     
     // Draw the pixel for the requested vga location.
     always @ (posedge VGA_CLOCK) begin
-        if (border) begin
+        if (paddle) begin
+            pixel <= 3'b111; // white paddle
+        end
+        else if (border) begin
             pixel <= 3'b100; // red border
         end
         else if (ball) begin
@@ -151,9 +115,7 @@
         else if (net) begin
             pixel <= 3'b110; // yellow net
         end
-        else if (paddle) begin
-            pixel <= 3'b111; // white paddle
-        end
+        
         else begin
             pixel <= 3'b000; // black
         end
