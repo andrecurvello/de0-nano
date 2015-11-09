@@ -40,13 +40,11 @@
     end
     
 
-    // Ball position
+    // Ball 
     reg [16:0] ball_timer;
-    
+    reg [27:0] ball_timer_delay;
     reg ball_h_direction;
     reg ball_v_direction;
-
-    
     always @ (posedge VGA_CLOCK or posedge RESET) begin
         if (RESET) begin 
             ball_h <= 390;
@@ -54,9 +52,16 @@
             ball_h_direction <= 0;
             ball_v_direction <= 0;
             ball_timer <= 0;
+            ball_timer_delay <= 0;
         end else begin
-            ball_timer <= ball_timer + 1;
         
+            if (ball_timer_delay > 0) begin
+                ball_timer_delay <= ball_timer_delay -1;
+            end
+            else begin
+                ball_timer <= ball_timer + 1;
+            end
+            
             // Only move the ball when timer says so.
             if (ball_timer == 17'd91071) begin 
                 ball_timer <= 0;
@@ -77,9 +82,10 @@
                         end
                         else begin 
                             // Missed the paddle - new serve
-                            ball_h <= 390;
-                            ball_v <= 240; 
+                            ball_h <= 382;
+                            //ball_v <= 240; 
                             ball_h_direction <= 0;
+                            ball_timer_delay <= 28'd67108863;
                         end
                     end
                 end
@@ -109,7 +115,7 @@
         else if (border) begin
             pixel <= 3'b100; // red border
         end
-        else if (ball) begin
+        else if (ball && ball_timer_delay == 0) begin
             pixel <= 3'b001; // blue ball
         end
         else if (net) begin
