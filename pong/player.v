@@ -36,8 +36,8 @@ module player(
         end 
         // Change the total only if a valid change has happened on the rotary encoder.
         else if (count_enable) begin
-            // only want a final count between 0 & 27 (x4 for the clicks)
-            if (direction && total < 8'd109) begin 
+            // only want a final count between 0 & 25 (x4 for the clicks)
+            if (direction && total < 8'd101) begin 
                 total <= total + 8'd1; 
             end
             else if (total > 0) begin 

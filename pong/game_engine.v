@@ -34,7 +34,7 @@
     wire border = (PIXEL_V <= 4 || PIXEL_V >= 474 || PIXEL_H <= 4 || PIXEL_H >= 774);
     wire net = (PIXEL_V[4] == 1 && (PIXEL_H == 389 || PIXEL_H == 390));
     wire paddle_a = (PIXEL_H >= 10 && PIXEL_H <= 20 && PIXEL_V >= paddle_a_pos && PIXEL_V <= (paddle_a_pos + 75));
-    wire paddle_b = (PIXEL_H >= 750 && PIXEL_H <= 770 && PIXEL_V >= paddle_b_pos && PIXEL_V <= (paddle_b_pos + 75));
+    wire paddle_b = (PIXEL_H >= 760 && PIXEL_H <= 770 && PIXEL_V >= paddle_b_pos && PIXEL_V <= (paddle_b_pos + 75));
     wire ball = PIXEL_H >= ball_h && PIXEL_H <= (ball_h + 16) && PIXEL_V >= ball_v && PIXEL_V <= (ball_v + 16);
 
 
@@ -75,7 +75,7 @@
                 if (ball_h_direction) begin
                     ball_h <= ball_h + 1;
                     // Paddle B detection (right side)
-                    if (ball_h > 750) begin
+                    if (ball_h > 760) begin
                         if (ball_v >= paddle_b_pos && ball_v < (paddle_b_pos + 75)) begin
                             // Hit the paddle (todo score)
                             ball_h_direction <= 0;

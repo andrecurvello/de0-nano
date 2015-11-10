@@ -43,7 +43,50 @@ module ai (
     input CLOCK, RESET;
     output [7:0] POSITION;
     
-    // Pretty dumb so far.
-    assign POSITION = 8'd15; 
+    reg [27:0] timer;
+    always @ (posedge CLOCK or posedge RESET) begin
+        if (RESET) begin
+            timer <= 0;
+        end else begin
+            if (timer == 28'd12421770) begin
+                timer <= 0;
+            end else begin
+                timer <= timer + 1;
+            end
+        end 
+    end
+    
+    // Just move up & down for now.
+    reg direction;
+    always @ (posedge CLOCK or posedge RESET) begin
+        if (RESET) begin
+            direction <= 1;
+        end else begin
+            // 0 to 25
+            if (direction == 1 && paddle == 8'd25) begin
+                direction <= 0;
+            end else if (direction == 0 && paddle == 8'd0) begin
+                direction <= 1;
+            end
+        end
+    end
+    
+    reg [7:0] paddle;
+    always @ (posedge CLOCK or posedge RESET) begin
+        if (RESET) begin
+            paddle <= 8'd13;
+        end else begin
+            if (timer == 0) begin
+                if (direction == 1) begin
+                    paddle <= paddle + 8'd1;
+                end else begin
+                    paddle <= paddle - 8'd1;
+                end
+            end
+        end
+    end
+    
+    
+    assign POSITION = paddle; 
     
 endmodule
