@@ -38,10 +38,16 @@ _________
 module ai (
     CLOCK, 
     RESET,
-    POSITION
+    POSITION,
+    BALL_H,
+    BALL_V
 );
     input CLOCK, RESET;
+    input [10:0] BALL_H;
+    input [10:0] BALL_V;
     output [7:0] POSITION;
+    
+    reg [7:0] paddle;
     
     reg [27:0] timer;
     always @ (posedge CLOCK or posedge RESET) begin
@@ -55,6 +61,43 @@ module ai (
             end
         end 
     end
+    
+    reg ball_direction;
+    reg [10:0] ball_v_net;
+    always @ (posedge CLOCK or posedge RESET) begin
+        if (RESET) begin
+            ball_direction <= 0;
+        end else begin
+            if (BALL_H == 11'd390) begin
+                // Remember the ball's vertical location 
+                // so we can determin the direction on the next ball move.
+                ball_v_net <= BALL_V;
+            end else if (BALL_H == 11'd391) begin
+                if (BALL_V > ball_v_net) begin
+                    ball_direction <= 1;
+                end else begin
+                    ball_direction <= 0;
+                end
+            end
+        end 
+    end
+    
+    /*
+    always @ (posedge CLOCK) begin
+        if (BALL_H == 11'd392) begin
+            paddle <= BALL_V;
+            // Calculate where the ball will be now we have ball direction.
+            if (ball_direction && BALL_H - BALL_V > 0) begin
+                //paddle <= BALL_H - BALL_V;
+            //end else if (!ball_direction && BALL_H + BALL_V > 474 ) begin
+            //    paddle <= BALL_V - BALL_H;
+            end else begin
+                //paddle <= BALL_V;
+            end
+        end
+    end
+    */
+    
     
     // Just move up & down for now.
     reg direction;
@@ -71,7 +114,6 @@ module ai (
         end
     end
     
-    reg [7:0] paddle;
     always @ (posedge CLOCK or posedge RESET) begin
         if (RESET) begin
             paddle <= 8'd13;

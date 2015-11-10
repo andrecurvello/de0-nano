@@ -10,6 +10,8 @@
     PADDLE_B_POSITION,
     PIXEL_H,
     PIXEL_V,
+    BALL_H,
+    BALL_V,
     PIXEL
  );
     input RESET;
@@ -19,6 +21,9 @@
     input [7:0] PADDLE_B_POSITION;
     input [10:0] PIXEL_H;
     input [10:0] PIXEL_V;
+    
+    output [10:0] BALL_H;
+    output [10:0] BALL_V;
     output [2:0] PIXEL; // 1 red, 1 green, 1 blue
 
     reg [2:0] pixel;
@@ -149,4 +154,7 @@
     end
 
     assign PIXEL = pixel;
+    assign BALL_H = ball_h;
+    assign BALL_V = ball_v;
+    
 endmodule
