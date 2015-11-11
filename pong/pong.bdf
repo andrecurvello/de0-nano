@@ -648,21 +648,21 @@ agreement for further details.
 		(pt 288 32)
 		(output)
 		(text "BALL_H[10..0]" (rect 0 0 71 11)(font "Arial" ))
-		(text "BALL_H[10..0]" (rect 207 27 267 38)(font "Arial" ))
+		(text "BALL_H[10..0]" (rect 207 27 278 38)(font "Arial" ))
 		(line (pt 288 32)(pt 272 32)(line_width 3))
 	)
 	(port
 		(pt 288 48)
 		(output)
 		(text "BALL_V[10..0]" (rect 0 0 71 11)(font "Arial" ))
-		(text "BALL_V[10..0]" (rect 207 43 267 54)(font "Arial" ))
+		(text "BALL_V[10..0]" (rect 207 43 278 54)(font "Arial" ))
 		(line (pt 288 48)(pt 272 48)(line_width 3))
 	)
 	(port
 		(pt 288 64)
 		(output)
 		(text "PIXEL[2..0]" (rect 0 0 56 11)(font "Arial" ))
-		(text "PIXEL[2..0]" (rect 220 59 267 70)(font "Arial" ))
+		(text "PIXEL[2..0]" (rect 220 59 276 70)(font "Arial" ))
 		(line (pt 288 64)(pt 272 64)(line_width 3))
 	)
 	(drawing
@@ -927,11 +927,6 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(pt 880 -160)
-	(pt 880 200)
-	(bus)
-)
-(connector
 	(pt 984 -136)
 	(pt 936 -136)
 	(bus)
@@ -947,8 +942,18 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(pt 856 -16)
 	(pt 936 -16)
+	(pt 880 -16)
+	(bus)
+)
+(connector
+	(pt 880 -160)
+	(pt 880 -16)
+	(bus)
+)
+(connector
+	(pt 880 -16)
+	(pt 880 200)
 	(bus)
 )
 (junction (pt 568 136))
@@ -958,4 +963,4 @@ agreement for further details.
 (junction (pt 360 136))
 (junction (pt 336 -16))
 (junction (pt 360 0))
-(junction (pt 856 -16))
+(junction (pt 880 -16))

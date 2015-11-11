@@ -29,26 +29,36 @@ module player(
     );
     
 
-    reg [7:0] total;
+    reg [15:0] total;
     always @(posedge CLOCK or posedge RESET) begin
         if (RESET) begin 
             total <= 0;
         end 
         // Change the total only if a valid change has happened on the rotary encoder.
         else if (count_enable) begin
-            // only want a final count between 0 & 25 (x4 for the clicks)
-            if (direction && total < 8'd101) begin 
-                total <= total + 8'd1; 
+            // Max 200 (x4 for the clicks)
+            if (direction && total < 16'd800) begin 
+                total <= total + 16'd1; 
             end
             else if (total > 0) begin 
-                total <= total - 8'd1;
+                total <= total - 16'd1;
             end
         end
     end
     
+    wire [15:0] clicks;
+    assign clicks = (total >> 2) << 3; // divide by 4 as the encoder has 4 edges per "click", then multiply by 8 to move faster
     
-    wire [7:0] clicks;
-    assign clicks = (total >> 2) << 4; // divide by 4 as the encoder has 4 edges per "click", then err multiply by 16
-    assign POSITION = clicks[7:0];
+    reg [7:0] position;
+    always @(posedge CLOCK) begin
+        if (clicks > 8'd200) begin
+            position <= 8'd200;
+        end else begin
+            position <= clicks[7:0];
+        end
+    end
+    
+    
+    assign POSITION = position;
 
 endmodule

@@ -43,20 +43,12 @@
     wire ball = PIXEL_H >= ball_h && PIXEL_H <= (ball_h + 16) && PIXEL_V >= ball_v && PIXEL_V <= (ball_v + 16);
 
 
-    // Restric paddle position to keep it on the screen.
     always @ (posedge VGA_CLOCK) begin
-        if (PADDLE_A_POSITION > 470) begin
-            paddle_a_pos <= 11'd470;
-        end else begin
-            paddle_a_pos <= PADDLE_A_POSITION;
-        end
-        if (PADDLE_B_POSITION > 470) begin
-            paddle_b_pos <= 11'd470;
-        end else begin
-            paddle_b_pos <= PADDLE_B_POSITION;
-        end
+        // Max incomming postion is 255
+        // so double to get to 510 which is a bit bigger than wanted.
+        paddle_a_pos <= PADDLE_A_POSITION << 1;
+        paddle_b_pos <= PADDLE_B_POSITION << 1;
     end
-  
 
     // Ball 
     reg [16:0] ball_timer;
