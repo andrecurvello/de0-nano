@@ -48,7 +48,7 @@ module player(
     
     
     wire [7:0] clicks;
-    assign clicks = total >> 2; // divide by 4 as the encoder has 4 edges per "click"
+    assign clicks = (total >> 2) << 4; // divide by 4 as the encoder has 4 edges per "click", then err multiply by 16
     assign POSITION = clicks[7:0];
 
 endmodule
