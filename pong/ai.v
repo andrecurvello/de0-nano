@@ -54,7 +54,7 @@ module ai (
         if (RESET) begin
             timer <= 0;
         end else begin
-            if (timer == 28'd12421770) begin
+            if (timer == 28'd500000) begin
                 timer <= 0;
             end else begin
                 timer <= timer + 1;
@@ -105,7 +105,6 @@ module ai (
         if (RESET) begin
             direction <= 1;
         end else begin
-            // 0 to 25
             if (direction == 1 && paddle == 9'd395) begin
                 direction <= 0;
             end else if (direction == 0 && paddle == 9'd0) begin
