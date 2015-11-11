@@ -86,11 +86,14 @@
                             ball_h_direction <= 0;
                         end
                         else begin 
+                        /*
                             // Missed the paddle - new serve
                             ball_h <= 382;
-                            //ball_v <= 240; 
                             ball_h_direction <= 1;
                             ball_timer_delay <= 28'd67108863;
+                            */
+                            // Pretend the ai hit it.
+                            ball_h_direction <= 0;
                         end
                     end
                 end
@@ -103,11 +106,16 @@
                             ball_h_direction <= 1;
                         end
                         else begin 
+                        /*
                             // Missed the paddle - new serve
                             ball_h <= 382;
-                            //ball_v <= 240; 
                             ball_h_direction <= 0;
                             ball_timer_delay <= 28'd67108863;
+                            */
+                            
+                            // pretend it hit for now
+                            ball_h_direction <= 1;
+                            
                         end
                     end
                 end

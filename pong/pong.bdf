@@ -937,23 +937,18 @@ agreement for further details.
 	(bus)
 )
 (connector
+	(pt 880 -160)
+	(pt 880 200)
+	(bus)
+)
+(connector
 	(pt 848 -16)
 	(pt 856 -16)
 	(bus)
 )
 (connector
+	(pt 856 -16)
 	(pt 936 -16)
-	(pt 880 -16)
-	(bus)
-)
-(connector
-	(pt 880 -160)
-	(pt 880 -16)
-	(bus)
-)
-(connector
-	(pt 880 -16)
-	(pt 880 200)
 	(bus)
 )
 (junction (pt 568 136))
@@ -963,4 +958,4 @@ agreement for further details.
 (junction (pt 360 136))
 (junction (pt 336 -16))
 (junction (pt 360 0))
-(junction (pt 880 -16))
+(junction (pt 856 -16))

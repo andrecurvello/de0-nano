@@ -82,23 +82,29 @@ module ai (
         end 
     end
     
-    /*
+    
     always @ (posedge CLOCK) begin
         if (BALL_H == 11'd392) begin
-            paddle <= BALL_V;
+            
             // Calculate where the ball will be now we have ball direction.
-            if (ball_direction && BALL_H - BALL_V > 0) begin
-                //paddle <= BALL_H - BALL_V;
-            //end else if (!ball_direction && BALL_H + BALL_V > 474 ) begin
-            //    paddle <= BALL_V - BALL_H;
+            if (ball_direction) begin
+                if (BALL_H - BALL_V > 0) begin
+                    paddle <= BALL_H - BALL_V;
+                end else begin
+                    paddle <= BALL_V;
+                end
             end else begin
-                //paddle <= BALL_V;
+                if (BALL_V - BALL_H > 0) begin
+                    paddle <= BALL_V - BALL_H;
+                end else begin
+                    paddle <= BALL_V;
+                end
             end
         end
     end
-    */
     
     
+    /*
     // Just move up & down for now.
     reg direction;
     always @ (posedge CLOCK or posedge RESET) begin
@@ -126,7 +132,7 @@ module ai (
             end
         end
     end
-    
+    */
     
     wire [8:0] final_paddle_pos = paddle >> 1; // divide by two to fit in the byte of the POSITION (2px resolution)
     assign POSITION = final_paddle_pos[7:0]; 
