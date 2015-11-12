@@ -17,10 +17,14 @@ module ai (
     reg [8:0] paddle;
     
     // Just follow the ball.
-    always @ (posedge CLOCK) begin
-        // after it passes the net 
-        if (BALL_H > 11'd391) begin
-            paddle <= BALL_V;
+    always @ (posedge CLOCK or posedge RESET) begin
+        if (RESET) begin
+            paddle <= 0;
+        end else begin
+            // after it passes the net 
+            if (BALL_H > 11'd391) begin
+                paddle <= BALL_V;
+            end
         end
     end
     
