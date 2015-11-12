@@ -80,7 +80,7 @@
                 if (ball_h_direction) begin
                     ball_h <= ball_h + 1;
                     // Paddle B detection (right side)
-                    if (ball_h > 760) begin
+                    if (ball_h > 755) begin
                         if (ball_v >= paddle_b_pos && ball_v < (paddle_b_pos + 75)) begin
                             // Hit the paddle (todo score)
                             ball_h_direction <= 0;

@@ -14,16 +14,22 @@ module ai (
     input [10:0] BALL_V;
     output [7:0] POSITION;
     
-    reg [8:0] paddle;
+    reg [10:0] paddle;
     
     // Just follow the ball.
     always @ (posedge CLOCK or posedge RESET) begin
         if (RESET) begin
             paddle <= 0;
         end else begin
-            // after it passes the net 
-            if (BALL_H > 11'd391) begin
-                paddle <= BALL_V;
+            if (BALL_V < 11'd32) begin
+                // top of the screen
+                paddle <= 0;
+            end else if (BALL_V > 11'd432) begin
+                // bottom of the screen
+                paddle <= 11'd400;
+            end else begin
+                // Center on the ball
+                paddle <= BALL_V - 11'd32;
             end
         end
     end
@@ -112,7 +118,7 @@ module ai (
     end
     */
     
-    wire [8:0] final_paddle_pos = paddle >> 1; // divide by two to fit in the byte of the POSITION (2px resolution)
+    wire [10:0] final_paddle_pos = paddle >> 1; // divide by two to fit in the byte of the POSITION (2px resolution)
     assign POSITION = final_paddle_pos[7:0]; 
     
 endmodule
