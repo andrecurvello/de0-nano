@@ -2,39 +2,6 @@
  * The computer player - AI :)
  */
 
-/*
-
-800 x 480 screen with net at 390
-
-distance from net to ai paddle = 380
-height = 474
-
-There can be only one bounce as the height is more then the width.
-For ball_h moving to the top of the screen ( ball_h <= ball_h -1):
-    If ball_h - ball_v > 0 then there'll be a bounce 
-    If bounce, the paddle position should be ( HEIGHT - (WIDTH - ball_v) ) + 1
-_________
-     *  |
-    * * |
-   *   *|
-  *     |
- *
-*
-
-For ball_h moving to the bottom of the screen ( ball_h <= ball_h +1):
-    If ball_h + ball_v > 474 then there'll be a bounce 
-    If bounce, the paddle position should be ( WIDTH - ball_v ) - 1
-
-*       |
- *      |
-  *     |
-   *   *|
-    * * |
-     *  |
-_________
-
-*/
- 
 module ai (
     CLOCK, 
     RESET,
@@ -49,6 +16,15 @@ module ai (
     
     reg [8:0] paddle;
     
+    // Just follow the ball.
+    always @ (posedge CLOCK) begin
+        // after it passes the net 
+        if (BALL_H > 11'd391) begin
+            paddle <= BALL_V;
+        end
+    end
+    
+/*
     reg [27:0] timer;
     always @ (posedge CLOCK or posedge RESET) begin
         if (RESET) begin
@@ -81,7 +57,9 @@ module ai (
             end
         end 
     end
+*/
     
+    /*
     // WIDTH (from net) = 390
     // HEIGHT = 470
     always @ (posedge CLOCK) begin
@@ -98,7 +76,7 @@ module ai (
             end
         end
     end
-    
+    */
     
     /*
     // Just move up & down for now.
