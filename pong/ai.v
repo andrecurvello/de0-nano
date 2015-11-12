@@ -12,7 +12,7 @@ height = 474
 There can be only one bounce as the height is more then the width.
 For ball_h moving to the top of the screen ( ball_h <= ball_h -1):
     If ball_h - ball_v > 0 then there'll be a bounce 
-    If bounce, the paddle position should be ball_h - ball_v
+    If bounce, the paddle position should be ( HEIGHT - (WIDTH - ball_v) ) + 1
 _________
      *  |
     * * |
@@ -23,7 +23,7 @@ _________
 
 For ball_h moving to the bottom of the screen ( ball_h <= ball_h +1):
     If ball_h + ball_v > 474 then there'll be a bounce 
-    If bounce, the paddle position should be ball_v - ball_h
+    If bounce, the paddle position should be ( WIDTH - ball_v ) - 1
 
 *       |
  *      |
@@ -82,23 +82,19 @@ module ai (
         end 
     end
     
-    
+    // WIDTH (from net) = 390
+    // HEIGHT = 470
     always @ (posedge CLOCK) begin
         if (BALL_H == 11'd392) begin
-            
-            // Calculate where the ball will be now we have ball direction.
+            // Calculate where the ball will be, now we have ball direction.
             if (ball_direction) begin
-                if (BALL_H - BALL_V > 0) begin
-                    paddle <= BALL_H - BALL_V;
-                end else begin
-                    paddle <= BALL_V;
-                end
+                // paddle <= HEIGHT - (WIDTH - BALL_V) - 1;
+                // paddle <= 8'd470 - (8'd390 - BALL_V) - 8'd1;
+                paddle <= 8'd469 - (8'd390 - BALL_V);
             end else begin
-                if (BALL_V - BALL_H > 0) begin
-                    paddle <= BALL_V - BALL_H;
-                end else begin
-                    paddle <= BALL_V;
-                end
+                // paddle <= WIDTH - BALL_V - 1;
+                // paddle <= 8'd390 - BALL_V - 1;
+                paddle <= 8'd389 - BALL_V;
             end
         end
     end
