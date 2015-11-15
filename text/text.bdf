@@ -24,7 +24,7 @@ agreement for further details.
 	(input)
 	(rect 176 176 344 192)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "RESET" (rect 5 0 44 11)(font "Arial" ))
+	(text "RESET" (rect 5 0 43 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -41,7 +41,7 @@ agreement for further details.
 	(input)
 	(rect 192 288 360 304)
 	(text "INPUT" (rect 125 0 154 10)(font "Arial" (font_size 6)))
-	(text "CLOCK_50" (rect 5 0 63 11)(font "Arial" ))
+	(text "CLOCK_50" (rect 5 0 62 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -265,9 +265,9 @@ agreement for further details.
 	)
 )
 (symbol
-	(rect 1040 160 1240 272)
-	(text "demo_text" (rect 5 0 58 11)(font "Arial" ))
-	(text "inst" (rect 8 96 26 107)(font "Arial" ))
+	(rect 1040 160 1256 272)
+	(text "demo2_text" (rect 5 0 64 11)(font "Arial" ))
+	(text "text" (rect 8 96 26 107)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -278,33 +278,26 @@ agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "pix_x[10..0]" (rect 0 0 56 11)(font "Arial" ))
-		(text "pix_x[10..0]" (rect 21 43 77 54)(font "Arial" ))
+		(text "PIXEL_H[10..0]" (rect 0 0 76 11)(font "Arial" ))
+		(text "PIXEL_H[10..0]" (rect 21 43 97 54)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "pix_y[10..0]" (rect 0 0 56 11)(font "Arial" ))
-		(text "pix_y[10..0]" (rect 21 59 77 70)(font "Arial" ))
+		(text "PIXEL_V[10..0]" (rect 0 0 75 11)(font "Arial" ))
+		(text "PIXEL_V[10..0]" (rect 21 59 96 70)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
-		(pt 200 32)
+		(pt 216 32)
 		(output)
-		(text "text_on[3..0]" (rect 0 0 61 11)(font "Arial" ))
-		(text "text_on[3..0]" (rect 128 27 189 38)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
-	)
-	(port
-		(pt 200 48)
-		(output)
-		(text "text_rgb[2..0]" (rect 0 0 64 11)(font "Arial" ))
-		(text "text_rgb[2..0]" (rect 125 43 189 54)(font "Arial" ))
-		(line (pt 200 48)(pt 184 48)(line_width 3))
+		(text "PIXEL[2..0]" (rect 0 0 56 11)(font "Arial" ))
+		(text "PIXEL[2..0]" (rect 148 27 195 38)(font "Arial" ))
+		(line (pt 216 32)(pt 200 32)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 184 96))
+		(rectangle (rect 16 16 200 96))
 	)
 )
 (connector
@@ -362,21 +355,6 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(pt 1240 208)
-	(pt 1256 208)
-	(bus)
-)
-(connector
-	(pt 1256 456)
-	(pt 1256 208)
-	(bus)
-)
-(connector
-	(pt 1256 456)
-	(pt 688 456)
-	(bus)
-)
-(connector
 	(pt 688 456)
 	(pt 688 312)
 	(bus)
@@ -401,5 +379,20 @@ agreement for further details.
 (connector
 	(pt 376 296)
 	(pt 384 296)
+)
+(connector
+	(pt 688 456)
+	(pt 1280 456)
+	(bus)
+)
+(connector
+	(pt 1280 192)
+	(pt 1256 192)
+	(bus)
+)
+(connector
+	(pt 1280 456)
+	(pt 1280 192)
+	(bus)
 )
 (junction (pt 376 296))
