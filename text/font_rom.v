@@ -1,25 +1,21 @@
+/**
+ * Font character ROM
+ *  - 8-by-16 (8-by-2^4) font
+ *  - 128 (2^7) characters
+ *
+ * Inferring Synchronous ROM
+ * Quartus II handbook 15.0.0 "Inferring ROM Functions from HDL Code" page 787
+ */
+module font_rom (clk, addr, data);
+    input clk;
+    input [10:0] addr;
+    output [7:0] data;
+    
+    reg [7:0] data;
 
-// Font character ROM
-//  - 8-by-16 (8-by-2^4) font
-//  - 128 (2^7) characters
-//  - ROM size: 512-by-8 (2^11-by-8) bits
-
-module font_rom
-   (
-    input wire clk,
-    input wire [10:0] addr,
-    output reg [7:0] data
-   );
-   
-   // signal declaration
-   reg [10:0] addr_reg; 
-
-   // body
-   always @(posedge clk) 
-      addr_reg <= addr;
-      
-   always @*
-      case (addr_reg)
+    always @ (posedge clk) 
+    begin
+        case (addr)
          //code x00
          11'h000: data = 8'b00000000; // 
          11'h001: data = 8'b00000000; // 
@@ -2196,6 +2192,6 @@ module font_rom
          11'h7fd: data = 8'b00000000; // 
          11'h7fe: data = 8'b00000000; // 
          11'h7ff: data = 8'b00000000; // 	 
-   endcase  
-   	       
+    endcase  
+   	end      
 endmodule
