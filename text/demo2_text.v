@@ -20,8 +20,8 @@ module demo2_text (
     (.clk(clk), .addr(rom_addr), .data(font_word));
       
     // Location on the screen of this tile.
-    reg [10:0] tile_v_start = 8'd10;
-    reg [10:0] tile_h_start = 8'd10;
+    reg [10:0] tile_v_start = 8'd0;
+    reg [10:0] tile_h_start = 8'd0;
     wire [10:0] tile_v_end;
     wire [10:0] tile_h_end;
     assign tile_v_end = tile_v_start + 8'd15;
