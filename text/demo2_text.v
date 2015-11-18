@@ -24,8 +24,8 @@ module demo2_text (
     reg [10:0] tile_h_start = 8'd0;
     wire [10:0] tile_v_end;
     wire [10:0] tile_h_end;
-    assign tile_v_end = tile_v_start + 8'd15;
-    assign tile_h_end = tile_h_start + 8'd7;
+    assign tile_v_end = tile_v_start + (8'd15 << 2);
+    assign tile_h_end = tile_h_start + (8'd7 <<2);
     // Check we are within the part of the screen that holds the character tile.
     assign text_on = (PIXEL_H >= tile_h_start && PIXEL_H <= tile_h_end && PIXEL_V >= tile_v_start && PIXEL_V <= tile_v_end);
  
@@ -35,8 +35,8 @@ module demo2_text (
         PIXEL = 3'b000;
         if (text_on) begin
             char_addr = 7'h50; // P
-            row_addr = PIXEL_V - tile_v_start;
-            bit_addr = PIXEL_H - tile_h_start;
+            row_addr = (PIXEL_V >> 2) - tile_v_start;
+            bit_addr = (PIXEL_H >> 2) - tile_h_start;
             if (font_bit)
                PIXEL = 3'b111;
         end else begin
