@@ -41,8 +41,21 @@
     wire paddle_a = (PIXEL_H >= 10 && PIXEL_H <= 20 && PIXEL_V >= paddle_a_pos && PIXEL_V <= (paddle_a_pos + 75));
     wire paddle_b = (PIXEL_H >= 760 && PIXEL_H <= 770 && PIXEL_V >= paddle_b_pos && PIXEL_V <= (paddle_b_pos + 75));
     wire ball = PIXEL_H >= ball_h && PIXEL_H <= (ball_h + 16) && PIXEL_V >= ball_v && PIXEL_V <= (ball_v + 16);
+    
+    wire [2:0] score_rgb;
+    reg [7:0] score_player_one;
+    reg [7:0] score_player_two;
 
 
+    score score_1(
+        .clk(SYSTEM_CLOCK), 
+        .PIXEL_H(PIXEL_H), 
+        .PIXEL_V(PIXEL_V),
+        .PLAYER_ONE(score_player_one), 
+        .PLAYER_TWO(score_player_two),
+        .PIXEL(score_rgb)
+    );
+    
     always @ (posedge VGA_CLOCK) begin
         // Max incomming postion is 255
         // so double to get to 510 which is a bit bigger than wanted.
@@ -57,12 +70,14 @@
     reg ball_v_direction;
     always @ (posedge VGA_CLOCK or posedge RESET) begin
         if (RESET) begin 
-            ball_h <= 390;
-            ball_v <= 5; // low for test bench
+            ball_h <= 382;
+            ball_v <= 200; 
             ball_h_direction <= 0;
             ball_v_direction <= 0;
             ball_timer <= 0;
-            ball_timer_delay <= 0;
+            ball_timer_delay <= 28'd67108863;
+            score_player_one <= 0;
+            score_player_two <= 0;
         end else begin
         
             if (ball_timer_delay > 0) begin
@@ -82,7 +97,7 @@
                     // Paddle B detection (right side)
                     if (ball_h > 755) begin
                         if (ball_v >= paddle_b_pos && ball_v < (paddle_b_pos + 75)) begin
-                            // Hit the paddle (todo score)
+                            // Hit the paddle
                             ball_h_direction <= 0;
                         end
                         else begin
@@ -90,6 +105,7 @@
                             ball_h <= 382;
                             ball_h_direction <= 1;
                             ball_timer_delay <= 28'd67108863;
+                            score_player_one <= score_player_one + 1'd1;
                         end
                     end
                 end
@@ -98,7 +114,7 @@
                     // Paddle A detection (left side)
                     if (ball_h < 20) begin
                         if (ball_v >= paddle_a_pos && ball_v < (paddle_a_pos + 75)) begin
-                            // Hit the paddle (todo score)
+                            // Hit the paddle
                             ball_h_direction <= 1;
                         end
                         else begin
@@ -106,6 +122,7 @@
                             ball_h <= 382;
                             ball_h_direction <= 0;
                             ball_timer_delay <= 28'd67108863;
+                            score_player_two <= score_player_two + 1'd1;
                         end
                     end
                 end
@@ -140,6 +157,9 @@
         end
         else if (ball && ball_timer_delay == 0) begin
             pixel <= 3'b001; // blue ball
+        end
+        else if (score_rgb) begin
+            pixel <= score_rgb;
         end
         else if (net) begin
             pixel <= 3'b110; // yellow net

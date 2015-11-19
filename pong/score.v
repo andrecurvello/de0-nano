@@ -1,7 +1,8 @@
 
-module demo2_text (
+module score (
     input wire clk, 
     input wire [10:0] PIXEL_H, PIXEL_V,
+    input wire [7:0] PLAYER_ONE, PLAYER_TWO,
     output reg [2:0] PIXEL
 );
 
@@ -20,8 +21,8 @@ module demo2_text (
     (.clk(clk), .addr(rom_addr), .data(font_word));
       
     // Location on the screen of this tile.
-    reg [10:0] tile_v_start = 8'd10;
-    reg [10:0] tile_h_start = 8'd200;
+    reg [10:0] tile_v_start = 11'd10;
+    reg [10:0] tile_h_start = 11'd280;
     wire [10:0] tile_v_end;
     wire [10:0] tile_h_end;
     assign tile_v_end = tile_v_start + (8'd15 << 2);
@@ -34,7 +35,8 @@ module demo2_text (
     always @* begin
         PIXEL = 3'b000;
         if (text_on) begin
-            char_addr = 7'h30; // 0
+        // @todo Scores larger than 9!!!
+            char_addr = 7'h30 + PLAYER_TWO;
             row_addr = (PIXEL_V - tile_v_start) >> 2;
             bit_addr = (PIXEL_H - tile_h_start) >> 2;
             if (font_bit)
