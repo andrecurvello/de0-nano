@@ -21,9 +21,9 @@ module demo2_text_tb();
         PIXEL_H = 0;
          
         #2
-        for (j = 10; j < 28; j = j + 1) begin
+        for (j = 10; j < 80; j = j + 1) begin
             PIXEL_V = j;
-            for (i = 10; i < 18; i = i + 1) begin
+            for (i = 10; i < 56; i = i + 1) begin
                 #2
                 PIXEL_H = i;
             end
