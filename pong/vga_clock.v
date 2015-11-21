@@ -7,11 +7,11 @@ module vga_clock (
 );
     input CLOCK_50;
     output CLOCK_25;
-    reg clk = 0;
+    reg clk_25 = 0;
 
     always @(posedge CLOCK_50) begin
-        clk <= ~clk;
+        clk_25 <= ~clk_25;
     end
  
-    assign CLOCK_25 = clk;
+    assign CLOCK_25 = clk_25;
 endmodule

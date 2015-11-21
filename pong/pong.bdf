@@ -730,10 +730,6 @@ agreement for further details.
 	(pt 248 216)
 )
 (connector
-	(pt 480 216)
-	(pt 512 216)
-)
-(connector
 	(pt 232 216)
 	(pt 248 216)
 )
@@ -771,14 +767,6 @@ agreement for further details.
 (connector
 	(pt 512 184)
 	(pt 928 184)
-)
-(connector
-	(pt 512 184)
-	(pt 512 216)
-)
-(connector
-	(pt 512 216)
-	(pt 512 328)
 )
 (connector
 	(pt 568 344)
@@ -951,11 +939,23 @@ agreement for further details.
 	(pt 936 -16)
 	(bus)
 )
+(connector
+	(pt 480 216)
+	(pt 512 216)
+)
+(connector
+	(pt 512 184)
+	(pt 512 216)
+)
+(connector
+	(pt 512 216)
+	(pt 512 328)
+)
 (junction (pt 568 136))
 (junction (pt 248 216))
-(junction (pt 512 216))
 (junction (pt 336 168))
 (junction (pt 360 136))
 (junction (pt 336 -16))
 (junction (pt 360 0))
 (junction (pt 856 -16))
+(junction (pt 512 216))
