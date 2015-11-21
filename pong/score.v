@@ -26,7 +26,7 @@ module score (
     
     // Location on the screen of the player two score.
     reg [10:0] p2_v_start = 11'd10;
-    reg [10:0] p2_h_start = 11'd380;
+    reg [10:0] p2_h_start = 11'd470;
 
     // Check we are within the part of the screen that holds the player one score.
     assign p1 = (
