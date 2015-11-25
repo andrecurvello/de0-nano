@@ -27,7 +27,9 @@ module ps2decoder (
             state_reg <= 4'b0;
             r_scan_code <= 8'b0;
         end 
-        else case (state_reg)
+        else begin 
+            
+            case (state_reg)
             4'd0: // 1 start bit.  This is always 0.
                 begin
                     state_reg <= state_reg + 1'b1;
@@ -54,7 +56,9 @@ module ps2decoder (
                     state_reg <= state_reg + 1'b1;
                     ready <= 1'b0;
                 end
-        endcase
+            endcase
+        end
     end
+
     
 endmodule
