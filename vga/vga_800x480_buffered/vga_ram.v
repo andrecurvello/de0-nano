@@ -15,7 +15,7 @@ module vga_ram(
     input we, clk
 );
     // 800x480 ( / 16 = 24000)
-    reg [15:0] mem [24000:0];
+    reg [15:0] mem [24000:0] /* synthesis ram_init_file = " vga.mif" */;
     
     always @ (posedge clk) begin
         if (we)

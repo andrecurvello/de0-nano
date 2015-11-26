@@ -323,8 +323,8 @@ agreement for further details.
 )
 (symbol
 	(rect 248 504 424 616)
-	(text "image_generator" (rect 5 0 89 11)(font "Arial" ))
-	(text "inst5" (rect 8 96 32 107)(font "Arial" ))
+	(text "dummy_generator" (rect 5 0 95 11)(font "Arial" ))
+	(text "inst2" (rect 8 96 32 107)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -343,21 +343,21 @@ agreement for further details.
 		(pt 176 32)
 		(output)
 		(text "address[15..0]" (rect 0 0 70 11)(font "Arial" ))
-		(text "address[15..0]" (rect 96 27 155 38)(font "Arial" ))
+		(text "address[15..0]" (rect 96 27 166 38)(font "Arial" ))
 		(line (pt 176 32)(pt 160 32)(line_width 3))
 	)
 	(port
 		(pt 176 48)
 		(output)
 		(text "out[15..0]" (rect 0 0 46 11)(font "Arial" ))
-		(text "out[15..0]" (rect 117 43 155 54)(font "Arial" ))
+		(text "out[15..0]" (rect 117 43 163 54)(font "Arial" ))
 		(line (pt 176 48)(pt 160 48)(line_width 3))
 	)
 	(port
 		(pt 176 64)
 		(output)
 		(text "load" (rect 0 0 22 11)(font "Arial" ))
-		(text "load" (rect 137 59 155 70)(font "Arial" ))
+		(text "load" (rect 137 59 159 70)(font "Arial" ))
 		(line (pt 176 64)(pt 160 64))
 	)
 	(drawing
@@ -479,18 +479,6 @@ agreement for further details.
 	(pt 608 424)
 )
 (connector
-	(pt 192 536)
-	(pt 248 536)
-)
-(connector
-	(pt 192 240)
-	(pt 192 424)
-)
-(connector
-	(pt 192 424)
-	(pt 192 536)
-)
-(connector
 	(pt 424 536)
 	(pt 664 536)
 	(bus)
@@ -509,10 +497,6 @@ agreement for further details.
 	(pt 88 344)
 )
 (connector
-	(pt 248 552)
-	(pt 88 552)
-)
-(connector
 	(pt 88 368)
 	(pt 64 368)
 )
@@ -527,6 +511,22 @@ agreement for further details.
 (connector
 	(pt -40 368)
 	(pt 16 368)
+)
+(connector
+	(pt 192 536)
+	(pt 248 536)
+)
+(connector
+	(pt 192 240)
+	(pt 192 424)
+)
+(connector
+	(pt 192 424)
+	(pt 192 536)
+)
+(connector
+	(pt 248 552)
+	(pt 88 552)
 )
 (junction (pt 192 240))
 (junction (pt 192 424))
