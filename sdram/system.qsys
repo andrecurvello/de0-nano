@@ -17,7 +17,7 @@
          type = "int";
       }
    }
-   element sdram
+   element clk_sdram
    {
       datum _sortIndex
       {
@@ -25,11 +25,19 @@
          type = "int";
       }
    }
-   element sdram_read
+   element sdram
    {
       datum _sortIndex
       {
          value = "2";
+         type = "int";
+      }
+   }
+   element sdram_read
+   {
+      datum _sortIndex
+      {
+         value = "3";
          type = "int";
       }
    }
@@ -55,6 +63,7 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk.clk_in" type="clock" dir="end" />
+ <interface name="clk_sdram" internal="clk_sdram.clk_in" type="clock" dir="end" />
  <interface name="reset" internal="clk.clk_in_reset" type="reset" dir="end" />
  <interface
    name="sdram_read_control"
@@ -66,8 +75,19 @@
    internal="sdram_read.user"
    type="conduit"
    dir="end" />
+ <interface
+   name="sdram_reset"
+   internal="clk_sdram.clk_in_reset"
+   type="reset"
+   dir="end" />
  <interface name="sdram_wire" internal="sdram.wire" type="conduit" dir="end" />
  <module name="clk" kind="clock_source" version="15.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module name="clk_sdram" kind="clock_source" version="15.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
@@ -124,7 +144,7 @@
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="clock" version="15.1" start="clk.clk" end="sdram.clk" />
+ <connection kind="clock" version="15.1" start="clk_sdram.clk" end="sdram.clk" />
  <connection
    kind="clock"
    version="15.1"

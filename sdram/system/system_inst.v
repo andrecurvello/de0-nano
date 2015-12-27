@@ -18,6 +18,8 @@
 		.sdram_wire_dq                      (<connected-to-sdram_wire_dq>),                      //                   .dq
 		.sdram_wire_dqm                     (<connected-to-sdram_wire_dqm>),                     //                   .dqm
 		.sdram_wire_ras_n                   (<connected-to-sdram_wire_ras_n>),                   //                   .ras_n
-		.sdram_wire_we_n                    (<connected-to-sdram_wire_we_n>)                     //                   .we_n
+		.sdram_wire_we_n                    (<connected-to-sdram_wire_we_n>),                    //                   .we_n
+		.clk_sdram_clk                      (<connected-to-clk_sdram_clk>),                      //          clk_sdram.clk
+		.sdram_reset_reset_n                (<connected-to-sdram_reset_reset_n>)                 //        sdram_reset.reset_n
 	);
 

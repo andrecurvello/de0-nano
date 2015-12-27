@@ -19,7 +19,9 @@ module system (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n);	
+	sdram_wire_we_n,
+	clk_sdram_clk,
+	sdram_reset_reset_n);	
 
 	input		clk_clk;
 	input		reset_reset_n;
@@ -41,4 +43,6 @@ module system (
 	output	[1:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
+	input		clk_sdram_clk;
+	input		sdram_reset_reset_n;
 endmodule

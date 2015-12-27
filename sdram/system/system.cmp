@@ -1,6 +1,7 @@
 	component system is
 		port (
 			clk_clk                            : in    std_logic                     := 'X';             -- clk
+			clk_sdram_clk                      : in    std_logic                     := 'X';             -- clk
 			reset_reset_n                      : in    std_logic                     := 'X';             -- reset_n
 			sdram_read_control_fixed_location  : in    std_logic                     := 'X';             -- fixed_location
 			sdram_read_control_read_base       : in    std_logic_vector(24 downto 0) := (others => 'X'); -- read_base
@@ -11,6 +12,7 @@
 			sdram_read_user_read_buffer        : in    std_logic                     := 'X';             -- read_buffer
 			sdram_read_user_buffer_output_data : out   std_logic_vector(15 downto 0);                    -- buffer_output_data
 			sdram_read_user_data_available     : out   std_logic;                                        -- data_available
+			sdram_reset_reset_n                : in    std_logic                     := 'X';             -- reset_n
 			sdram_wire_addr                    : out   std_logic_vector(12 downto 0);                    -- addr
 			sdram_wire_ba                      : out   std_logic_vector(1 downto 0);                     -- ba
 			sdram_wire_cas_n                   : out   std_logic;                                        -- cas_n

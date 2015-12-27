@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sun Dec 27 13:53:02 2015
+Analysis & Synthesis Status : Successful - Sun Dec 27 20:01:48 2015
 Quartus Prime Version : 15.1.0 Build 185 10/21/2015 SJ Lite Edition
 Revision Name : de0-nano
-Top-level Entity Name : sdram
+Top-level Entity Name : top_level
 Family : Cyclone IV E
-Total logic elements : 437
-    Total combinational functions : 309
-    Dedicated logic registers : 283
-Total registers : 283
-Total pins : 48
+Total logic elements : 0
+    Total combinational functions : 0
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 9
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

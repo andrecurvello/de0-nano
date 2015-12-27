@@ -5,6 +5,7 @@
 `timescale 1 ps / 1 ps
 module system (
 		input  wire        clk_clk,                            //                clk.clk
+		input  wire        clk_sdram_clk,                      //          clk_sdram.clk
 		input  wire        reset_reset_n,                      //              reset.reset_n
 		input  wire        sdram_read_control_fixed_location,  // sdram_read_control.fixed_location
 		input  wire [24:0] sdram_read_control_read_base,       //                   .read_base
@@ -15,6 +16,7 @@ module system (
 		input  wire        sdram_read_user_read_buffer,        //    sdram_read_user.read_buffer
 		output wire [15:0] sdram_read_user_buffer_output_data, //                   .buffer_output_data
 		output wire        sdram_read_user_data_available,     //                   .data_available
+		input  wire        sdram_reset_reset_n,                //        sdram_reset.reset_n
 		output wire [12:0] sdram_wire_addr,                    //         sdram_wire.addr
 		output wire [1:0]  sdram_wire_ba,                      //                   .ba
 		output wire        sdram_wire_cas_n,                   //                   .cas_n
@@ -41,10 +43,11 @@ module system (
 	wire         mm_interconnect_0_sdram_s1_readdatavalid; // sdram:za_valid -> mm_interconnect_0:sdram_s1_readdatavalid
 	wire         mm_interconnect_0_sdram_s1_write;         // mm_interconnect_0:sdram_s1_write -> sdram:az_wr_n
 	wire  [15:0] mm_interconnect_0_sdram_s1_writedata;     // mm_interconnect_0:sdram_s1_writedata -> sdram:az_data
-	wire         rst_controller_reset_out_reset;           // rst_controller:reset_out -> [mm_interconnect_0:sdram_read_clock_reset_reset_reset_bridge_in_reset_reset, sdram:reset_n, sdram_read:reset]
+	wire         rst_controller_reset_out_reset;           // rst_controller:reset_out -> [mm_interconnect_0:sdram_reset_reset_bridge_in_reset_reset, sdram:reset_n]
+	wire         rst_controller_001_reset_out_reset;       // rst_controller_001:reset_out -> [mm_interconnect_0:sdram_read_clock_reset_reset_reset_bridge_in_reset_reset, sdram_read:reset]
 
 	system_sdram sdram (
-		.clk            (clk_clk),                                  //   clk.clk
+		.clk            (clk_sdram_clk),                            //   clk.clk
 		.reset_n        (~rst_controller_reset_out_reset),          // reset.reset_n
 		.az_addr        (mm_interconnect_0_sdram_s1_address),       //    s1.address
 		.az_be_n        (~mm_interconnect_0_sdram_s1_byteenable),   //      .byteenable_n
@@ -78,7 +81,7 @@ module system (
 		.MEMORY_BASED_FIFO   (0)
 	) sdram_read (
 		.clk                     (clk_clk),                                //       clock_reset.clk
-		.reset                   (rst_controller_reset_out_reset),         // clock_reset_reset.reset
+		.reset                   (rst_controller_001_reset_out_reset),     // clock_reset_reset.reset
 		.master_address          (sdram_read_avalon_master_address),       //     avalon_master.address
 		.master_read             (sdram_read_avalon_master_read),          //                  .read
 		.master_byteenable       (sdram_read_avalon_master_byteenable),    //                  .byteenable
@@ -106,7 +109,9 @@ module system (
 
 	system_mm_interconnect_0 mm_interconnect_0 (
 		.clk_clk_clk                                              (clk_clk),                                  //                                            clk_clk.clk
-		.sdram_read_clock_reset_reset_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),           // sdram_read_clock_reset_reset_reset_bridge_in_reset.reset
+		.clk_sdram_clk_clk                                        (clk_sdram_clk),                            //                                      clk_sdram_clk.clk
+		.sdram_read_clock_reset_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),       // sdram_read_clock_reset_reset_reset_bridge_in_reset.reset
+		.sdram_reset_reset_bridge_in_reset_reset                  (rst_controller_reset_out_reset),           //                  sdram_reset_reset_bridge_in_reset.reset
 		.sdram_read_avalon_master_address                         (sdram_read_avalon_master_address),         //                           sdram_read_avalon_master.address
 		.sdram_read_avalon_master_waitrequest                     (sdram_read_avalon_master_waitrequest),     //                                                   .waitrequest
 		.sdram_read_avalon_master_byteenable                      (sdram_read_avalon_master_byteenable),      //                                                   .byteenable
@@ -151,7 +156,7 @@ module system (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
 		.reset_in0      (~reset_reset_n),                 // reset_in0.reset
-		.clk            (clk_clk),                        //       clk.clk
+		.clk            (clk_sdram_clk),                  //       clk.clk
 		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
 		.reset_req      (),                               // (terminated)
 		.reset_req_in0  (1'b0),                           // (terminated)
@@ -185,6 +190,69 @@ module system (
 		.reset_req_in14 (1'b0),                           // (terminated)
 		.reset_in15     (1'b0),                           // (terminated)
 		.reset_req_in15 (1'b0)                            // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_001 (
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.clk            (clk_clk),                            //       clk.clk
+		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
 	);
 
 endmodule

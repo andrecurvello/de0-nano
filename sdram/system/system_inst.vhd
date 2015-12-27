@@ -19,7 +19,9 @@
 			sdram_wire_dq                      : inout std_logic_vector(15 downto 0) := (others => 'X'); -- dq
 			sdram_wire_dqm                     : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_wire_ras_n                   : out   std_logic;                                        -- ras_n
-			sdram_wire_we_n                    : out   std_logic                                         -- we_n
+			sdram_wire_we_n                    : out   std_logic;                                        -- we_n
+			clk_sdram_clk                      : in    std_logic                     := 'X';             -- clk
+			sdram_reset_reset_n                : in    std_logic                     := 'X'              -- reset_n
 		);
 	end component system;
 
@@ -44,6 +46,8 @@
 			sdram_wire_dq                      => CONNECTED_TO_sdram_wire_dq,                      --                   .dq
 			sdram_wire_dqm                     => CONNECTED_TO_sdram_wire_dqm,                     --                   .dqm
 			sdram_wire_ras_n                   => CONNECTED_TO_sdram_wire_ras_n,                   --                   .ras_n
-			sdram_wire_we_n                    => CONNECTED_TO_sdram_wire_we_n                     --                   .we_n
+			sdram_wire_we_n                    => CONNECTED_TO_sdram_wire_we_n,                    --                   .we_n
+			clk_sdram_clk                      => CONNECTED_TO_clk_sdram_clk,                      --          clk_sdram.clk
+			sdram_reset_reset_n                => CONNECTED_TO_sdram_reset_reset_n                 --        sdram_reset.reset_n
 		);
 
