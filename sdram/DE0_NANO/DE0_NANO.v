@@ -159,27 +159,44 @@ assign qsys_sdram_write_control_go                    = reg_qsys_sdram_write_con
 
 
     always @(posedge CLOCK_50) begin
-        if (counter == 32'd16) begin
-            counter <= 32'd0;
+        if (counter == 32'd25000000) begin
+            //counter <= 32'd0;
+            // stop
         end else begin
             counter <= counter + 32'b1;
         end
     end
 
     always @(posedge CLOCK_50) begin
-        if (counter == 32'd3) begin
+        if (counter == 32'd2) begin
+            // Write data.
+            reg_qsys_sdram_write_control_fixed_location <= 1'b0;
+            reg_qsys_sdram_write_control_write_base <= 32'd0;
+            reg_qsys_sdram_write_control_write_length <= 32'd2;
+            reg_qsys_sdram_write_control_go <= 1'b1;
+            //reg_qsys_sdram_write_user_buffer_input_data = 16'b1100_1100_1100_1100;
+            //reg_qsys_sdram_write_user_buffer_input_data = 16'b1010_1010_1010_1010;
+            reg_qsys_sdram_write_user_buffer_input_data = 16'b1111_0000_1110_1101;
+            reg_qsys_sdram_write_user_write_buffer <= 1'b1;
+        end else if (counter == 32'd3) begin
+            // Ensure the request only lasts one clock cycle.
+            reg_qsys_sdram_write_user_write_buffer <= 1'b0;
+            reg_qsys_sdram_write_control_go <= 1'b0;
+        
             // Send the read command.
             reg_qsys_sdram_read_control_fixed_location <= 0;
             reg_qsys_sdram_read_control_read_base <= 0;
             reg_qsys_sdram_read_control_read_length <= 2;
             reg_qsys_sdram_read_control_go <= 1;
         end if (reg_qsys_sdram_read_control_go) begin
-            // Ensure the read request only lasts one clock cycle.
+            // Ensure the request only lasts one clock cycle.
             reg_qsys_sdram_read_control_go <= 0;
+            //reg_qsys_sdram_write_user_write_buffer <= 1'b0;
+            //reg_qsys_sdram_write_control_go <= 1'b0;
         end
         
     end
 
-    assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [8:1];
+    assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [7:0];
 
 endmodule
