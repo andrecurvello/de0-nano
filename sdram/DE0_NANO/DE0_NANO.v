@@ -85,6 +85,20 @@ reg		reg_qsys_sdram_read_user_read_buffer;
 wire		[15:0] qsys_sdram_read_user_buffer_output_data;
 wire		qsys_sdram_read_user_data_available;
 
+wire        qsys_sdram_write_control_fixed_location;
+wire [31:0]	qsys_sdram_write_control_write_base;
+wire [31:0]	qsys_sdram_write_control_write_length;
+wire        qsys_sdram_write_control_go;
+wire [15:0]	qsys_sdram_write_user_buffer_input_data;
+wire		qsys_sdram_write_user_buffer_full;
+wire		qsys_sdram_write_control_done;
+reg		    reg_qsys_sdram_write_control_fixed_location;
+reg	[31:0]	reg_qsys_sdram_write_control_write_base;
+reg	[31:0]	reg_qsys_sdram_write_control_write_length;
+reg		    reg_qsys_sdram_write_control_go;
+reg		    reg_qsys_sdram_write_user_write_buffer;
+reg	[15:0]	reg_qsys_sdram_write_user_buffer_input_data;
+
 reg gooff=0;
 
 integer start=3;
@@ -93,7 +107,6 @@ integer start=3;
 //=======================================================
 //  Structural coding
 //=======================================================
-
 
 
 qsys u0(
@@ -113,15 +126,24 @@ qsys u0(
 		.sdram_wire_ras_n(DRAM_RAS_N),				//           .ras_n
 		.sdram_wire_we_n(DRAM_WE_N),					//           .we_n
 		
-		.sdram_read_control_fixed_location(qsys_sdram_read_control_fixed_location),
-		.sdram_read_control_read_base(qsys_sdram_read_control_read_base),
-		.sdram_read_control_read_length(qsys_sdram_read_control_read_length),
-		.sdram_read_control_go(qsys_sdram_read_control_go),
-		.sdram_read_control_done(qsys_sdram_read_control_done),
-		.sdram_read_control_early_done(qsys_sdram_read_control_early_done),
-		.sdram_read_user_read_buffer(qsys_sdram_read_user_read_buffer),
-		.sdram_read_user_buffer_output_data(qsys_sdram_read_user_buffer_output_data),
-		.sdram_read_user_data_available(qsys_sdram_read_user_data_available)
+		.sdram_read_control_fixed_location  (qsys_sdram_read_control_fixed_location),
+		.sdram_read_control_read_base       (qsys_sdram_read_control_read_base),
+		.sdram_read_control_read_length     (qsys_sdram_read_control_read_length),
+		.sdram_read_control_go              (qsys_sdram_read_control_go),
+		.sdram_read_control_done            (qsys_sdram_read_control_done),
+		.sdram_read_control_early_done      (qsys_sdram_read_control_early_done),
+		.sdram_read_user_read_buffer        (qsys_sdram_read_user_read_buffer),
+		.sdram_read_user_buffer_output_data (qsys_sdram_read_user_buffer_output_data),
+		.sdram_read_user_data_available     (qsys_sdram_read_user_data_available),
+        
+        .sdram_write_user_write_buffer      (qsys_sdram_write_user_write_buffer),      //           sdram_write_user.write_buffer
+		.sdram_write_user_buffer_input_data (qsys_sdram_write_user_buffer_input_data), //                           .buffer_input_data
+		.sdram_write_user_buffer_full       (qsys_sdram_write_user_buffer_full),       //                           .buffer_full
+		.sdram_write_control_fixed_location (qsys_sdram_write_control_fixed_location), //        sdram_write_control.fixed_location
+		.sdram_write_control_write_base     (qsys_sdram_write_control_write_base),     //                           .write_base
+		.sdram_write_control_write_length   (qsys_sdram_write_control_write_length),   //                           .write_length
+		.sdram_write_control_go             (qsys_sdram_write_control_go),             //                           .go
+		.sdram_write_control_done           (qsys_sdram_write_control_done)  
 );
 
 assign qsys_sdram_read_control_fixed_location = reg_qsys_sdram_read_control_fixed_location;
@@ -130,24 +152,34 @@ assign qsys_sdram_read_control_read_length [31:0] = reg_qsys_sdram_read_control_
 assign qsys_sdram_read_control_go = reg_qsys_sdram_read_control_go;
 assign qsys_sdram_read_user_read_buffer = reg_qsys_sdram_read_user_read_buffer;
 
+
+assign qsys_sdram_write_user_write_buffer             = reg_qsys_sdram_write_user_write_buffer;
+assign qsys_sdram_write_user_buffer_input_data [15:0] = reg_qsys_sdram_write_user_buffer_input_data [15:0];
+assign qsys_sdram_write_control_fixed_location        = reg_qsys_sdram_write_control_fixed_location;
+assign qsys_sdram_write_control_write_base [31:0]     = reg_qsys_sdram_write_control_write_base [31:0];
+assign qsys_sdram_write_control_write_length [31:0]   = reg_qsys_sdram_write_control_write_length [31:0];
+assign qsys_sdram_write_control_go                    = reg_qsys_sdram_write_control_go;
+
+
 always @(posedge CLOCK_50)
 begin
-	if (start==1)
-	begin
+	if (start==1) begin
 		reg_qsys_sdram_read_control_fixed_location <= 0;
 		reg_qsys_sdram_read_control_read_base <= 0;
 		reg_qsys_sdram_read_control_read_length <= 2;
 		reg_qsys_sdram_read_control_go <= 1;
 		gooff <= 1;
-	end
-	if (gooff)
-	begin
+	end if (gooff) begin
 		gooff <= 0;
 		reg_qsys_sdram_read_control_go <= 0;
 	end
-	if (start) start <= start - 1;
+    
+	if (start) begin
+        start <= start - 1;
+    end
 	
 end
+
 assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [8:1];
 
 endmodule
