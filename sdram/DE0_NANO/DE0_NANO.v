@@ -99,10 +99,7 @@ reg		    reg_qsys_sdram_write_control_go;
 reg		    reg_qsys_sdram_write_user_write_buffer;
 reg	[15:0]	reg_qsys_sdram_write_user_buffer_input_data;
 
-reg gooff=0;
-
-integer start=3;
-
+reg [31:0] counter = 32'b0;
 
 //=======================================================
 //  Structural coding
@@ -161,25 +158,28 @@ assign qsys_sdram_write_control_write_length [31:0]   = reg_qsys_sdram_write_con
 assign qsys_sdram_write_control_go                    = reg_qsys_sdram_write_control_go;
 
 
-always @(posedge CLOCK_50)
-begin
-	if (start==1) begin
-		reg_qsys_sdram_read_control_fixed_location <= 0;
-		reg_qsys_sdram_read_control_read_base <= 0;
-		reg_qsys_sdram_read_control_read_length <= 2;
-		reg_qsys_sdram_read_control_go <= 1;
-		gooff <= 1;
-	end if (gooff) begin
-		gooff <= 0;
-		reg_qsys_sdram_read_control_go <= 0;
-	end
-    
-	if (start) begin
-        start <= start - 1;
+    always @(posedge CLOCK_50) begin
+        if (counter == 32'd16) begin
+            counter <= 32'd0;
+        end else begin
+            counter <= counter + 32'b1;
+        end
     end
-	
-end
 
-assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [8:1];
+    always @(posedge CLOCK_50) begin
+        if (counter == 32'd3) begin
+            // Send the read command.
+            reg_qsys_sdram_read_control_fixed_location <= 0;
+            reg_qsys_sdram_read_control_read_base <= 0;
+            reg_qsys_sdram_read_control_read_length <= 2;
+            reg_qsys_sdram_read_control_go <= 1;
+        end if (reg_qsys_sdram_read_control_go) begin
+            // Ensure the read request only lasts one clock cycle.
+            reg_qsys_sdram_read_control_go <= 0;
+        end
+        
+    end
+
+    assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [8:1];
 
 endmodule
