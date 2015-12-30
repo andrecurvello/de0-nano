@@ -98,6 +98,7 @@ reg		    r_write_buffer;
 reg	[15:0]	r_input_data;
 
 reg [31:0] counter = 32'b0;
+reg [15:0] r_q = 16'b0;
 
 //=======================================================
 //  Structural coding
@@ -141,15 +142,16 @@ qsys u0(
 		.sdram_write_control_done           (write_done)  
 );
 
-assign read_base [31:0] = r_read_address [31:0];
-assign read_go          = r_read_en;
-assign read_buffer      = r_read_buffer;
+assign read_base    = r_read_address;
+assign read_go      = r_read_en;
+assign read_buffer  = r_read_buffer;
 
-assign write_buffer      = r_write_buffer;
-assign input_data [15:0] = r_input_data [15:0];
-assign write_base [31:0] = r_write_address [31:0];
-assign write_go          = r_write_en;
+assign write_buffer = r_write_buffer;
+assign input_data   = r_input_data;
+assign write_base   = r_write_address;
+assign write_go     = r_write_en;
 
+assign LED = r_q[15:9];
 
     always @(posedge CLOCK_50) begin
         if (counter == 32'd25000000) begin
@@ -159,6 +161,15 @@ assign write_go          = r_write_en;
             counter <= counter + 32'b1;
         end
     end
+    
+    always @(posedge CLOCK_50) begin
+        if (read_data_available) begin
+            r_q <= output_data;
+            r_read_buffer <= 1'b1;
+        end else begin
+            r_read_buffer <= 1'b0;
+        end
+    end
 
     always @(posedge CLOCK_50) begin
         if (counter == 32'd2) begin
@@ -166,8 +177,8 @@ assign write_go          = r_write_en;
             r_write_address <= 32'd0;
             r_write_en <= 1'b1;
             //r_input_data <= 16'b1100_1100_1100_1100;
-            r_input_data <= 16'b1010_1010_1010_1010;
-            //r_input_data <= 16'b1111_0000_1110_1101;
+            //r_input_data <= 16'b1010_1010_1010_1010;
+            r_input_data <= 16'b1111_0000_1110_1101;
             r_write_buffer <= 1'b1;
         end else if (counter == 32'd3) begin
             // Ensure the request only lasts one clock cycle.
@@ -183,7 +194,5 @@ assign write_go          = r_write_en;
         end
         
     end
-
-    assign LED [7:0] = output_data [15:9];
 
 endmodule
