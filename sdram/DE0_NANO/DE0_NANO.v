@@ -175,8 +175,8 @@ assign qsys_sdram_write_control_go                    = reg_qsys_sdram_write_con
             reg_qsys_sdram_write_control_write_length <= 32'd2;
             reg_qsys_sdram_write_control_go <= 1'b1;
             //reg_qsys_sdram_write_user_buffer_input_data = 16'b1100_1100_1100_1100;
-            reg_qsys_sdram_write_user_buffer_input_data = 16'b1010_1010_1010_1010;
-            //reg_qsys_sdram_write_user_buffer_input_data = 16'b1111_0000_1110_1101;
+            //reg_qsys_sdram_write_user_buffer_input_data = 16'b1010_1010_1010_1010;
+            reg_qsys_sdram_write_user_buffer_input_data = 16'b1111_0000_1110_1101;
             reg_qsys_sdram_write_user_write_buffer <= 1'b1;
         end else if (counter == 32'd3) begin
             // Ensure the request only lasts one clock cycle.
