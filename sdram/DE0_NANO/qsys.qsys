@@ -123,7 +123,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="columnWidth" value="9" />
-  <parameter name="componentName" value="$${FILENAME}_sdram" />
+  <parameter name="componentName" value="qsys_sdram" />
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="false" />
   <parameter name="initNOPDelay" value="0.0" />
@@ -312,8 +312,8 @@
   <parameter name="BURST_CAPABLE" value="0" />
   <parameter name="BURST_COUNT_WIDTH" value="2" />
   <parameter name="DATA_WIDTH" value="16" />
-  <parameter name="FIFO_DEPTH" value="16" />
-  <parameter name="FIFO_DEPTH_LOG2" value="4" />
+  <parameter name="FIFO_DEPTH" value="8" />
+  <parameter name="FIFO_DEPTH_LOG2" value="3" />
   <parameter name="MASTER_DIRECTION" value="0" />
   <parameter name="MAXIMUM_BURST_COUNT" value="2" />
   <parameter name="MEMORY_BASED_FIFO" value="0" />

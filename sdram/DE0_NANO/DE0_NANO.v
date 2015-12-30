@@ -197,6 +197,6 @@ assign qsys_sdram_write_control_go                    = reg_qsys_sdram_write_con
         
     end
 
-    assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [7:0];
+    assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [15:9];
 
 endmodule

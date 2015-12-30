@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2015.12.28.16:50:57"
- outputDirectory="/home/peter/quartus/sdram/DE0_NANO/qsys/">
+ date="2015.12.30.15:30:47"
+ outputDirectory="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -188,13 +188,13 @@
  </perimeter>
  <entity
    path=""
-   parameterizationKey="qsys:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=EP4CE22F17C6,AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_DEVICE_SPEEDGRADE=6,AUTO_GENERATION_ID=1451321436,AUTO_UNIQUE_ID=(clock_source:15.1:clockFrequency=50000000,clockFrequencyKnown=true,inputClockFrequency=0,resetSynchronousEdges=NONE)(altera_avalon_new_sdram_controller:15.1:TAC=5.5,TMRD=3,TRCD=20.0,TRFC=70.0,TRP=20.0,TWR=14.0,addressWidth=24,bankWidth=2,casLatency=3,clockRate=50000000,columnWidth=9,componentName=qsys_sdram,dataWidth=16,generateSimulationModel=false,initNOPDelay=0.0,initRefreshCommands=2,masteredTristateBridgeSlave=0,model=single_Micron_MT48LC4M32B2_7_chip,numberOfBanks=4,numberOfChipSelects=1,pinsSharedViaTriState=false,powerUpDelay=100.0,refreshPeriod=15.625,registerDataIn=true,rowWidth=13,size=33554432)(altpll:15.1:AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_INCLK_INTERFACE_CLOCK_RATE=50000000,AVALON_USE_SEPARATE_SYSCLK=NO,BANDWIDTH=,BANDWIDTH_TYPE=AUTO,CLK0_DIVIDE_BY=1,CLK0_DUTY_CYCLE=50,CLK0_MULTIPLY_BY=1,CLK0_PHASE_SHIFT=-3000,CLK1_DIVIDE_BY=,CLK1_DUTY_CYCLE=,CLK1_MULTIPLY_BY=,CLK1_PHASE_SHIFT=,CLK2_DIVIDE_BY=,CLK2_DUTY_CYCLE=,CLK2_MULTIPLY_BY=,CLK2_PHASE_SHIFT=,CLK3_DIVIDE_BY=,CLK3_DUTY_CYCLE=,CLK3_MULTIPLY_BY=,CLK3_PHASE_SHIFT=,CLK4_DIVIDE_BY=,CLK4_DUTY_CYCLE=,CLK4_MULTIPLY_BY=,CLK4_PHASE_SHIFT=,CLK5_DIVIDE_BY=,CLK5_DUTY_CYCLE=,CLK5_MULTIPLY_BY=,CLK5_PHASE_SHIFT=,CLK6_DIVIDE_BY=,CLK6_DUTY_CYCLE=,CLK6_MULTIPLY_BY=,CLK6_PHASE_SHIFT=,CLK7_DIVIDE_BY=,CLK7_DUTY_CYCLE=,CLK7_MULTIPLY_BY=,CLK7_PHASE_SHIFT=,CLK8_DIVIDE_BY=,CLK8_DUTY_CYCLE=,CLK8_MULTIPLY_BY=,CLK8_PHASE_SHIFT=,CLK9_DIVIDE_BY=,CLK9_DUTY_CYCLE=,CLK9_MULTIPLY_BY=,CLK9_PHASE_SHIFT=,COMPENSATE_CLOCK=CLK0,DOWN_SPREAD=,DPA_DIVIDER=,DPA_DIVIDE_BY=,DPA_MULTIPLY_BY=,ENABLE_SWITCH_OVER_COUNTER=,EXTCLK0_DIVIDE_BY=,EXTCLK0_DUTY_CYCLE=,EXTCLK0_MULTIPLY_BY=,EXTCLK0_PHASE_SHIFT=,EXTCLK1_DIVIDE_BY=,EXTCLK1_DUTY_CYCLE=,EXTCLK1_MULTIPLY_BY=,EXTCLK1_PHASE_SHIFT=,EXTCLK2_DIVIDE_BY=,EXTCLK2_DUTY_CYCLE=,EXTCLK2_MULTIPLY_BY=,EXTCLK2_PHASE_SHIFT=,EXTCLK3_DIVIDE_BY=,EXTCLK3_DUTY_CYCLE=,EXTCLK3_MULTIPLY_BY=,EXTCLK3_PHASE_SHIFT=,FEEDBACK_SOURCE=,GATE_LOCK_COUNTER=,GATE_LOCK_SIGNAL=,HIDDEN_CONSTANTS=CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 1 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT -3000 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_UNUSED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 1 CT#PORT_LOCKED PORT_UNUSED,HIDDEN_CUSTOM_ELABORATION=altpll_avalon_elaboration,HIDDEN_CUSTOM_POST_EDIT=altpll_avalon_post_edit,HIDDEN_IF_PORTS=IF#locked {output 0} IF#reset {input 0} IF#clk {input 0} IF#readdata {output 32} IF#write {input 0} IF#phasedone {output 0} IF#address {input 2} IF#c0 {output 0} IF#writedata {input 32} IF#read {input 0} IF#areset {input 0},HIDDEN_IS_FIRST_EDIT=0,HIDDEN_IS_NUMERIC=IN#WIDTH_CLOCK 1 IN#CLK0_DUTY_CYCLE 1 IN#PLL_TARGET_HARCOPY_CHECK 1 IN#SWITCHOVER_COUNT_EDIT 1 IN#INCLK0_INPUT_FREQUENCY 1 IN#PLL_LVDS_PLL_CHECK 1 IN#PLL_AUTOPLL_CHECK 1 IN#PLL_FASTPLL_CHECK 1 IN#PLL_ENHPLL_CHECK 1 IN#DIV_FACTOR0 1 IN#LVDS_MODE_DATA_RATE_DIRTY 1 IN#GLOCK_COUNTER_EDIT 1 IN#CLK0_DIVIDE_BY 1 IN#MULT_FACTOR0 1 IN#CLK0_MULTIPLY_BY 1 IN#USE_MIL_SPEED_GRADE 1,HIDDEN_MF_PORTS=MF#areset 1 MF#clk 1 MF#locked 1 MF#inclk 1,HIDDEN_PRIVATES=PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 0 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 0 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 100.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 0 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 -3.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 50.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 ns PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1451320746768633.mif PT#ACTIVECLK_CHECK 0,HIDDEN_USED_PORTS=UP#locked used UP#c0 used UP#areset used UP#inclk0 used,INCLK0_INPUT_FREQUENCY=20000,INCLK1_INPUT_FREQUENCY=,INTENDED_DEVICE_FAMILY=Cyclone IV E,INVALID_LOCK_MULTIPLIER=,LOCK_HIGH=,LOCK_LOW=,OPERATION_MODE=NORMAL,PLL_TYPE=AUTO,PORT_ACTIVECLOCK=PORT_UNUSED,PORT_ARESET=PORT_UNUSED,PORT_CLKBAD0=PORT_UNUSED,PORT_CLKBAD1=PORT_UNUSED,PORT_CLKLOSS=PORT_UNUSED,PORT_CLKSWITCH=PORT_UNUSED,PORT_CONFIGUPDATE=PORT_UNUSED,PORT_ENABLE0=,PORT_ENABLE1=,PORT_FBIN=PORT_UNUSED,PORT_FBOUT=,PORT_INCLK0=PORT_USED,PORT_INCLK1=PORT_UNUSED,PORT_LOCKED=PORT_UNUSED,PORT_PFDENA=PORT_UNUSED,PORT_PHASECOUNTERSELECT=PORT_UNUSED,PORT_PHASEDONE=PORT_UNUSED,PORT_PHASESTEP=PORT_UNUSED,PORT_PHASEUPDOWN=PORT_UNUSED,PORT_PLLENA=PORT_UNUSED,PORT_SCANACLR=PORT_UNUSED,PORT_SCANCLK=PORT_UNUSED,PORT_SCANCLKENA=PORT_UNUSED,PORT_SCANDATA=PORT_UNUSED,PORT_SCANDATAOUT=PORT_UNUSED,PORT_SCANDONE=PORT_UNUSED,PORT_SCANREAD=PORT_UNUSED,PORT_SCANWRITE=PORT_UNUSED,PORT_SCLKOUT0=,PORT_SCLKOUT1=,PORT_VCOOVERRANGE=,PORT_VCOUNDERRANGE=,PORT_clk0=PORT_USED,PORT_clk1=PORT_UNUSED,PORT_clk2=PORT_UNUSED,PORT_clk3=PORT_UNUSED,PORT_clk4=PORT_UNUSED,PORT_clk5=PORT_UNUSED,PORT_clk6=,PORT_clk7=,PORT_clk8=,PORT_clk9=,PORT_clkena0=PORT_UNUSED,PORT_clkena1=PORT_UNUSED,PORT_clkena2=PORT_UNUSED,PORT_clkena3=PORT_UNUSED,PORT_clkena4=PORT_UNUSED,PORT_clkena5=PORT_UNUSED,PORT_extclk0=PORT_UNUSED,PORT_extclk1=PORT_UNUSED,PORT_extclk2=PORT_UNUSED,PORT_extclk3=PORT_UNUSED,PORT_extclkena0=,PORT_extclkena1=,PORT_extclkena2=,PORT_extclkena3=,PRIMARY_CLOCK=,QUALIFY_CONF_DONE=,SCAN_CHAIN=,SCAN_CHAIN_MIF_FILE=,SCLKOUT0_PHASE_SHIFT=,SCLKOUT1_PHASE_SHIFT=,SELF_RESET_ON_GATED_LOSS_LOCK=,SELF_RESET_ON_LOSS_LOCK=,SKIP_VCO=,SPREAD_FREQUENCY=,SWITCH_OVER_COUNTER=,SWITCH_OVER_ON_GATED_LOCK=,SWITCH_OVER_ON_LOSSCLK=,SWITCH_OVER_TYPE=,USING_FBMIMICBIDIR_PORT=,VALID_LOCK_MULTIPLIER=,VCO_DIVIDE_BY=,VCO_FREQUENCY_CONTROL=,VCO_MULTIPLY_BY=,VCO_PHASE_SHIFT_STEP=,WIDTH_CLOCK=5,WIDTH_PHASECOUNTERSELECT=)(master_template:15.1:ADDRESS_WIDTH=32,AUTO_CLOCK_RESET_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,BURST_CAPABLE=0,BURST_COUNT_WIDTH=2,DATA_WIDTH=16,FIFO_DEPTH=16,FIFO_DEPTH_LOG2=4,MASTER_DIRECTION=0,MAXIMUM_BURST_COUNT=2,MEMORY_BASED_FIFO=0)(master_template:15.1:ADDRESS_WIDTH=32,AUTO_CLOCK_RESET_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,BURST_CAPABLE=0,BURST_COUNT_WIDTH=2,DATA_WIDTH=16,FIFO_DEPTH=8,FIFO_DEPTH_LOG2=3,MASTER_DIRECTION=1,MAXIMUM_BURST_COUNT=2,MEMORY_BASED_FIFO=0)(avalon:15.1:arbitrationPriority=1,baseAddress=0x0000,defaultConnection=false)(avalon:15.1:arbitrationPriority=1,baseAddress=0x0000,defaultConnection=false)(clock:15.1:)(clock:15.1:)(clock:15.1:)(clock:15.1:)(reset:15.1:)(reset:15.1:)(reset:15.1:)(reset:15.1:)"
+   parameterizationKey="qsys:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=EP4CE22F17C6,AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_DEVICE_SPEEDGRADE=6,AUTO_GENERATION_ID=1451489428,AUTO_UNIQUE_ID=(clock_source:15.1:clockFrequency=50000000,clockFrequencyKnown=true,inputClockFrequency=0,resetSynchronousEdges=NONE)(altera_avalon_new_sdram_controller:15.1:TAC=5.5,TMRD=3,TRCD=20.0,TRFC=70.0,TRP=20.0,TWR=14.0,addressWidth=24,bankWidth=2,casLatency=3,clockRate=50000000,columnWidth=9,componentName=qsys_sdram,dataWidth=16,generateSimulationModel=false,initNOPDelay=0.0,initRefreshCommands=2,masteredTristateBridgeSlave=0,model=single_Micron_MT48LC4M32B2_7_chip,numberOfBanks=4,numberOfChipSelects=1,pinsSharedViaTriState=false,powerUpDelay=100.0,refreshPeriod=15.625,registerDataIn=true,rowWidth=13,size=33554432)(altpll:15.1:AUTO_DEVICE_FAMILY=Cyclone IV E,AUTO_INCLK_INTERFACE_CLOCK_RATE=50000000,AVALON_USE_SEPARATE_SYSCLK=NO,BANDWIDTH=,BANDWIDTH_TYPE=AUTO,CLK0_DIVIDE_BY=1,CLK0_DUTY_CYCLE=50,CLK0_MULTIPLY_BY=1,CLK0_PHASE_SHIFT=-3000,CLK1_DIVIDE_BY=,CLK1_DUTY_CYCLE=,CLK1_MULTIPLY_BY=,CLK1_PHASE_SHIFT=,CLK2_DIVIDE_BY=,CLK2_DUTY_CYCLE=,CLK2_MULTIPLY_BY=,CLK2_PHASE_SHIFT=,CLK3_DIVIDE_BY=,CLK3_DUTY_CYCLE=,CLK3_MULTIPLY_BY=,CLK3_PHASE_SHIFT=,CLK4_DIVIDE_BY=,CLK4_DUTY_CYCLE=,CLK4_MULTIPLY_BY=,CLK4_PHASE_SHIFT=,CLK5_DIVIDE_BY=,CLK5_DUTY_CYCLE=,CLK5_MULTIPLY_BY=,CLK5_PHASE_SHIFT=,CLK6_DIVIDE_BY=,CLK6_DUTY_CYCLE=,CLK6_MULTIPLY_BY=,CLK6_PHASE_SHIFT=,CLK7_DIVIDE_BY=,CLK7_DUTY_CYCLE=,CLK7_MULTIPLY_BY=,CLK7_PHASE_SHIFT=,CLK8_DIVIDE_BY=,CLK8_DUTY_CYCLE=,CLK8_MULTIPLY_BY=,CLK8_PHASE_SHIFT=,CLK9_DIVIDE_BY=,CLK9_DUTY_CYCLE=,CLK9_MULTIPLY_BY=,CLK9_PHASE_SHIFT=,COMPENSATE_CLOCK=CLK0,DOWN_SPREAD=,DPA_DIVIDER=,DPA_DIVIDE_BY=,DPA_MULTIPLY_BY=,ENABLE_SWITCH_OVER_COUNTER=,EXTCLK0_DIVIDE_BY=,EXTCLK0_DUTY_CYCLE=,EXTCLK0_MULTIPLY_BY=,EXTCLK0_PHASE_SHIFT=,EXTCLK1_DIVIDE_BY=,EXTCLK1_DUTY_CYCLE=,EXTCLK1_MULTIPLY_BY=,EXTCLK1_PHASE_SHIFT=,EXTCLK2_DIVIDE_BY=,EXTCLK2_DUTY_CYCLE=,EXTCLK2_MULTIPLY_BY=,EXTCLK2_PHASE_SHIFT=,EXTCLK3_DIVIDE_BY=,EXTCLK3_DUTY_CYCLE=,EXTCLK3_MULTIPLY_BY=,EXTCLK3_PHASE_SHIFT=,FEEDBACK_SOURCE=,GATE_LOCK_COUNTER=,GATE_LOCK_SIGNAL=,HIDDEN_CONSTANTS=CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 1 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT -3000 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_UNUSED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 1 CT#PORT_LOCKED PORT_UNUSED,HIDDEN_CUSTOM_ELABORATION=altpll_avalon_elaboration,HIDDEN_CUSTOM_POST_EDIT=altpll_avalon_post_edit,HIDDEN_IF_PORTS=IF#locked {output 0} IF#reset {input 0} IF#clk {input 0} IF#readdata {output 32} IF#write {input 0} IF#phasedone {output 0} IF#address {input 2} IF#c0 {output 0} IF#writedata {input 32} IF#read {input 0} IF#areset {input 0},HIDDEN_IS_FIRST_EDIT=0,HIDDEN_IS_NUMERIC=IN#WIDTH_CLOCK 1 IN#CLK0_DUTY_CYCLE 1 IN#PLL_TARGET_HARCOPY_CHECK 1 IN#SWITCHOVER_COUNT_EDIT 1 IN#INCLK0_INPUT_FREQUENCY 1 IN#PLL_LVDS_PLL_CHECK 1 IN#PLL_AUTOPLL_CHECK 1 IN#PLL_FASTPLL_CHECK 1 IN#PLL_ENHPLL_CHECK 1 IN#DIV_FACTOR0 1 IN#LVDS_MODE_DATA_RATE_DIRTY 1 IN#GLOCK_COUNTER_EDIT 1 IN#CLK0_DIVIDE_BY 1 IN#MULT_FACTOR0 1 IN#CLK0_MULTIPLY_BY 1 IN#USE_MIL_SPEED_GRADE 1,HIDDEN_MF_PORTS=MF#areset 1 MF#clk 1 MF#locked 1 MF#inclk 1,HIDDEN_PRIVATES=PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 0 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 0 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 100.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 0 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 -3.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 50.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 ns PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1451320746768633.mif PT#ACTIVECLK_CHECK 0,HIDDEN_USED_PORTS=UP#locked used UP#c0 used UP#areset used UP#inclk0 used,INCLK0_INPUT_FREQUENCY=20000,INCLK1_INPUT_FREQUENCY=,INTENDED_DEVICE_FAMILY=Cyclone IV E,INVALID_LOCK_MULTIPLIER=,LOCK_HIGH=,LOCK_LOW=,OPERATION_MODE=NORMAL,PLL_TYPE=AUTO,PORT_ACTIVECLOCK=PORT_UNUSED,PORT_ARESET=PORT_UNUSED,PORT_CLKBAD0=PORT_UNUSED,PORT_CLKBAD1=PORT_UNUSED,PORT_CLKLOSS=PORT_UNUSED,PORT_CLKSWITCH=PORT_UNUSED,PORT_CONFIGUPDATE=PORT_UNUSED,PORT_ENABLE0=,PORT_ENABLE1=,PORT_FBIN=PORT_UNUSED,PORT_FBOUT=,PORT_INCLK0=PORT_USED,PORT_INCLK1=PORT_UNUSED,PORT_LOCKED=PORT_UNUSED,PORT_PFDENA=PORT_UNUSED,PORT_PHASECOUNTERSELECT=PORT_UNUSED,PORT_PHASEDONE=PORT_UNUSED,PORT_PHASESTEP=PORT_UNUSED,PORT_PHASEUPDOWN=PORT_UNUSED,PORT_PLLENA=PORT_UNUSED,PORT_SCANACLR=PORT_UNUSED,PORT_SCANCLK=PORT_UNUSED,PORT_SCANCLKENA=PORT_UNUSED,PORT_SCANDATA=PORT_UNUSED,PORT_SCANDATAOUT=PORT_UNUSED,PORT_SCANDONE=PORT_UNUSED,PORT_SCANREAD=PORT_UNUSED,PORT_SCANWRITE=PORT_UNUSED,PORT_SCLKOUT0=,PORT_SCLKOUT1=,PORT_VCOOVERRANGE=,PORT_VCOUNDERRANGE=,PORT_clk0=PORT_USED,PORT_clk1=PORT_UNUSED,PORT_clk2=PORT_UNUSED,PORT_clk3=PORT_UNUSED,PORT_clk4=PORT_UNUSED,PORT_clk5=PORT_UNUSED,PORT_clk6=,PORT_clk7=,PORT_clk8=,PORT_clk9=,PORT_clkena0=PORT_UNUSED,PORT_clkena1=PORT_UNUSED,PORT_clkena2=PORT_UNUSED,PORT_clkena3=PORT_UNUSED,PORT_clkena4=PORT_UNUSED,PORT_clkena5=PORT_UNUSED,PORT_extclk0=PORT_UNUSED,PORT_extclk1=PORT_UNUSED,PORT_extclk2=PORT_UNUSED,PORT_extclk3=PORT_UNUSED,PORT_extclkena0=,PORT_extclkena1=,PORT_extclkena2=,PORT_extclkena3=,PRIMARY_CLOCK=,QUALIFY_CONF_DONE=,SCAN_CHAIN=,SCAN_CHAIN_MIF_FILE=,SCLKOUT0_PHASE_SHIFT=,SCLKOUT1_PHASE_SHIFT=,SELF_RESET_ON_GATED_LOSS_LOCK=,SELF_RESET_ON_LOSS_LOCK=,SKIP_VCO=,SPREAD_FREQUENCY=,SWITCH_OVER_COUNTER=,SWITCH_OVER_ON_GATED_LOCK=,SWITCH_OVER_ON_LOSSCLK=,SWITCH_OVER_TYPE=,USING_FBMIMICBIDIR_PORT=,VALID_LOCK_MULTIPLIER=,VCO_DIVIDE_BY=,VCO_FREQUENCY_CONTROL=,VCO_MULTIPLY_BY=,VCO_PHASE_SHIFT_STEP=,WIDTH_CLOCK=5,WIDTH_PHASECOUNTERSELECT=)(master_template:15.1:ADDRESS_WIDTH=32,AUTO_CLOCK_RESET_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,BURST_CAPABLE=0,BURST_COUNT_WIDTH=2,DATA_WIDTH=16,FIFO_DEPTH=8,FIFO_DEPTH_LOG2=3,MASTER_DIRECTION=0,MAXIMUM_BURST_COUNT=2,MEMORY_BASED_FIFO=0)(master_template:15.1:ADDRESS_WIDTH=32,AUTO_CLOCK_RESET_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,BURST_CAPABLE=0,BURST_COUNT_WIDTH=2,DATA_WIDTH=16,FIFO_DEPTH=8,FIFO_DEPTH_LOG2=3,MASTER_DIRECTION=1,MAXIMUM_BURST_COUNT=2,MEMORY_BASED_FIFO=0)(avalon:15.1:arbitrationPriority=1,baseAddress=0x0000,defaultConnection=false)(avalon:15.1:arbitrationPriority=1,baseAddress=0x0000,defaultConnection=false)(clock:15.1:)(clock:15.1:)(clock:15.1:)(clock:15.1:)(reset:15.1:)(reset:15.1:)(reset:15.1:)(reset:15.1:)"
    instancePathKey="qsys"
    kind="qsys"
    version="1.0"
    name="qsys">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
-  <parameter name="AUTO_GENERATION_ID" value="1451321436" />
+  <parameter name="AUTO_GENERATION_ID" value="1451489428" />
   <parameter name="AUTO_DEVICE" value="EP4CE22F17C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
   <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
@@ -203,106 +203,106 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/qsys.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/qsys.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram.v"
        type="VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram_clock.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram_clock.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/custom_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/custom_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/burst_write_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/burst_write_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/burst_read_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/burst_read_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/write_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/write_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/latency_aware_read_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/latency_aware_read_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_translator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_translator.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_agent.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_agent.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_agent.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_agent.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_avalon_sc_fifo.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_avalon_sc_fifo.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router_002.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router_002.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_demux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_demux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_mux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_mux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_demux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_demux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_mux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_mux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.v"
        type="VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_synchronizer.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_synchronizer.v"
        type="VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.sdc"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.sdc"
        type="SDC"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
-   <file path="/home/peter/quartus/sdram/DE0_NANO/qsys.qsys" />
+   <file path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys.qsys" />
   </sourceFiles>
   <childSourceFiles>
    <file
@@ -310,17 +310,17 @@
    <file
        path="/home/peter/altera_lite/15.1/ip/altera/sopc_builder_ip/altera_avalon_altpll/altera_avalon_altpll_hw.tcl" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_masters_hw.tcl" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_masters_hw.tcl" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/write_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/write_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v" />
    <file
        path="/home/peter/altera_lite/15.1/ip/altera/merlin/altera_mm_interconnect/altera_mm_interconnect_hw.tcl" />
    <file
@@ -477,23 +477,23 @@
    <message level="Debug" culprit="qsys"><![CDATA["<b>qsys</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"]]></message>
    <message level="Debug" culprit="qsys">queue size: 5 starting:altera_avalon_new_sdram_controller "submodules/qsys_sdram"</message>
    <message level="Info" culprit="sdram">Starting RTL generation for module 'qsys_sdram'</message>
-   <message level="Info" culprit="sdram">  Generation command is [exec /home/peter/altera_lite/15.1/quartus/linux64/perl/bin/perl -I /home/peter/altera_lite/15.1/quartus/linux64/perl/lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/europa -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsys_sdram --dir=/tmp/alt6797_4556486725884510396.dir/0005_sdram_gen/ --quartus_dir=/home/peter/altera_lite/15.1/quartus --verilog --config=/tmp/alt6797_4556486725884510396.dir/0005_sdram_gen//qsys_sdram_component_configuration.pl  --do_build_sim=0  ]</message>
+   <message level="Info" culprit="sdram">  Generation command is [exec /home/peter/altera_lite/15.1/quartus/linux64/perl/bin/perl -I /home/peter/altera_lite/15.1/quartus/linux64/perl/lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/europa -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsys_sdram --dir=/tmp/alt6799_1502919545398536258.dir/0041_sdram_gen/ --quartus_dir=/home/peter/altera_lite/15.1/quartus --verilog --config=/tmp/alt6799_1502919545398536258.dir/0041_sdram_gen//qsys_sdram_component_configuration.pl  --do_build_sim=0  ]</message>
    <message level="Info" culprit="sdram">Done RTL generation for module 'qsys_sdram'</message>
    <message level="Info" culprit="sdram"><![CDATA["<b>qsys</b>" instantiated <b>altera_avalon_new_sdram_controller</b> "<b>sdram</b>"]]></message>
    <message level="Debug" culprit="qsys">queue size: 4 starting:altpll "submodules/qsys_sdram_clock"</message>
    <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/tmp/alt6797_4556486725884510396.dir/0006_sopcgen/qsys_sdram_clock.v --source=/tmp/alt6797_4556486725884510396.dir/0006_sopcgen/qsys_sdram_clock.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6797_4556486725884510396.dir/0007_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
-   <message level="Debug">Command took 6.639s</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/tmp/alt6799_1502919545398536258.dir/0042_sopcgen/qsys_sdram_clock.v --source=/tmp/alt6799_1502919545398536258.dir/0042_sopcgen/qsys_sdram_clock.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6799_1502919545398536258.dir/0043_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 4.632s</message>
    <message level="Info" culprit="sdram_clock"><![CDATA["<b>qsys</b>" instantiated <b>altpll</b> "<b>sdram_clock</b>"]]></message>
    <message level="Debug" culprit="qsys">queue size: 3 starting:master_template "submodules/custom_master"</message>
    <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/write_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6797_4556486725884510396.dir/0004_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
-   <message level="Debug">Command took 6.629s</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/write_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6799_1502919545398536258.dir/0040_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 6.497s</message>
    <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_sh -t /tmp/alt6797_4556486725884510396.dir/0008_sopcqmap/not_a_project_setup.tcl</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6797_4556486725884510396.dir/0008_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=custom_master --set=HDL_INTERFACE_INSTANCE_PARAMETERS=MASTER_DIRECTION=D"0";DATA_WIDTH=D"16";ADDRESS_WIDTH=D"32";BURST_CAPABLE=D"0";MAXIMUM_BURST_COUNT=D"2";BURST_COUNT_WIDTH=D"2";FIFO_DEPTH=D"16";FIFO_DEPTH_LOG2=D"4";MEMORY_BASED_FIFO=D"0"; --ini=disable_check_quartus_compatibility_qsys_only=on</message>
-   <message level="Debug">Command took 5.565s</message>
-   <message level="Debug">Command took 4.412s</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_sh -t /tmp/alt6799_1502919545398536258.dir/0044_sopcqmap/not_a_project_setup.tcl</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6799_1502919545398536258.dir/0044_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=custom_master --set=HDL_INTERFACE_INSTANCE_PARAMETERS=MASTER_DIRECTION=D"0";DATA_WIDTH=D"16";ADDRESS_WIDTH=D"32";BURST_CAPABLE=D"0";MAXIMUM_BURST_COUNT=D"2";BURST_COUNT_WIDTH=D"2";FIFO_DEPTH=D"8";FIFO_DEPTH_LOG2=D"3";MEMORY_BASED_FIFO=D"0"; --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 5.528s</message>
+   <message level="Debug">Command took 6.405s</message>
    <message level="Info" culprit="sdram_read"><![CDATA["<b>qsys</b>" instantiated <b>master_template</b> "<b>sdram_read</b>"]]></message>
    <message level="Debug" culprit="qsys">queue size: 1 starting:altera_mm_interconnect "submodules/qsys_mm_interconnect_0"</message>
    <message level="Progress" culprit="min"></message>
@@ -589,7 +589,7 @@
    <message level="Debug" culprit="avalon_st_adapter.clk_bridge_0">Timing: ELA:1/0.000s</message>
    <message level="Debug" culprit="avalon_st_adapter.rst_bridge_0">Timing: ELA:2/0.001s/0.001s</message>
    <message level="Debug" culprit="avalon_st_adapter.error_adapter_0">Timing: ELA:1/0.006s</message>
-   <message level="Debug" culprit="avalon_st_adapter">Timing: COM:3/0.042s/0.054s</message>
+   <message level="Debug" culprit="avalon_st_adapter">Timing: COM:3/0.036s/0.051s</message>
    <message
        level="Debug"
        culprit="com_altera_sopcmodel_transforms_avalonst_AvalonStreamingTransform"><![CDATA[After transform: <b>19</b> modules, <b>55</b> connections]]></message>
@@ -634,7 +634,7 @@
    <message level="Info" culprit="rsp_demux"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"]]></message>
    <message level="Debug" culprit="qsys">queue size: 2 starting:altera_merlin_multiplexer "submodules/qsys_mm_interconnect_0_rsp_mux"</message>
    <message level="Info" culprit="rsp_mux"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"]]></message>
-   <message level="Info"><![CDATA[Reusing file <b>/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv</b>]]></message>
+   <message level="Info"><![CDATA[Reusing file <b>/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv</b>]]></message>
    <message level="Debug" culprit="qsys">queue size: 0 starting:altera_avalon_st_adapter "submodules/qsys_mm_interconnect_0_avalon_st_adapter"</message>
    <message level="Progress" culprit="min"></message>
    <message level="Progress" culprit="max"></message>
@@ -690,7 +690,7 @@
   <parameter name="numberOfBanks" value="4" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram.v"
        type="VERILOG"
        attributes="" />
   </generatedFiles>
@@ -704,7 +704,7 @@
   <messages>
    <message level="Debug" culprit="qsys">queue size: 5 starting:altera_avalon_new_sdram_controller "submodules/qsys_sdram"</message>
    <message level="Info" culprit="sdram">Starting RTL generation for module 'qsys_sdram'</message>
-   <message level="Info" culprit="sdram">  Generation command is [exec /home/peter/altera_lite/15.1/quartus/linux64/perl/bin/perl -I /home/peter/altera_lite/15.1/quartus/linux64/perl/lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/europa -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsys_sdram --dir=/tmp/alt6797_4556486725884510396.dir/0005_sdram_gen/ --quartus_dir=/home/peter/altera_lite/15.1/quartus --verilog --config=/tmp/alt6797_4556486725884510396.dir/0005_sdram_gen//qsys_sdram_component_configuration.pl  --do_build_sim=0  ]</message>
+   <message level="Info" culprit="sdram">  Generation command is [exec /home/peter/altera_lite/15.1/quartus/linux64/perl/bin/perl -I /home/peter/altera_lite/15.1/quartus/linux64/perl/lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/europa -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I /home/peter/altera_lite/15.1/quartus/sopc_builder/bin -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- /home/peter/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsys_sdram --dir=/tmp/alt6799_1502919545398536258.dir/0041_sdram_gen/ --quartus_dir=/home/peter/altera_lite/15.1/quartus --verilog --config=/tmp/alt6799_1502919545398536258.dir/0041_sdram_gen//qsys_sdram_component_configuration.pl  --do_build_sim=0  ]</message>
    <message level="Info" culprit="sdram">Done RTL generation for module 'qsys_sdram'</message>
    <message level="Info" culprit="sdram"><![CDATA["<b>qsys</b>" instantiated <b>altera_avalon_new_sdram_controller</b> "<b>sdram</b>"]]></message>
   </messages>
@@ -895,7 +895,7 @@
   <parameter name="PORT_extclk1" value="PORT_UNUSED" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram_clock.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_sdram_clock.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
@@ -908,14 +908,14 @@
   <messages>
    <message level="Debug" culprit="qsys">queue size: 4 starting:altpll "submodules/qsys_sdram_clock"</message>
    <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/tmp/alt6797_4556486725884510396.dir/0006_sopcgen/qsys_sdram_clock.v --source=/tmp/alt6797_4556486725884510396.dir/0006_sopcgen/qsys_sdram_clock.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6797_4556486725884510396.dir/0007_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
-   <message level="Debug">Command took 6.639s</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/tmp/alt6799_1502919545398536258.dir/0042_sopcgen/qsys_sdram_clock.v --source=/tmp/alt6799_1502919545398536258.dir/0042_sopcgen/qsys_sdram_clock.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6799_1502919545398536258.dir/0043_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 4.632s</message>
    <message level="Info" culprit="sdram_clock"><![CDATA["<b>qsys</b>" instantiated <b>altpll</b> "<b>sdram_clock</b>"]]></message>
   </messages>
  </entity>
  <entity
    path="submodules/"
-   parameterizationKey="master_template:15.1:ADDRESS_WIDTH=32,AUTO_CLOCK_RESET_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,BURST_CAPABLE=0,BURST_COUNT_WIDTH=2,DATA_WIDTH=16,FIFO_DEPTH=16,FIFO_DEPTH_LOG2=4,MASTER_DIRECTION=0,MAXIMUM_BURST_COUNT=2,MEMORY_BASED_FIFO=0"
+   parameterizationKey="master_template:15.1:ADDRESS_WIDTH=32,AUTO_CLOCK_RESET_CLOCK_RATE=50000000,AUTO_DEVICE_FAMILY=Cyclone IV E,BURST_CAPABLE=0,BURST_COUNT_WIDTH=2,DATA_WIDTH=16,FIFO_DEPTH=8,FIFO_DEPTH_LOG2=3,MASTER_DIRECTION=0,MAXIMUM_BURST_COUNT=2,MEMORY_BASED_FIFO=0"
    instancePathKey="qsys:.:sdram_read"
    kind="master_template"
    version="15.1"
@@ -924,48 +924,48 @@
   <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="50000000" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/custom_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/custom_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/burst_write_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/burst_write_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/burst_read_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/burst_read_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/write_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/write_master.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/latency_aware_read_master.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/latency_aware_read_master.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
   <sourceFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_masters_hw.tcl" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_masters_hw.tcl" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/write_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/write_master.v" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v" />
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="qsys" as="sdram_read,sdram_write" />
   <messages>
    <message level="Debug" culprit="qsys">queue size: 3 starting:master_template "submodules/custom_master"</message>
    <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/write_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v --source=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6797_4556486725884510396.dir/0004_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
-   <message level="Debug">Command took 6.629s</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_write_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/burst_read_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/write_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/latency_aware_read_master.v --source=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6799_1502919545398536258.dir/0040_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 6.497s</message>
    <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_sh -t /tmp/alt6797_4556486725884510396.dir/0008_sopcqmap/not_a_project_setup.tcl</message>
-   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6797_4556486725884510396.dir/0008_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=custom_master --set=HDL_INTERFACE_INSTANCE_PARAMETERS=MASTER_DIRECTION=D"0";DATA_WIDTH=D"16";ADDRESS_WIDTH=D"32";BURST_CAPABLE=D"0";MAXIMUM_BURST_COUNT=D"2";BURST_COUNT_WIDTH=D"2";FIFO_DEPTH=D"16";FIFO_DEPTH_LOG2=D"4";MEMORY_BASED_FIFO=D"0"; --ini=disable_check_quartus_compatibility_qsys_only=on</message>
-   <message level="Debug">Command took 5.565s</message>
-   <message level="Debug">Command took 4.412s</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_sh -t /tmp/alt6799_1502919545398536258.dir/0044_sopcqmap/not_a_project_setup.tcl</message>
+   <message level="Debug">Command: /home/peter/altera_lite/15.1/quartus/linux64/quartus_map not_a_project --generate_hdl_interface=/home/peter/quartus/de0-nano/sdram/DE0_NANO/ip/Master_Template/custom_master.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt6799_1502919545398536258.dir/0044_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=custom_master --set=HDL_INTERFACE_INSTANCE_PARAMETERS=MASTER_DIRECTION=D"0";DATA_WIDTH=D"16";ADDRESS_WIDTH=D"32";BURST_CAPABLE=D"0";MAXIMUM_BURST_COUNT=D"2";BURST_COUNT_WIDTH=D"2";FIFO_DEPTH=D"8";FIFO_DEPTH_LOG2=D"3";MEMORY_BASED_FIFO=D"0"; --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 5.528s</message>
+   <message level="Debug">Command took 6.405s</message>
    <message level="Info" culprit="sdram_read"><![CDATA["<b>qsys</b>" instantiated <b>master_template</b> "<b>sdram_read</b>"]]></message>
   </messages>
  </entity>
@@ -1044,64 +1044,64 @@
 };set_instance_parameter_value {sdram_write_avalon_master_agent} {SUPPRESS_0_BYTEEN_RSP} {0};set_instance_parameter_value {sdram_write_avalon_master_agent} {ID} {1};set_instance_parameter_value {sdram_write_avalon_master_agent} {BURSTWRAP_VALUE} {1};set_instance_parameter_value {sdram_write_avalon_master_agent} {CACHE_VALUE} {0};set_instance_parameter_value {sdram_write_avalon_master_agent} {SECURE_ACCESS_BIT} {1};set_instance_parameter_value {sdram_write_avalon_master_agent} {USE_READRESPONSE} {0};set_instance_parameter_value {sdram_write_avalon_master_agent} {USE_WRITERESPONSE} {0};add_instance {sdram_s1_agent} {altera_merlin_slave_agent};set_instance_parameter_value {sdram_s1_agent} {PKT_ORI_BURST_SIZE_H} {82};set_instance_parameter_value {sdram_s1_agent} {PKT_ORI_BURST_SIZE_L} {80};set_instance_parameter_value {sdram_s1_agent} {PKT_RESPONSE_STATUS_H} {79};set_instance_parameter_value {sdram_s1_agent} {PKT_RESPONSE_STATUS_L} {78};set_instance_parameter_value {sdram_s1_agent} {PKT_BURST_SIZE_H} {61};set_instance_parameter_value {sdram_s1_agent} {PKT_BURST_SIZE_L} {59};set_instance_parameter_value {sdram_s1_agent} {PKT_TRANS_LOCK} {54};set_instance_parameter_value {sdram_s1_agent} {PKT_BEGIN_BURST} {66};set_instance_parameter_value {sdram_s1_agent} {PKT_PROTECTION_H} {73};set_instance_parameter_value {sdram_s1_agent} {PKT_PROTECTION_L} {71};set_instance_parameter_value {sdram_s1_agent} {PKT_BURSTWRAP_H} {58};set_instance_parameter_value {sdram_s1_agent} {PKT_BURSTWRAP_L} {58};set_instance_parameter_value {sdram_s1_agent} {PKT_BYTE_CNT_H} {57};set_instance_parameter_value {sdram_s1_agent} {PKT_BYTE_CNT_L} {56};set_instance_parameter_value {sdram_s1_agent} {PKT_ADDR_H} {49};set_instance_parameter_value {sdram_s1_agent} {PKT_ADDR_L} {18};set_instance_parameter_value {sdram_s1_agent} {PKT_TRANS_COMPRESSED_READ} {50};set_instance_parameter_value {sdram_s1_agent} {PKT_TRANS_POSTED} {51};set_instance_parameter_value {sdram_s1_agent} {PKT_TRANS_WRITE} {52};set_instance_parameter_value {sdram_s1_agent} {PKT_TRANS_READ} {53};set_instance_parameter_value {sdram_s1_agent} {PKT_DATA_H} {15};set_instance_parameter_value {sdram_s1_agent} {PKT_DATA_L} {0};set_instance_parameter_value {sdram_s1_agent} {PKT_BYTEEN_H} {17};set_instance_parameter_value {sdram_s1_agent} {PKT_BYTEEN_L} {16};set_instance_parameter_value {sdram_s1_agent} {PKT_SRC_ID_H} {68};set_instance_parameter_value {sdram_s1_agent} {PKT_SRC_ID_L} {68};set_instance_parameter_value {sdram_s1_agent} {PKT_DEST_ID_H} {69};set_instance_parameter_value {sdram_s1_agent} {PKT_DEST_ID_L} {69};set_instance_parameter_value {sdram_s1_agent} {PKT_SYMBOL_W} {8};set_instance_parameter_value {sdram_s1_agent} {ST_CHANNEL_W} {2};set_instance_parameter_value {sdram_s1_agent} {ST_DATA_W} {83};set_instance_parameter_value {sdram_s1_agent} {AVS_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {sdram_s1_agent} {AVS_BURSTCOUNT_W} {2};set_instance_parameter_value {sdram_s1_agent} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {sdram_s1_agent} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};set_instance_parameter_value {sdram_s1_agent} {SUPPRESS_0_BYTEEN_CMD} {0};set_instance_parameter_value {sdram_s1_agent} {PREVENT_FIFO_OVERFLOW} {1};set_instance_parameter_value {sdram_s1_agent} {MAX_BYTE_CNT} {2};set_instance_parameter_value {sdram_s1_agent} {MAX_BURSTWRAP} {1};set_instance_parameter_value {sdram_s1_agent} {ID} {0};set_instance_parameter_value {sdram_s1_agent} {USE_READRESPONSE} {0};set_instance_parameter_value {sdram_s1_agent} {USE_WRITERESPONSE} {0};set_instance_parameter_value {sdram_s1_agent} {ECC_ENABLE} {0};add_instance {sdram_s1_agent_rsp_fifo} {altera_avalon_sc_fifo};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {SYMBOLS_PER_BEAT} {1};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {BITS_PER_SYMBOL} {84};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {FIFO_DEPTH} {8};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {CHANNEL_WIDTH} {0};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {ERROR_WIDTH} {0};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {USE_PACKETS} {1};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {USE_FILL_LEVEL} {0};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {EMPTY_LATENCY} {1};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {USE_MEMORY_BLOCKS} {0};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {USE_STORE_FORWARD} {0};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {USE_ALMOST_FULL_IF} {0};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {USE_ALMOST_EMPTY_IF} {0};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {ENABLE_EXPLICIT_MAXCHANNEL} {false};set_instance_parameter_value {sdram_s1_agent_rsp_fifo} {EXPLICIT_MAXCHANNEL} {0};add_instance {router} {altera_merlin_router};set_instance_parameter_value {router} {DESTINATION_ID} {0 };set_instance_parameter_value {router} {CHANNEL_ID} {1 };set_instance_parameter_value {router} {TYPE_OF_TRANSACTION} {both };set_instance_parameter_value {router} {START_ADDRESS} {0x0 };set_instance_parameter_value {router} {END_ADDRESS} {0x2000000 };set_instance_parameter_value {router} {NON_SECURED_TAG} {1 };set_instance_parameter_value {router} {SECURED_RANGE_PAIRS} {0 };set_instance_parameter_value {router} {SECURED_RANGE_LIST} {0 };set_instance_parameter_value {router} {SPAN_OFFSET} {};set_instance_parameter_value {router} {PKT_ADDR_H} {49};set_instance_parameter_value {router} {PKT_ADDR_L} {18};set_instance_parameter_value {router} {PKT_PROTECTION_H} {73};set_instance_parameter_value {router} {PKT_PROTECTION_L} {71};set_instance_parameter_value {router} {PKT_DEST_ID_H} {69};set_instance_parameter_value {router} {PKT_DEST_ID_L} {69};set_instance_parameter_value {router} {PKT_TRANS_WRITE} {52};set_instance_parameter_value {router} {PKT_TRANS_READ} {53};set_instance_parameter_value {router} {ST_DATA_W} {83};set_instance_parameter_value {router} {ST_CHANNEL_W} {2};set_instance_parameter_value {router} {DECODER_TYPE} {0};set_instance_parameter_value {router} {DEFAULT_CHANNEL} {0};set_instance_parameter_value {router} {DEFAULT_WR_CHANNEL} {-1};set_instance_parameter_value {router} {DEFAULT_RD_CHANNEL} {-1};set_instance_parameter_value {router} {DEFAULT_DESTID} {0};set_instance_parameter_value {router} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};set_instance_parameter_value {router} {MEMORY_ALIASING_DECODE} {0};add_instance {router_001} {altera_merlin_router};set_instance_parameter_value {router_001} {DESTINATION_ID} {0 };set_instance_parameter_value {router_001} {CHANNEL_ID} {1 };set_instance_parameter_value {router_001} {TYPE_OF_TRANSACTION} {both };set_instance_parameter_value {router_001} {START_ADDRESS} {0x0 };set_instance_parameter_value {router_001} {END_ADDRESS} {0x2000000 };set_instance_parameter_value {router_001} {NON_SECURED_TAG} {1 };set_instance_parameter_value {router_001} {SECURED_RANGE_PAIRS} {0 };set_instance_parameter_value {router_001} {SECURED_RANGE_LIST} {0 };set_instance_parameter_value {router_001} {SPAN_OFFSET} {};set_instance_parameter_value {router_001} {PKT_ADDR_H} {49};set_instance_parameter_value {router_001} {PKT_ADDR_L} {18};set_instance_parameter_value {router_001} {PKT_PROTECTION_H} {73};set_instance_parameter_value {router_001} {PKT_PROTECTION_L} {71};set_instance_parameter_value {router_001} {PKT_DEST_ID_H} {69};set_instance_parameter_value {router_001} {PKT_DEST_ID_L} {69};set_instance_parameter_value {router_001} {PKT_TRANS_WRITE} {52};set_instance_parameter_value {router_001} {PKT_TRANS_READ} {53};set_instance_parameter_value {router_001} {ST_DATA_W} {83};set_instance_parameter_value {router_001} {ST_CHANNEL_W} {2};set_instance_parameter_value {router_001} {DECODER_TYPE} {0};set_instance_parameter_value {router_001} {DEFAULT_CHANNEL} {0};set_instance_parameter_value {router_001} {DEFAULT_WR_CHANNEL} {-1};set_instance_parameter_value {router_001} {DEFAULT_RD_CHANNEL} {-1};set_instance_parameter_value {router_001} {DEFAULT_DESTID} {0};set_instance_parameter_value {router_001} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};set_instance_parameter_value {router_001} {MEMORY_ALIASING_DECODE} {0};add_instance {router_002} {altera_merlin_router};set_instance_parameter_value {router_002} {DESTINATION_ID} {0 1 };set_instance_parameter_value {router_002} {CHANNEL_ID} {01 10 };set_instance_parameter_value {router_002} {TYPE_OF_TRANSACTION} {read write };set_instance_parameter_value {router_002} {START_ADDRESS} {0x0 0x0 };set_instance_parameter_value {router_002} {END_ADDRESS} {0x0 0x0 };set_instance_parameter_value {router_002} {NON_SECURED_TAG} {1 1 };set_instance_parameter_value {router_002} {SECURED_RANGE_PAIRS} {0 0 };set_instance_parameter_value {router_002} {SECURED_RANGE_LIST} {0 0 };set_instance_parameter_value {router_002} {SPAN_OFFSET} {};set_instance_parameter_value {router_002} {PKT_ADDR_H} {49};set_instance_parameter_value {router_002} {PKT_ADDR_L} {18};set_instance_parameter_value {router_002} {PKT_PROTECTION_H} {73};set_instance_parameter_value {router_002} {PKT_PROTECTION_L} {71};set_instance_parameter_value {router_002} {PKT_DEST_ID_H} {69};set_instance_parameter_value {router_002} {PKT_DEST_ID_L} {69};set_instance_parameter_value {router_002} {PKT_TRANS_WRITE} {52};set_instance_parameter_value {router_002} {PKT_TRANS_READ} {53};set_instance_parameter_value {router_002} {ST_DATA_W} {83};set_instance_parameter_value {router_002} {ST_CHANNEL_W} {2};set_instance_parameter_value {router_002} {DECODER_TYPE} {1};set_instance_parameter_value {router_002} {DEFAULT_CHANNEL} {0};set_instance_parameter_value {router_002} {DEFAULT_WR_CHANNEL} {-1};set_instance_parameter_value {router_002} {DEFAULT_RD_CHANNEL} {-1};set_instance_parameter_value {router_002} {DEFAULT_DESTID} {0};set_instance_parameter_value {router_002} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};set_instance_parameter_value {router_002} {MEMORY_ALIASING_DECODE} {0};add_instance {cmd_demux} {altera_merlin_demultiplexer};set_instance_parameter_value {cmd_demux} {ST_DATA_W} {83};set_instance_parameter_value {cmd_demux} {ST_CHANNEL_W} {2};set_instance_parameter_value {cmd_demux} {NUM_OUTPUTS} {1};set_instance_parameter_value {cmd_demux} {VALID_WIDTH} {1};set_instance_parameter_value {cmd_demux} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};add_instance {cmd_demux_001} {altera_merlin_demultiplexer};set_instance_parameter_value {cmd_demux_001} {ST_DATA_W} {83};set_instance_parameter_value {cmd_demux_001} {ST_CHANNEL_W} {2};set_instance_parameter_value {cmd_demux_001} {NUM_OUTPUTS} {1};set_instance_parameter_value {cmd_demux_001} {VALID_WIDTH} {1};set_instance_parameter_value {cmd_demux_001} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};add_instance {cmd_mux} {altera_merlin_multiplexer};set_instance_parameter_value {cmd_mux} {ST_DATA_W} {83};set_instance_parameter_value {cmd_mux} {ST_CHANNEL_W} {2};set_instance_parameter_value {cmd_mux} {NUM_INPUTS} {2};set_instance_parameter_value {cmd_mux} {PIPELINE_ARB} {1};set_instance_parameter_value {cmd_mux} {USE_EXTERNAL_ARB} {0};set_instance_parameter_value {cmd_mux} {PKT_TRANS_LOCK} {54};set_instance_parameter_value {cmd_mux} {ARBITRATION_SCHEME} {round-robin};set_instance_parameter_value {cmd_mux} {ARBITRATION_SHARES} {1 1 };set_instance_parameter_value {cmd_mux} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};add_instance {rsp_demux} {altera_merlin_demultiplexer};set_instance_parameter_value {rsp_demux} {ST_DATA_W} {83};set_instance_parameter_value {rsp_demux} {ST_CHANNEL_W} {2};set_instance_parameter_value {rsp_demux} {NUM_OUTPUTS} {2};set_instance_parameter_value {rsp_demux} {VALID_WIDTH} {1};set_instance_parameter_value {rsp_demux} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};add_instance {rsp_mux} {altera_merlin_multiplexer};set_instance_parameter_value {rsp_mux} {ST_DATA_W} {83};set_instance_parameter_value {rsp_mux} {ST_CHANNEL_W} {2};set_instance_parameter_value {rsp_mux} {NUM_INPUTS} {1};set_instance_parameter_value {rsp_mux} {PIPELINE_ARB} {0};set_instance_parameter_value {rsp_mux} {USE_EXTERNAL_ARB} {0};set_instance_parameter_value {rsp_mux} {PKT_TRANS_LOCK} {54};set_instance_parameter_value {rsp_mux} {ARBITRATION_SCHEME} {no-arb};set_instance_parameter_value {rsp_mux} {ARBITRATION_SHARES} {1 };set_instance_parameter_value {rsp_mux} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};add_instance {rsp_mux_001} {altera_merlin_multiplexer};set_instance_parameter_value {rsp_mux_001} {ST_DATA_W} {83};set_instance_parameter_value {rsp_mux_001} {ST_CHANNEL_W} {2};set_instance_parameter_value {rsp_mux_001} {NUM_INPUTS} {1};set_instance_parameter_value {rsp_mux_001} {PIPELINE_ARB} {0};set_instance_parameter_value {rsp_mux_001} {USE_EXTERNAL_ARB} {0};set_instance_parameter_value {rsp_mux_001} {PKT_TRANS_LOCK} {54};set_instance_parameter_value {rsp_mux_001} {ARBITRATION_SCHEME} {no-arb};set_instance_parameter_value {rsp_mux_001} {ARBITRATION_SHARES} {1 };set_instance_parameter_value {rsp_mux_001} {MERLIN_PACKET_FORMAT} {ori_burst_size(82:80) response_status(79:78) cache(77:74) protection(73:71) thread_id(70) dest_id(69) src_id(68) qos(67) begin_burst(66) data_sideband(65) addr_sideband(64) burst_type(63:62) burst_size(61:59) burstwrap(58) byte_cnt(57:56) trans_exclusive(55) trans_lock(54) trans_read(53) trans_write(52) trans_posted(51) trans_compressed_read(50) addr(49:18) byteen(17:16) data(15:0)};add_instance {sdram_read_clock_reset_reset_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {sdram_read_clock_reset_reset_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {sdram_read_clock_reset_reset_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {sdram_read_clock_reset_reset_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {sdram_read_clock_reset_reset_reset_bridge} {USE_RESET_REQUEST} {0};add_instance {clk_clk_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {clk_clk_clock_bridge} {EXPLICIT_CLOCK_RATE} {50000000};set_instance_parameter_value {clk_clk_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {sdram_read_avalon_master_translator.avalon_universal_master_0} {sdram_read_avalon_master_agent.av} {avalon};set_connection_parameter_value {sdram_read_avalon_master_translator.avalon_universal_master_0/sdram_read_avalon_master_agent.av} {arbitrationPriority} {1};set_connection_parameter_value {sdram_read_avalon_master_translator.avalon_universal_master_0/sdram_read_avalon_master_agent.av} {baseAddress} {0x0000};set_connection_parameter_value {sdram_read_avalon_master_translator.avalon_universal_master_0/sdram_read_avalon_master_agent.av} {defaultConnection} {false};add_connection {rsp_mux.src} {sdram_read_avalon_master_agent.rp} {avalon_streaming};preview_set_connection_tag {rsp_mux.src/sdram_read_avalon_master_agent.rp} {qsys_mm.response};add_connection {sdram_write_avalon_master_translator.avalon_universal_master_0} {sdram_write_avalon_master_agent.av} {avalon};set_connection_parameter_value {sdram_write_avalon_master_translator.avalon_universal_master_0/sdram_write_avalon_master_agent.av} {arbitrationPriority} {1};set_connection_parameter_value {sdram_write_avalon_master_translator.avalon_universal_master_0/sdram_write_avalon_master_agent.av} {baseAddress} {0x0000};set_connection_parameter_value {sdram_write_avalon_master_translator.avalon_universal_master_0/sdram_write_avalon_master_agent.av} {defaultConnection} {false};add_connection {rsp_mux_001.src} {sdram_write_avalon_master_agent.rp} {avalon_streaming};preview_set_connection_tag {rsp_mux_001.src/sdram_write_avalon_master_agent.rp} {qsys_mm.response};add_connection {sdram_s1_agent.m0} {sdram_s1_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {sdram_s1_agent.m0/sdram_s1_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {sdram_s1_agent.m0/sdram_s1_translator.avalon_universal_slave_0} {baseAddress} {0x0000};set_connection_parameter_value {sdram_s1_agent.m0/sdram_s1_translator.avalon_universal_slave_0} {defaultConnection} {false};add_connection {sdram_s1_agent.rf_source} {sdram_s1_agent_rsp_fifo.in} {avalon_streaming};add_connection {sdram_s1_agent_rsp_fifo.out} {sdram_s1_agent.rf_sink} {avalon_streaming};add_connection {sdram_s1_agent.rdata_fifo_src} {sdram_s1_agent.rdata_fifo_sink} {avalon_streaming};add_connection {cmd_mux.src} {sdram_s1_agent.cp} {avalon_streaming};preview_set_connection_tag {cmd_mux.src/sdram_s1_agent.cp} {qsys_mm.command};add_connection {sdram_read_avalon_master_agent.cp} {router.sink} {avalon_streaming};preview_set_connection_tag {sdram_read_avalon_master_agent.cp/router.sink} {qsys_mm.command};add_connection {router.src} {cmd_demux.sink} {avalon_streaming};preview_set_connection_tag {router.src/cmd_demux.sink} {qsys_mm.command};add_connection {sdram_write_avalon_master_agent.cp} {router_001.sink} {avalon_streaming};preview_set_connection_tag {sdram_write_avalon_master_agent.cp/router_001.sink} {qsys_mm.command};add_connection {router_001.src} {cmd_demux_001.sink} {avalon_streaming};preview_set_connection_tag {router_001.src/cmd_demux_001.sink} {qsys_mm.command};add_connection {sdram_s1_agent.rp} {router_002.sink} {avalon_streaming};preview_set_connection_tag {sdram_s1_agent.rp/router_002.sink} {qsys_mm.response};add_connection {router_002.src} {rsp_demux.sink} {avalon_streaming};preview_set_connection_tag {router_002.src/rsp_demux.sink} {qsys_mm.response};add_connection {cmd_demux.src0} {cmd_mux.sink0} {avalon_streaming};preview_set_connection_tag {cmd_demux.src0/cmd_mux.sink0} {qsys_mm.command};add_connection {cmd_demux_001.src0} {cmd_mux.sink1} {avalon_streaming};preview_set_connection_tag {cmd_demux_001.src0/cmd_mux.sink1} {qsys_mm.command};add_connection {rsp_demux.src0} {rsp_mux.sink0} {avalon_streaming};preview_set_connection_tag {rsp_demux.src0/rsp_mux.sink0} {qsys_mm.response};add_connection {rsp_demux.src1} {rsp_mux_001.sink0} {avalon_streaming};preview_set_connection_tag {rsp_demux.src1/rsp_mux_001.sink0} {qsys_mm.response};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {sdram_read_avalon_master_translator.reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {sdram_write_avalon_master_translator.reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {sdram_s1_translator.reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {sdram_read_avalon_master_agent.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {sdram_write_avalon_master_agent.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {sdram_s1_agent.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {sdram_s1_agent_rsp_fifo.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {router.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {router_001.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {router_002.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {cmd_demux.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {cmd_demux_001.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {cmd_mux.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {rsp_demux.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {rsp_mux.clk_reset} {reset};add_connection {sdram_read_clock_reset_reset_reset_bridge.out_reset} {rsp_mux_001.clk_reset} {reset};add_connection {clk_clk_clock_bridge.out_clk} {sdram_read_avalon_master_translator.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {sdram_write_avalon_master_translator.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {sdram_s1_translator.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {sdram_read_avalon_master_agent.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {sdram_write_avalon_master_agent.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {sdram_s1_agent.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {sdram_s1_agent_rsp_fifo.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {router.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {router_001.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {router_002.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {cmd_demux.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {rsp_mux.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {cmd_demux_001.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {rsp_mux_001.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {cmd_mux.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {rsp_demux.clk} {clock};add_connection {clk_clk_clock_bridge.out_clk} {sdram_read_clock_reset_reset_reset_bridge.clk} {clock};add_interface {clk_clk} {clock} {slave};set_interface_property {clk_clk} {EXPORT_OF} {clk_clk_clock_bridge.in_clk};add_interface {sdram_read_clock_reset_reset_reset_bridge_in_reset} {reset} {slave};set_interface_property {sdram_read_clock_reset_reset_reset_bridge_in_reset} {EXPORT_OF} {sdram_read_clock_reset_reset_reset_bridge.in_reset};add_interface {sdram_read_avalon_master} {avalon} {slave};set_interface_property {sdram_read_avalon_master} {EXPORT_OF} {sdram_read_avalon_master_translator.avalon_anti_master_0};add_interface {sdram_write_avalon_master} {avalon} {slave};set_interface_property {sdram_write_avalon_master} {EXPORT_OF} {sdram_write_avalon_master_translator.avalon_anti_master_0};add_interface {sdram_s1} {avalon} {master};set_interface_property {sdram_s1} {EXPORT_OF} {sdram_s1_translator.avalon_anti_slave_0};set_module_assignment {interconnect_id.sdram.s1} {0};set_module_assignment {interconnect_id.sdram_read.avalon_master} {0};set_module_assignment {interconnect_id.sdram_write.avalon_master} {1};" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_translator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_translator.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_agent.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_agent.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_agent.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_agent.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_avalon_sc_fifo.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_avalon_sc_fifo.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router_002.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router_002.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_demux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_demux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_mux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_mux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_demux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_demux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_mux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_mux.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter.v"
        type="VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </childGeneratedFiles>
@@ -1239,7 +1239,7 @@
    <message level="Debug" culprit="avalon_st_adapter.clk_bridge_0">Timing: ELA:1/0.000s</message>
    <message level="Debug" culprit="avalon_st_adapter.rst_bridge_0">Timing: ELA:2/0.001s/0.001s</message>
    <message level="Debug" culprit="avalon_st_adapter.error_adapter_0">Timing: ELA:1/0.006s</message>
-   <message level="Debug" culprit="avalon_st_adapter">Timing: COM:3/0.042s/0.054s</message>
+   <message level="Debug" culprit="avalon_st_adapter">Timing: COM:3/0.036s/0.051s</message>
    <message
        level="Debug"
        culprit="com_altera_sopcmodel_transforms_avalonst_AvalonStreamingTransform"><![CDATA[After transform: <b>19</b> modules, <b>55</b> connections]]></message>
@@ -1284,7 +1284,7 @@
    <message level="Info" culprit="rsp_demux"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"]]></message>
    <message level="Debug" culprit="qsys">queue size: 2 starting:altera_merlin_multiplexer "submodules/qsys_mm_interconnect_0_rsp_mux"</message>
    <message level="Info" culprit="rsp_mux"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"]]></message>
-   <message level="Info"><![CDATA[Reusing file <b>/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv</b>]]></message>
+   <message level="Info"><![CDATA[Reusing file <b>/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv</b>]]></message>
    <message level="Debug" culprit="qsys">queue size: 0 starting:altera_avalon_st_adapter "submodules/qsys_mm_interconnect_0_avalon_st_adapter"</message>
    <message level="Progress" culprit="min"></message>
    <message level="Progress" culprit="max"></message>
@@ -1313,15 +1313,15 @@
    name="altera_reset_controller">
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.v"
        type="VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_synchronizer.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_synchronizer.v"
        type="VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.sdc"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_reset_controller.sdc"
        type="SDC"
        attributes="" />
   </generatedFiles>
@@ -1347,7 +1347,7 @@
   <parameter name="SYNC_RESET" value="0" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_translator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_translator.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </generatedFiles>
@@ -1374,7 +1374,7 @@
    name="altera_merlin_slave_translator">
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_translator.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </generatedFiles>
@@ -1409,7 +1409,7 @@
    name="altera_merlin_master_agent">
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_agent.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_master_agent.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </generatedFiles>
@@ -1436,11 +1436,11 @@
    name="altera_merlin_slave_agent">
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_agent.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_slave_agent.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </generatedFiles>
@@ -1466,7 +1466,7 @@
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_avalon_sc_fifo.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_avalon_sc_fifo.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
@@ -1521,7 +1521,7 @@
   <parameter name="NON_SECURED_TAG" value="1" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </generatedFiles>
@@ -1577,7 +1577,7 @@
   <parameter name="NON_SECURED_TAG" value="1,1" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router_002.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_router_002.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </generatedFiles>
@@ -1611,7 +1611,7 @@
   <parameter name="NUM_OUTPUTS" value="1" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_demux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_demux.sv"
        type="SYSTEM_VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
@@ -1647,10 +1647,10 @@
   <parameter name="PKT_TRANS_LOCK" value="54" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_mux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_cmd_mux.sv"
        type="SYSTEM_VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
@@ -1685,7 +1685,7 @@
   <parameter name="NUM_OUTPUTS" value="2" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_demux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_demux.sv"
        type="SYSTEM_VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
@@ -1721,10 +1721,10 @@
   <parameter name="PKT_TRANS_LOCK" value="54" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv"
        type="SYSTEM_VERILOG" />
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_mux.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_rsp_mux.sv"
        type="SYSTEM_VERILOG" />
   </generatedFiles>
   <childGeneratedFiles/>
@@ -1739,7 +1739,7 @@
   <messages>
    <message level="Debug" culprit="qsys">queue size: 2 starting:altera_merlin_multiplexer "submodules/qsys_mm_interconnect_0_rsp_mux"</message>
    <message level="Info" culprit="rsp_mux"><![CDATA["<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"]]></message>
-   <message level="Info"><![CDATA[Reusing file <b>/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv</b>]]></message>
+   <message level="Info"><![CDATA[Reusing file <b>/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/altera_merlin_arbitrator.sv</b>]]></message>
   </messages>
  </entity>
  <entity
@@ -1776,12 +1776,12 @@
   <parameter name="outEmptyWidth" value="1" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter.v"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </childGeneratedFiles>
@@ -1836,7 +1836,7 @@
   <parameter name="inUsePackets" value="false" />
   <generatedFiles>
    <file
-       path="/home/peter/quartus/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
+       path="/home/peter/quartus/de0-nano/sdram/DE0_NANO/qsys/synthesis/submodules/qsys_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv"
        type="SYSTEM_VERILOG"
        attributes="" />
   </generatedFiles>
