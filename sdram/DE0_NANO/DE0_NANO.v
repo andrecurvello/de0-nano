@@ -70,29 +70,34 @@ output		          		DRAM_WE_N;
 
 
 //////////// AVALON CONNECTOR //////////
-wire		[31:0] read_base;
-wire		read_go;
-reg		[31:0] r_read_base;
-reg		r_read_go;
+wire		qsys_sdram_read_control_fixed_location;
+wire		[31:0] qsys_sdram_read_control_read_base;
+wire		[31:0] qsys_sdram_read_control_read_length;
+wire		qsys_sdram_read_control_go;
+reg		reg_qsys_sdram_read_control_fixed_location;
+reg		[31:0] reg_qsys_sdram_read_control_read_base;
+reg		[31:0] reg_qsys_sdram_read_control_read_length;
+reg		reg_qsys_sdram_read_control_go;
 wire		qsys_sdram_read_control_done;
 wire		qsys_sdram_read_control_early_done;
-wire		read_buffer;
-reg		r_read_buffer;
-wire		[15:0] read_buffer_output_data;
-wire		read_data_available;
+wire		qsys_sdram_read_user_read_buffer;
+reg		reg_qsys_sdram_read_user_read_buffer;
+wire		[15:0] qsys_sdram_read_user_buffer_output_data;
+wire		qsys_sdram_read_user_data_available;
 
-
-wire [31:0]	write_base;
-wire        write_go;
-wire [15:0]	buffer_input_data;
+wire        qsys_sdram_write_control_fixed_location;
+wire [31:0]	qsys_sdram_write_control_write_base;
+wire [31:0]	qsys_sdram_write_control_write_length;
+wire        qsys_sdram_write_control_go;
+wire [15:0]	qsys_sdram_write_user_buffer_input_data;
 wire		qsys_sdram_write_user_buffer_full;
 wire		qsys_sdram_write_control_done;
-reg	[31:0]	r_write_base;
-reg		    r_write_go;
-reg		    r_write_buffer;
-reg	[15:0]	r_buffer_input_data;
-
-reg [15:0] r_q = 16'b0;
+reg		    reg_qsys_sdram_write_control_fixed_location;
+reg	[31:0]	reg_qsys_sdram_write_control_write_base;
+reg	[31:0]	reg_qsys_sdram_write_control_write_length;
+reg		    reg_qsys_sdram_write_control_go;
+reg		    reg_qsys_sdram_write_user_write_buffer;
+reg	[15:0]	reg_qsys_sdram_write_user_buffer_input_data;
 
 reg [31:0] counter = 32'b0;
 
@@ -118,78 +123,39 @@ qsys u0(
 		.sdram_wire_ras_n(DRAM_RAS_N),				//           .ras_n
 		.sdram_wire_we_n(DRAM_WE_N),					//           .we_n
 		
-		.sdram_read_control_fixed_location  (1'b1), // When set the master address will not increment.
-		.sdram_read_control_read_base       (read_base),
-		.sdram_read_control_read_length     (32'd2), // Number of bytes to transfer (16 bit words).
-		.sdram_read_control_go              (read_go),
+		.sdram_read_control_fixed_location  (qsys_sdram_read_control_fixed_location),
+		.sdram_read_control_read_base       (qsys_sdram_read_control_read_base),
+		.sdram_read_control_read_length     (qsys_sdram_read_control_read_length),
+		.sdram_read_control_go              (qsys_sdram_read_control_go),
 		.sdram_read_control_done            (qsys_sdram_read_control_done),
 		.sdram_read_control_early_done      (qsys_sdram_read_control_early_done),
-		.sdram_read_user_read_buffer        (read_buffer),
-		.sdram_read_user_buffer_output_data (read_buffer_output_data),
-		.sdram_read_user_data_available     (read_data_available),
+		.sdram_read_user_read_buffer        (qsys_sdram_read_user_read_buffer),
+		.sdram_read_user_buffer_output_data (qsys_sdram_read_user_buffer_output_data),
+		.sdram_read_user_data_available     (qsys_sdram_read_user_data_available),
         
-        .sdram_write_user_write_buffer      (write_buffer),      //           sdram_write_user.write_buffer
-		.sdram_write_user_buffer_input_data (buffer_input_data), //                           .buffer_input_data
+        .sdram_write_user_write_buffer      (qsys_sdram_write_user_write_buffer),      //           sdram_write_user.write_buffer
+		.sdram_write_user_buffer_input_data (qsys_sdram_write_user_buffer_input_data), //                           .buffer_input_data
 		.sdram_write_user_buffer_full       (qsys_sdram_write_user_buffer_full),       //                           .buffer_full
-		.sdram_write_control_fixed_location (1'b1), // When set the master address will not increment.
-		.sdram_write_control_write_base     (write_base),     //                           .write_base
-		.sdram_write_control_write_length   (32'd2), // Number of bytes to transfer (16 bit words).
-		.sdram_write_control_go             (write_go),             //                           .go
+		.sdram_write_control_fixed_location (qsys_sdram_write_control_fixed_location), //        sdram_write_control.fixed_location
+		.sdram_write_control_write_base     (qsys_sdram_write_control_write_base),     //                           .write_base
+		.sdram_write_control_write_length   (qsys_sdram_write_control_write_length),   //                           .write_length
+		.sdram_write_control_go             (qsys_sdram_write_control_go),             //                           .go
 		.sdram_write_control_done           (qsys_sdram_write_control_done)  
 );
 
-assign read_base [31:0] = r_read_base [31:0];
-assign read_go = r_read_go;
-assign read_buffer = r_read_buffer;
+assign qsys_sdram_read_control_fixed_location = reg_qsys_sdram_read_control_fixed_location;
+assign qsys_sdram_read_control_read_base [31:0] = reg_qsys_sdram_read_control_read_base [31:0];
+assign qsys_sdram_read_control_read_length [31:0] = reg_qsys_sdram_read_control_read_length [31:0];
+assign qsys_sdram_read_control_go = reg_qsys_sdram_read_control_go;
+assign qsys_sdram_read_user_read_buffer = reg_qsys_sdram_read_user_read_buffer;
 
 
-assign write_buffer             = r_write_buffer;
-assign buffer_input_data [15:0] = r_buffer_input_data [15:0];
-assign write_base [31:0]        = r_write_base [31:0];
-assign write_go                 = r_write_go;
-
-assign LED = r_q;
-
-reg read_state = 1'b0; 
-reg write_state = 1'b0;
-
-always @(posedge CLOCK_50) begin
-    case (read_state)
-        1'b0: // waiting for a read request
-            begin
-                r_read_buffer <= 1'b0;
-                if (r_read_go) begin
-                    read_state <= 1'b1; 
-                end
-            end
-        1'b1: // waiting for data
-            begin
-                r_read_go <= 1'b0;
-                if (read_data_available) begin
-                    r_q <= read_buffer_output_data[7:0];
-                    r_read_buffer <= 1'b1; // Acts as a read acknowledge.
-                    read_state <= 1'b0; 
-                end
-            end
-    endcase    
-end
-
-always @(posedge CLOCK_50) begin
-    case (write_state)
-        1'b0: // waiting for a write request
-            begin
-                if (write_go) begin
-                    read_state <= 1'b1;
-                end
-            end
-        1'b1: // 
-            begin
-                write_go <= 1'b0;
-                r_write_buffer <= 1'b0;
-                read_state <= 1'b0;         
-            end
-    endcase    
-end
+assign qsys_sdram_write_user_write_buffer             = reg_qsys_sdram_write_user_write_buffer;
+assign qsys_sdram_write_user_buffer_input_data [15:0] = reg_qsys_sdram_write_user_buffer_input_data [15:0];
+assign qsys_sdram_write_control_fixed_location        = reg_qsys_sdram_write_control_fixed_location;
+assign qsys_sdram_write_control_write_base [31:0]     = reg_qsys_sdram_write_control_write_base [31:0];
+assign qsys_sdram_write_control_write_length [31:0]   = reg_qsys_sdram_write_control_write_length [31:0];
+assign qsys_sdram_write_control_go                    = reg_qsys_sdram_write_control_go;
 
 
     always @(posedge CLOCK_50) begin
@@ -204,20 +170,33 @@ end
     always @(posedge CLOCK_50) begin
         if (counter == 32'd2) begin
             // Write data.
-            r_write_base <= 32'd0;
-            
-            //r_buffer_input_data <= 16'b1100_1100_1100_1100;
-            //r_buffer_input_data <= 16'b1010_1010_1010_1010;
-            r_buffer_input_data <= 16'b1111_0000_1110_1101;
-            r_write_buffer <= 1'b1;
-            r_write_go <= 1'b1;
-        end else if (counter == 32'd10) begin
+            reg_qsys_sdram_write_control_fixed_location <= 1'b0;
+            reg_qsys_sdram_write_control_write_base <= 32'd0;
+            reg_qsys_sdram_write_control_write_length <= 32'd2;
+            reg_qsys_sdram_write_control_go <= 1'b1;
+            //reg_qsys_sdram_write_user_buffer_input_data = 16'b1100_1100_1100_1100;
+            reg_qsys_sdram_write_user_buffer_input_data = 16'b1010_1010_1010_1010;
+            //reg_qsys_sdram_write_user_buffer_input_data = 16'b1111_0000_1110_1101;
+            reg_qsys_sdram_write_user_write_buffer <= 1'b1;
+        end else if (counter == 32'd3) begin
+            // Ensure the request only lasts one clock cycle.
+            reg_qsys_sdram_write_user_write_buffer <= 1'b0;
+            reg_qsys_sdram_write_control_go <= 1'b0;
+        
             // Send the read command.
-            r_read_base <= 0;
-            r_read_go <= 1;
-        end 
+            reg_qsys_sdram_read_control_fixed_location <= 0;
+            reg_qsys_sdram_read_control_read_base <= 0;
+            reg_qsys_sdram_read_control_read_length <= 2;
+            reg_qsys_sdram_read_control_go <= 1;
+        end if (reg_qsys_sdram_read_control_go) begin
+            // Ensure the request only lasts one clock cycle.
+            reg_qsys_sdram_read_control_go <= 0;
+            //reg_qsys_sdram_write_user_write_buffer <= 1'b0;
+            //reg_qsys_sdram_write_control_go <= 1'b0;
+        end
         
     end
 
+    assign LED [7:0] = qsys_sdram_read_user_buffer_output_data [7:0];
 
 endmodule

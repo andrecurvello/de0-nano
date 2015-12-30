@@ -50,8 +50,7 @@ derive_clock_uncertainty
 # Set False Path
 #**************************************************************
 
-# LED output path
-set_false_path -from * -to [get_ports LED*]
+
 
 #**************************************************************
 # Set Multicycle Path
