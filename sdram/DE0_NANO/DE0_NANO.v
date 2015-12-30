@@ -39,29 +39,29 @@ module DE0_NANO(
 //  PORT declarations
 //=======================================================
 
-//////////// CLOCK //////////
-input               CLOCK_50;
+    //////////// CLOCK //////////
+    input               CLOCK_50;
 
-//////////// LED //////////
-output       [7:0]  LED;
+    //////////// LED //////////
+    output       [7:0]  LED;
 
-//////////// KEY //////////
-input        [1:0]  KEY;
+    //////////// KEY //////////
+    input        [1:0]  KEY;
 
-//////////// SW //////////
-input        [3:0]  SW;
+    //////////// SW //////////
+    input        [3:0]  SW;
 
-//////////// SDRAM //////////
-output      [12:0]  DRAM_ADDR;
-output       [1:0]  DRAM_BA;
-output              DRAM_CAS_N;
-output              DRAM_CKE;
-output              DRAM_CLK;
-output              DRAM_CS_N;
-inout       [15:0]  DRAM_DQ;
-output       [1:0]  DRAM_DQM;
-output              DRAM_RAS_N;
-output              DRAM_WE_N;
+    //////////// SDRAM //////////
+    output      [12:0]  DRAM_ADDR;
+    output       [1:0]  DRAM_BA;
+    output              DRAM_CAS_N;
+    output              DRAM_CKE;
+    output              DRAM_CLK;
+    output              DRAM_CS_N;
+    inout       [15:0]  DRAM_DQ;
+    output       [1:0]  DRAM_DQM;
+    output              DRAM_RAS_N;
+    output              DRAM_WE_N;
 
 
 //=======================================================
@@ -71,34 +71,34 @@ output              DRAM_WE_N;
 
 //////////// AVALON CONNECTOR //////////
 
-// Read
-wire [31:0] read_base;
-wire        read_go;
-wire        read_buffer;
-wire        read_done;
-wire        read_early_done;
-wire        read_data_available;
-wire [15:0] output_data;
+    // Read
+    wire [31:0] read_base;
+    wire        read_go;
+    wire        read_buffer;
+    wire        read_done;
+    wire        read_early_done;
+    wire        read_data_available;
+    wire [15:0] output_data;
 
-reg [31:0]  r_read_address;
-reg         r_read_en;
-reg         r_read_buffer;
+    reg [31:0]  r_read_address;
+    reg         r_read_en;
+    reg         r_read_buffer;
 
-// Write
-wire [31:0] write_base;
-wire        write_go;
-wire        write_buffer;
-wire        write_buffer_full;
-wire        write_done;
-wire [15:0] input_data;
+    // Write
+    wire [31:0] write_base;
+    wire        write_go;
+    wire        write_buffer;
+    wire        write_buffer_full;
+    wire        write_done;
+    wire [15:0] input_data;
 
-reg [31:0]  r_write_address;
-reg         r_write_en;
-reg         r_write_buffer;
-reg [15:0]  r_input_data;
+    reg [31:0]  r_write_address;
+    reg         r_write_en;
+    reg         r_write_buffer;
+    reg [15:0]  r_input_data;
 
-reg [31:0]  counter = 32'b0;
-reg [15:0]  r_q = 16'b0;
+    reg [31:0]  counter = 32'b0;
+    reg [15:0]  r_q = 16'b0;
 
 //=======================================================
 //  Structural coding
@@ -106,21 +106,21 @@ reg [15:0]  r_q = 16'b0;
 
 
     qsys u0(
-        .clk_clk(CLOCK_50),       //clk.clk
-        .reset_reset_n(1'b1),      //reset.reset_n
+        .clk_clk(CLOCK_50),
+        .reset_reset_n(1'b1),
 
-        .sdram_clock_c0_clk(DRAM_CLK),    //sdram_clock_c0.clk
-        .sdram_clock_areset_conduit_export(1'b0), //sdram_clock_areset_conduit.export
+        .sdram_clock_c0_clk(DRAM_CLK),
+        .sdram_clock_areset_conduit_export(1'b0),
 
-        .sdram_wire_addr(DRAM_ADDR),    //sdram_wire.addr
-        .sdram_wire_ba(DRAM_BA),     //           .ba
-        .sdram_wire_cas_n(DRAM_CAS_N),    //           .cas_n
-        .sdram_wire_cke(DRAM_CKE),     //           .cke
-        .sdram_wire_cs_n(DRAM_CS_N),    //           .cs_n
-        .sdram_wire_dq(DRAM_DQ),     //           .dq
-        .sdram_wire_dqm(DRAM_DQM),     //           .dqm
-        .sdram_wire_ras_n(DRAM_RAS_N),    //           .ras_n
-        .sdram_wire_we_n(DRAM_WE_N),    //           .we_n
+        .sdram_wire_addr(DRAM_ADDR),
+        .sdram_wire_ba(DRAM_BA),
+        .sdram_wire_cas_n(DRAM_CAS_N),
+        .sdram_wire_cke(DRAM_CKE),
+        .sdram_wire_cs_n(DRAM_CS_N),
+        .sdram_wire_dq(DRAM_DQ),
+        .sdram_wire_dqm(DRAM_DQM),
+        .sdram_wire_ras_n(DRAM_RAS_N),
+        .sdram_wire_we_n(DRAM_WE_N),
 
         .sdram_read_control_fixed_location  (1'b1), // do not auto increment address
         .sdram_read_control_read_base       (read_base),
@@ -142,16 +142,16 @@ reg [15:0]  r_q = 16'b0;
         .sdram_write_control_done           (write_done)
     );
 
-assign read_base    = r_read_address;
-assign read_go      = r_read_en;
-assign read_buffer  = r_read_buffer;
+    assign read_base    = r_read_address;
+    assign read_go      = r_read_en;
+    assign read_buffer  = r_read_buffer;
 
-assign write_buffer = r_write_buffer;
-assign input_data   = r_input_data;
-assign write_base   = r_write_address;
-assign write_go     = r_write_en;
+    assign write_buffer = r_write_buffer;
+    assign input_data   = r_input_data;
+    assign write_base   = r_write_address;
+    assign write_go     = r_write_en;
 
-assign LED = r_q[7:0];
+    assign LED = r_q[7:0];
 
     always @(posedge CLOCK_50) begin
         if (counter == 32'd25000000) begin
