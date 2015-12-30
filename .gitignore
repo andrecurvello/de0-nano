@@ -1,8 +1,12 @@
 *.bak
 *.qws
 *.rpt
+*.summary
+*.smsg
+*.done
 
 # ignore Quartus II generated folders
+.qsys_edit
 db/
 incremental_db/
 greybox_tmp/
