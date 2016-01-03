@@ -1,4 +1,4 @@
-//Legal Notice: (C)2015 Altera Corporation. All rights reserved.  Your
+//Legal Notice: (C)2016 Altera Corporation. All rights reserved.  Your
 //use of Altera Corporation's design tools, logic functions and other
 //software and tools, and its AMPP partner logic functions, and any
 //output files any of the foregoing (including device programming or
@@ -249,8 +249,8 @@ module qsys_sdram (
   reg              oe /* synthesis ALTERA_ATTRIBUTE = "FAST_OUTPUT_ENABLE_REGISTER=ON"  */;
   wire             pending;
   wire             rd_strobe;
-  reg     [  2: 0] rd_valid;
-  reg     [ 12: 0] refresh_counter;
+  reg     [  1: 0] rd_valid;
+  reg     [ 13: 0] refresh_counter;
   reg              refresh_request;
   wire             rnw_match;
   wire             row_match;
@@ -300,9 +300,9 @@ module qsys_sdram (
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          refresh_counter <= 5000;
+          refresh_counter <= 10000;
       else if (refresh_counter == 0)
-          refresh_counter <= 781;
+          refresh_counter <= 37;
       else 
         refresh_counter <= refresh_counter - 1'b1;
     end
@@ -375,7 +375,7 @@ module qsys_sdram (
                   i_state <= 3'b011;
                   i_count <= 3;
                   // Count up init_refresh_commands
-                  if (i_refs == 3'h1)
+                  if (i_refs == 3'h7)
                       i_next <= 3'b111;
                   else 
                     i_next <= 3'b010;
@@ -397,7 +397,7 @@ module qsys_sdram (
               3'b111: begin
                   i_state <= 3'b011;
                   i_cmd <= {{1{1'b0}},3'h0};
-                  i_addr <= {{3{1'b0}},1'b0,2'b00,3'h3,4'h0};
+                  i_addr <= {{3{1'b0}},1'b0,2'b00,3'h2,4'h0};
                   i_count <= 4;
                   i_next <= 3'b101;
               end // 3'b111 
@@ -516,7 +516,7 @@ module qsys_sdram (
                         begin
                           m_state <= 9'b000000100;
                           m_next <= 9'b000000001;
-                          m_count <= 2;
+                          m_count <= 1;
                         end
                       else 
                         begin
@@ -610,11 +610,7 @@ module qsys_sdram (
                   m_cmd <= {csn_decode,3'h7};
                   //if we need to ARF, bail, else spin
                   if (refresh_request)
-                    begin
-                      m_state <= 9'b000000100;
-                      m_next <= 9'b000000001;
-                      m_count <= 1;
-                    end
+                      m_state <= 9'b000000001;
                   else //wait for fifo to have contents
                   if (!f_empty)
                       //Are we 'pending' yet?
@@ -630,9 +626,9 @@ module qsys_sdram (
                         end
                       else 
                         begin
-                          m_state <= 9'b000100000;
+                          m_state <= 9'b001000000;
                           m_next <= 9'b000000001;
-                          m_count <= 1;
+                          m_count <= 0;
                         end
               end // 9'b100000000 
           
@@ -656,9 +652,9 @@ module qsys_sdram (
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          rd_valid <= {3{1'b0}};
+          rd_valid <= {2{1'b0}};
       else 
-        rd_valid <= (rd_valid << 1) | { {2{1'b0}}, rd_strobe };
+        rd_valid <= (rd_valid << 1) | { {1{1'b0}}, rd_strobe };
     end
 
 
@@ -678,7 +674,7 @@ module qsys_sdram (
       if (reset_n == 0)
           za_valid <= 0;
       else if (1)
-          za_valid <= rd_valid[2];
+          za_valid <= rd_valid[1];
     end
 
 

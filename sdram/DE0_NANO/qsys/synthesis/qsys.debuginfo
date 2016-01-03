@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="qsys" kind="system" version="15.1" fabric="QSYS">
  <!-- Format version 15.1 185 (Future versions may contain additional information.) -->
- <!-- 2015.12.30.15:30:47 -->
+ <!-- 2016.01.03.17:53:57 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1451489428</value>
+  <value>1451843618</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -490,7 +490,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <assignment>
    <name>embeddedsw.CMacro.CAS_LATENCY</name>
-   <value>3</value>
+   <value>2</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.CONTENTS_INFO</name>
@@ -502,7 +502,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_REFRESH_COMMANDS</name>
-   <value>2</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.IS_INITIALIZED</name>
@@ -510,11 +510,11 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.POWERUP_DELAY</name>
-   <value>100.0</value>
+   <value>200.0</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.REFRESH_PERIOD</name>
-   <value>15.625</value>
+   <value>0.75</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.REGISTER_DATA_IN</name>
@@ -566,7 +566,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.T_AC</name>
-   <value>5.5</value>
+   <value>6.5</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.T_MRD</name>
@@ -602,7 +602,7 @@ the requested settings for a module instance. -->
   </assignment>
   <parameter name="TAC">
    <type>double</type>
-   <value>5.5</value>
+   <value>6.5</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -642,7 +642,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="casLatency">
    <type>int</type>
-   <value>3</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -674,7 +674,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initRefreshCommands">
    <type>int</type>
-   <value>2</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -714,7 +714,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="powerUpDelay">
    <type>double</type>
-   <value>100.0</value>
+   <value>200.0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -722,7 +722,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="refreshPeriod">
    <type>double</type>
-   <value>15.625</value>
+   <value>0.75</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -7020,5 +7020,5 @@ parameters are a RESULT of the module parameters. -->
   <version>15.1</version>
  </plugin>
  <reportVersion>15.1 185</reportVersion>
- <uniqueIdentifier>001FD0AC5F5C00000151F383060E</uniqueIdentifier>
+ <uniqueIdentifier>001FD0AC5F5C00000152089F8FE8</uniqueIdentifier>
 </EnsembleReport>

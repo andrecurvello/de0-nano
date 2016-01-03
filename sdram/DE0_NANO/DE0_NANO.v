@@ -182,6 +182,8 @@ module DE0_NANO(
         end
     end
     
+    /*
+    // Wait for key push to read the next memory.
     always @(posedge CLOCK_50) begin
         if (key_edge_detect == 2'b01) begin // rising edge of KEY[1]
             // Read from memory
@@ -196,8 +198,34 @@ module DE0_NANO(
             r_read_address <= r_read_address + 32'd2;
         end
     end
+    */
+    
+    // Loop through the memory displaying.
+    always @(posedge CLOCK_50) begin
+        if (counter_0 > 32'd254) begin
+        
+            if (counter_1 > 32'd25000000 && read_done) begin
+                counter_1 <= 32'd0;
+                r_read_en <= 1'b1;
+            end else begin
+                counter_1 <= counter_1 + 32'b1;
+            end
+            
+            if (r_read_en) begin
+                // Ensure the request only lasts one clock cycle.
+                r_read_en <= 1'b0;
+                // Set the next read address
+                if (r_read_address > 32'd512) begin
+                    r_read_address <= 32'd0;
+                end else begin
+                    r_read_address <= r_read_address + 32'd2;
+                end
+            end 
+        end
+    end
     
     always @(posedge CLOCK_50) begin
+        // r_read_buffer MUST only be set for one cycle
         if (read_data_available && r_read_buffer == 1'b0) begin
             r_q <= output_data;
             r_read_buffer <= 1'b1;
@@ -205,88 +233,5 @@ module DE0_NANO(
             r_read_buffer <= 1'b0;
         end
     end
-    
-    /*
-    // Loop through the addresses that have been written to.
-    always @(posedge CLOCK_50) begin
-        if (counter_0 > 32'd254) begin
-            if (counter_1 > 32'd10) begin
-                counter_1 <= 32'd0;
-            end else if (r_read_en) begin
-                // Ensure the request only lasts one clock cycle.
-                r_read_en <= 1'b0;
-                // Set the next read address
-                r_read_address <= r_read_address + 32'd2;
-            end else if (read_done) begin
-                 // Send the read command.
-                r_read_en <= 1'b1; // @todo read at a certain counter time
-            end else if (r_read_address > 32'd512) begin
-                r_read_address <= 32'd0;
-            end else begin
-                counter_1 <= counter_1 + 32'b1;
-            end
-        end
-    end
-    
-    always @(posedge CLOCK_50) begin
-        if (read_data_available) begin
-            r_q <= output_data;
-            r_read_buffer <= 1'b1;
-        end else begin
-            r_read_buffer <= 1'b0;
-        end
-    end
-*/
-
-    /*
-    always @(posedge CLOCK_50) begin
-        if (counter == 32'd25000000) begin
-            //counter <= 32'd0;
-            // stop
-        end else begin
-            counter <= counter + 32'b1;
-        end
-    end
-
-    // Write
-    always @(posedge CLOCK_50) begin
-        if (counter == 32'd2) begin
-            // Write data.
-            r_write_address <= 32'd0;
-            
-            //r_input_data <= 16'b1100_1100_1100_1100;
-            //r_input_data <= 16'b1010_1010_1010_1010;
-            r_input_data <= 16'b1111_0000_1110_1101;
-            r_write_buffer <= 1'b1;
-            r_write_en <= 1'b1;
-        end else begin
-            // Ensure the request only lasts one clock cycle.
-            r_write_buffer <= 1'b0;
-            r_write_en <= 1'b0;
-        end
-        
-    end
-
-    // Read
-    always @(posedge CLOCK_50) begin
-        if (counter == 32'd3) begin
-            // Send the read command.
-            r_read_address <= 32'd0;
-            r_read_en <= 1'b1;
-        end else begin
-            // Ensure the request only lasts one clock cycle.
-            r_read_en <= 1'b0;
-        end
-    end
-
-    always @(posedge CLOCK_50) begin
-        if (read_data_available) begin
-            r_q <= output_data;
-            r_read_buffer <= 1'b1;
-        end else begin
-            r_read_buffer <= 1'b0;
-        end
-    end
-*/
-
+   
 endmodule

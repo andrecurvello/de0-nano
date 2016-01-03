@@ -114,27 +114,27 @@
    kind="altera_avalon_new_sdram_controller"
    version="15.1"
    enabled="1">
-  <parameter name="TAC" value="5.5" />
+  <parameter name="TAC" value="6.5" />
   <parameter name="TMRD" value="3" />
   <parameter name="TRCD" value="20.0" />
   <parameter name="TRFC" value="70.0" />
   <parameter name="TRP" value="20.0" />
   <parameter name="TWR" value="14.0" />
-  <parameter name="casLatency" value="3" />
+  <parameter name="casLatency" value="2" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="columnWidth" value="9" />
-  <parameter name="componentName" value="qsys_sdram" />
+  <parameter name="componentName" value="$${FILENAME}_sdram" />
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="false" />
   <parameter name="initNOPDelay" value="0.0" />
-  <parameter name="initRefreshCommands" value="2" />
+  <parameter name="initRefreshCommands" value="8" />
   <parameter name="masteredTristateBridgeSlave" value="0" />
   <parameter name="model">single_Micron_MT48LC4M32B2_7_chip</parameter>
   <parameter name="numberOfBanks" value="4" />
   <parameter name="numberOfChipSelects" value="1" />
   <parameter name="pinsSharedViaTriState" value="false" />
-  <parameter name="powerUpDelay" value="100.0" />
-  <parameter name="refreshPeriod" value="15.625" />
+  <parameter name="powerUpDelay" value="200.0" />
+  <parameter name="refreshPeriod" value="0.75" />
   <parameter name="registerDataIn" value="true" />
   <parameter name="rowWidth" value="13" />
  </module>
