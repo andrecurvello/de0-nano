@@ -200,7 +200,8 @@ module DE0_NANO(
     end
     */
     
-    // Loop through the memory displaying.
+    /*
+    // Loop through the memory displaying on the leds slowly.
     always @(posedge CLOCK_50) begin
         if (counter_0 > 32'd254) begin
         
@@ -223,6 +224,29 @@ module DE0_NANO(
             end 
         end
     end
+    */
+    
+    
+    // Loop through the memory as fast as possible.
+    always @(posedge CLOCK_50) begin
+        if (counter_0 > 32'd254) begin
+            if (read_done) begin
+                r_read_en <= 1'b1;
+            end
+            
+            if (r_read_en) begin
+                // Ensure the request only lasts one clock cycle.
+                r_read_en <= 1'b0;
+                // Set the next read address
+                if (r_read_address > 32'd512) begin
+                    r_read_address <= 32'd0;
+                end else begin
+                    r_read_address <= r_read_address + 32'd2;
+                end
+            end 
+        end
+    end
+    
     
     always @(posedge CLOCK_50) begin
         // r_read_buffer MUST only be set for one cycle
