@@ -101,6 +101,9 @@ module DE0_NANO(
     reg [31:0]  counter_1 = 32'b0;
     reg [15:0]  r_q = 16'b0;
 
+    reg [1:0] key_edge_detect = 2'b00;
+   
+    
 //=======================================================
 //  Structural coding
 //=======================================================
@@ -155,6 +158,12 @@ module DE0_NANO(
     assign LED = r_q[7:0];
     
     always @(posedge CLOCK_50) begin
+        key_edge_detect <= {key_edge_detect[0], KEY[1]};
+    end 
+    
+   
+    
+    always @(posedge CLOCK_50) begin
         if (counter_0 < 32'd255) begin
             if (r_write_en) begin
                 r_write_buffer <= 1'b0;
@@ -173,6 +182,31 @@ module DE0_NANO(
         end
     end
     
+    always @(posedge CLOCK_50) begin
+        if (key_edge_detect == 2'b01) begin // rising edge of KEY[1]
+            // Read from memory
+            r_read_en <= 1'b1;
+        end else begin
+            r_read_en <= 1'b0;
+        end
+        
+        
+        if (key_edge_detect == 2'b10) begin // falling edge of KEY[1]
+            // Set the address for the next read
+            r_read_address <= r_read_address + 32'd2;
+        end
+    end
+    
+    always @(posedge CLOCK_50) begin
+        if (read_data_available && r_read_buffer == 1'b0) begin
+            r_q <= output_data;
+            r_read_buffer <= 1'b1;
+        end else begin
+            r_read_buffer <= 1'b0;
+        end
+    end
+    
+    /*
     // Loop through the addresses that have been written to.
     always @(posedge CLOCK_50) begin
         if (counter_0 > 32'd254) begin
@@ -202,6 +236,7 @@ module DE0_NANO(
             r_read_buffer <= 1'b0;
         end
     end
+*/
 
     /*
     always @(posedge CLOCK_50) begin
