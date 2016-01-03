@@ -80,8 +80,8 @@ module DE0_NANO(
     wire        read_data_available;
     wire [15:0] output_data;
 
-    reg [31:0]  r_read_address;
-    reg         r_read_en;
+    reg [31:0]  r_read_address = 32'b0;
+    reg         r_read_en = 1'b0;
     reg         r_read_buffer;
 
     // Write
@@ -92,12 +92,13 @@ module DE0_NANO(
     wire        write_done;
     wire [15:0] input_data;
 
-    reg [31:0]  r_write_address;
-    reg         r_write_en;
+    reg [31:0]  r_write_address = 32'b0;
+    reg         r_write_en = 1'b0;
     reg         r_write_buffer;
     reg [15:0]  r_input_data;
 
-    reg [31:0]  counter = 32'b0;
+    reg [31:0]  counter_0 = 32'b0;
+    reg [31:0]  counter_1 = 32'b0;
     reg [15:0]  r_q = 16'b0;
 
 //=======================================================
@@ -152,7 +153,57 @@ module DE0_NANO(
     assign write_go     = r_write_en;
 
     assign LED = r_q[7:0];
+    
+    always @(posedge CLOCK_50) begin
+        if (counter_0 < 32'd255) begin
+            if (r_write_en) begin
+                r_write_buffer <= 1'b0;
+                r_write_en = 1'b0;
+                r_write_address <= r_write_address + 32'd2;
+            end else if (write_done && !write_buffer_full) begin
+                r_input_data <= counter_0[15:0];
+                r_write_buffer <= 1'b1;
+                r_write_en = 1'b1;
+                counter_0 <= counter_0 + 32'b1;
+            end
+            
+        end else begin
+            r_write_en = 1'b0;
+            r_write_buffer <= 1'b0;
+        end
+    end
+    
+    // Loop through the addresses that have been written to.
+    always @(posedge CLOCK_50) begin
+        if (counter_0 > 32'd254) begin
+            if (counter_1 > 32'd10) begin
+                counter_1 <= 32'd0;
+            end else if (r_read_en) begin
+                // Ensure the request only lasts one clock cycle.
+                r_read_en <= 1'b0;
+                // Set the next read address
+                r_read_address <= r_read_address + 32'd2;
+            end else if (read_done) begin
+                 // Send the read command.
+                r_read_en <= 1'b1; // @todo read at a certain counter time
+            end else if (r_read_address > 32'd512) begin
+                r_read_address <= 32'd0;
+            end else begin
+                counter_1 <= counter_1 + 32'b1;
+            end
+        end
+    end
+    
+    always @(posedge CLOCK_50) begin
+        if (read_data_available) begin
+            r_q <= output_data;
+            r_read_buffer <= 1'b1;
+        end else begin
+            r_read_buffer <= 1'b0;
+        end
+    end
 
+    /*
     always @(posedge CLOCK_50) begin
         if (counter == 32'd25000000) begin
             //counter <= 32'd0;
@@ -201,5 +252,6 @@ module DE0_NANO(
             r_read_buffer <= 1'b0;
         end
     end
+*/
 
 endmodule
