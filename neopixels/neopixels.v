@@ -20,6 +20,8 @@ module neopixels(
     reg [7:0] press_count = 8'b0;
     
     reg [1:0] key_edge_detect = 2'b00;
+    
+    reg on = 1'b1;
 
     assign data = r_data;
     
@@ -31,9 +33,10 @@ module neopixels(
             counter <= 1'b0;
             press_count <= press_count + 1'b1;
             
-            // 9 pixels on my strip.
-            if (press_count == 9) begin
+            // 16 pixels
+            if (press_count == 16) begin
                 press_count <= 1'b0;
+                on <= !on;
             end
         end 
         
@@ -43,10 +46,13 @@ module neopixels(
             end else begin
                 if (state_reg == 4'b0 && state_set == 4'b0) begin
                     counter <= counter + 1'b1;
+                    if (on) begin
                     // Send a high
-                    state_set <= 4'b0001;
+                        state_set <= 4'b0001;
+                    end else begin
                     // Send a low
-                    //state_set <= 4'b0100;
+                        state_set <= 4'b0100;
+                    end
                 end else begin
                     // Wait
                     state_set <= 4'b0;
