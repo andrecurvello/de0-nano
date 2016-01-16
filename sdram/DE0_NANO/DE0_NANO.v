@@ -103,8 +103,8 @@ module DE0_NANO(
 
     reg [1:0] key_edge_detect = 2'b00;
     
-    reg [7:0] r_write_length = 8'd2;  // 16 bit word
-    reg [7:0] r_read_length = 8'd2;  // 16 bit word
+    reg [7:0] r_write_length = 8'd8;  // 64 bit word. NB this MUST match that of the qsys sdram_write
+    reg [7:0] r_read_length = 8'd8;  // 64 bit word. NB this MUST match that of the qsys sdram_read
     wire [7:0] write_length;
     wire [7:0] read_length; 
     
@@ -174,13 +174,13 @@ module DE0_NANO(
     end 
     
    
-    
+    // Put some sequencial numbers in memory.
     always @(posedge CLOCK_50) begin
         if (counter_0 < 32'd255) begin
             if (r_write_en) begin
                 r_write_buffer <= 1'b0;
                 r_write_en = 1'b0;
-                r_write_address <= r_write_address + write_length;
+                r_write_address <= r_write_address + r_write_length;
             end else if (write_done && !write_buffer_full) begin
                 r_input_data <= counter_0[15:0];
                 r_write_buffer <= 1'b1;
@@ -195,6 +195,50 @@ module DE0_NANO(
     end
     
     
+    /*
+    // Wait for key push to write the next memory.
+    always @(posedge CLOCK_50) begin
+        if (counter_0 <= 32'd6) begin
+            if (key_edge_detect == 2'b01) begin // rising edge of KEY[1]
+                r_input_data <= counter_0[15:0];
+                r_write_buffer <= 1'b1;
+                r_write_en = 1'b1;
+            end else begin
+                r_write_en <= 1'b0;
+                r_write_buffer <= 1'b0;
+            end
+
+            if (key_edge_detect == 2'b10) begin // falling edge of KEY[1]
+                // Set the address for the next read
+                r_write_address <= r_write_address + r_write_length;
+                counter_0 <= counter_0 + 32'b1;
+            end
+        end
+    end
+    
+    
+    // Wait for key push to read the next memory.
+    always @(posedge CLOCK_50) begin
+        if (counter_0 > 32'd6) begin
+            if (key_edge_detect == 2'b01) begin // rising edge of KEY[1]
+                // Read from memory
+                r_read_en <= 1'b1;
+                //r_reading <= 1'b1;
+            end else begin
+                r_read_en <= 1'b0;
+            end
+            
+            //if (r_reading_finished) r_reading <= 1'b0;
+            
+            if (key_edge_detect == 2'b10) begin // falling edge of KEY[1]
+                // Set the address for the next read
+                r_read_address <= r_read_address + r_read_length;
+            end
+        end
+    end
+    */
+    
+    /*
     // Wait for key push to read the next memory.
     always @(posedge CLOCK_50) begin
         if (key_edge_detect == 2'b01) begin // rising edge of KEY[1]
@@ -212,9 +256,9 @@ module DE0_NANO(
             r_read_address <= r_read_address + read_length;
         end
     end
+    */
     
     
-    /*
     // Loop through the memory displaying on the leds slowly.
     always @(posedge CLOCK_50) begin
         if (counter_0 > 32'd254) begin
@@ -230,15 +274,15 @@ module DE0_NANO(
                 // Ensure the request only lasts one clock cycle.
                 r_read_en <= 1'b0;
                 // Set the next read address
-                if (r_read_address > 32'd512) begin
+                if (r_read_address > 32'd2040) begin
                     r_read_address <= 32'd0;
                 end else begin
-                    r_read_address <= r_read_address + 32'd2;
+                    r_read_address <= r_read_address + r_read_length;
                 end
             end 
         end
     end
-    */
+    
     
     /*
     // Loop through the memory as fast as possible.
@@ -255,7 +299,7 @@ module DE0_NANO(
                 if (r_read_address > 32'd512) begin
                     r_read_address <= 32'd0;
                 end else begin
-                    r_read_address <= r_read_address + read_length;
+                    r_read_address <= r_read_address + r_read_length;
                 end
             end 
         end

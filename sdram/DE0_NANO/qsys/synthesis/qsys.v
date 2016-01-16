@@ -15,7 +15,7 @@ module qsys (
 		output wire        sdram_read_control_done,            //                           .done
 		output wire        sdram_read_control_early_done,      //                           .early_done
 		input  wire        sdram_read_user_read_buffer,        //            sdram_read_user.read_buffer
-		output wire [15:0] sdram_read_user_buffer_output_data, //                           .buffer_output_data
+		output wire [63:0] sdram_read_user_buffer_output_data, //                           .buffer_output_data
 		output wire        sdram_read_user_data_available,     //                           .data_available
 		output wire [12:0] sdram_wire_addr,                    //                 sdram_wire.addr
 		output wire [1:0]  sdram_wire_ba,                      //                           .ba
@@ -32,21 +32,21 @@ module qsys (
 		input  wire        sdram_write_control_go,             //                           .go
 		output wire        sdram_write_control_done,           //                           .done
 		input  wire        sdram_write_user_write_buffer,      //           sdram_write_user.write_buffer
-		input  wire [15:0] sdram_write_user_buffer_input_data, //                           .buffer_input_data
+		input  wire [63:0] sdram_write_user_buffer_input_data, //                           .buffer_input_data
 		output wire        sdram_write_user_buffer_full        //                           .buffer_full
 	);
 
-	wire  [15:0] sdram_read_avalon_master_readdata;        // mm_interconnect_0:sdram_read_avalon_master_readdata -> sdram_read:master_readdata
+	wire  [63:0] sdram_read_avalon_master_readdata;        // mm_interconnect_0:sdram_read_avalon_master_readdata -> sdram_read:master_readdata
 	wire         sdram_read_avalon_master_waitrequest;     // mm_interconnect_0:sdram_read_avalon_master_waitrequest -> sdram_read:master_waitrequest
 	wire  [31:0] sdram_read_avalon_master_address;         // sdram_read:master_address -> mm_interconnect_0:sdram_read_avalon_master_address
 	wire         sdram_read_avalon_master_read;            // sdram_read:master_read -> mm_interconnect_0:sdram_read_avalon_master_read
-	wire   [1:0] sdram_read_avalon_master_byteenable;      // sdram_read:master_byteenable -> mm_interconnect_0:sdram_read_avalon_master_byteenable
+	wire   [7:0] sdram_read_avalon_master_byteenable;      // sdram_read:master_byteenable -> mm_interconnect_0:sdram_read_avalon_master_byteenable
 	wire         sdram_read_avalon_master_readdatavalid;   // mm_interconnect_0:sdram_read_avalon_master_readdatavalid -> sdram_read:master_readdatavalid
 	wire         sdram_write_avalon_master_waitrequest;    // mm_interconnect_0:sdram_write_avalon_master_waitrequest -> sdram_write:master_waitrequest
 	wire  [31:0] sdram_write_avalon_master_address;        // sdram_write:master_address -> mm_interconnect_0:sdram_write_avalon_master_address
-	wire   [1:0] sdram_write_avalon_master_byteenable;     // sdram_write:master_byteenable -> mm_interconnect_0:sdram_write_avalon_master_byteenable
+	wire   [7:0] sdram_write_avalon_master_byteenable;     // sdram_write:master_byteenable -> mm_interconnect_0:sdram_write_avalon_master_byteenable
 	wire         sdram_write_avalon_master_write;          // sdram_write:master_write -> mm_interconnect_0:sdram_write_avalon_master_write
-	wire  [15:0] sdram_write_avalon_master_writedata;      // sdram_write:master_writedata -> mm_interconnect_0:sdram_write_avalon_master_writedata
+	wire  [63:0] sdram_write_avalon_master_writedata;      // sdram_write:master_writedata -> mm_interconnect_0:sdram_write_avalon_master_writedata
 	wire         mm_interconnect_0_sdram_s1_chipselect;    // mm_interconnect_0:sdram_s1_chipselect -> sdram:az_cs
 	wire  [15:0] mm_interconnect_0_sdram_s1_readdata;      // sdram:za_data -> mm_interconnect_0:sdram_s1_readdata
 	wire         mm_interconnect_0_sdram_s1_waitrequest;   // sdram:za_waitrequest -> mm_interconnect_0:sdram_s1_waitrequest
@@ -97,7 +97,7 @@ module qsys (
 
 	custom_master #(
 		.MASTER_DIRECTION    (0),
-		.DATA_WIDTH          (16),
+		.DATA_WIDTH          (64),
 		.ADDRESS_WIDTH       (32),
 		.BURST_CAPABLE       (0),
 		.MAXIMUM_BURST_COUNT (2),
@@ -106,36 +106,36 @@ module qsys (
 		.FIFO_DEPTH_LOG2     (3),
 		.MEMORY_BASED_FIFO   (0)
 	) sdram_read (
-		.clk                     (clk_clk),                                //       clock_reset.clk
-		.reset                   (rst_controller_reset_out_reset),         // clock_reset_reset.reset
-		.master_address          (sdram_read_avalon_master_address),       //     avalon_master.address
-		.master_read             (sdram_read_avalon_master_read),          //                  .read
-		.master_byteenable       (sdram_read_avalon_master_byteenable),    //                  .byteenable
-		.master_readdata         (sdram_read_avalon_master_readdata),      //                  .readdata
-		.master_readdatavalid    (sdram_read_avalon_master_readdatavalid), //                  .readdatavalid
-		.master_waitrequest      (sdram_read_avalon_master_waitrequest),   //                  .waitrequest
-		.control_fixed_location  (sdram_read_control_fixed_location),      //           control.export
-		.control_read_base       (sdram_read_control_read_base),           //                  .export
-		.control_read_length     (sdram_read_control_read_length),         //                  .export
-		.control_go              (sdram_read_control_go),                  //                  .export
-		.control_done            (sdram_read_control_done),                //                  .export
-		.control_early_done      (sdram_read_control_early_done),          //                  .export
-		.user_read_buffer        (sdram_read_user_read_buffer),            //              user.export
-		.user_buffer_output_data (sdram_read_user_buffer_output_data),     //                  .export
-		.user_data_available     (sdram_read_user_data_available),         //                  .export
-		.master_write            (),                                       //       (terminated)
-		.master_writedata        (),                                       //       (terminated)
-		.master_burstcount       (),                                       //       (terminated)
-		.control_write_base      (32'b00000000000000000000000000000000),   //       (terminated)
-		.control_write_length    (32'b00000000000000000000000000000000),   //       (terminated)
-		.user_write_buffer       (1'b0),                                   //       (terminated)
-		.user_buffer_input_data  (16'b0000000000000000),                   //       (terminated)
-		.user_buffer_full        ()                                        //       (terminated)
+		.clk                     (clk_clk),                                                              //       clock_reset.clk
+		.reset                   (rst_controller_reset_out_reset),                                       // clock_reset_reset.reset
+		.master_address          (sdram_read_avalon_master_address),                                     //     avalon_master.address
+		.master_read             (sdram_read_avalon_master_read),                                        //                  .read
+		.master_byteenable       (sdram_read_avalon_master_byteenable),                                  //                  .byteenable
+		.master_readdata         (sdram_read_avalon_master_readdata),                                    //                  .readdata
+		.master_readdatavalid    (sdram_read_avalon_master_readdatavalid),                               //                  .readdatavalid
+		.master_waitrequest      (sdram_read_avalon_master_waitrequest),                                 //                  .waitrequest
+		.control_fixed_location  (sdram_read_control_fixed_location),                                    //           control.export
+		.control_read_base       (sdram_read_control_read_base),                                         //                  .export
+		.control_read_length     (sdram_read_control_read_length),                                       //                  .export
+		.control_go              (sdram_read_control_go),                                                //                  .export
+		.control_done            (sdram_read_control_done),                                              //                  .export
+		.control_early_done      (sdram_read_control_early_done),                                        //                  .export
+		.user_read_buffer        (sdram_read_user_read_buffer),                                          //              user.export
+		.user_buffer_output_data (sdram_read_user_buffer_output_data),                                   //                  .export
+		.user_data_available     (sdram_read_user_data_available),                                       //                  .export
+		.master_write            (),                                                                     //       (terminated)
+		.master_writedata        (),                                                                     //       (terminated)
+		.master_burstcount       (),                                                                     //       (terminated)
+		.control_write_base      (32'b00000000000000000000000000000000),                                 //       (terminated)
+		.control_write_length    (32'b00000000000000000000000000000000),                                 //       (terminated)
+		.user_write_buffer       (1'b0),                                                                 //       (terminated)
+		.user_buffer_input_data  (64'b0000000000000000000000000000000000000000000000000000000000000000), //       (terminated)
+		.user_buffer_full        ()                                                                      //       (terminated)
 	);
 
 	custom_master #(
 		.MASTER_DIRECTION    (1),
-		.DATA_WIDTH          (16),
+		.DATA_WIDTH          (64),
 		.ADDRESS_WIDTH       (32),
 		.BURST_CAPABLE       (0),
 		.MAXIMUM_BURST_COUNT (2),
@@ -144,31 +144,31 @@ module qsys (
 		.FIFO_DEPTH_LOG2     (3),
 		.MEMORY_BASED_FIFO   (0)
 	) sdram_write (
-		.clk                     (clk_clk),                               //       clock_reset.clk
-		.reset                   (rst_controller_reset_out_reset),        // clock_reset_reset.reset
-		.master_address          (sdram_write_avalon_master_address),     //     avalon_master.address
-		.master_write            (sdram_write_avalon_master_write),       //                  .write
-		.master_byteenable       (sdram_write_avalon_master_byteenable),  //                  .byteenable
-		.master_writedata        (sdram_write_avalon_master_writedata),   //                  .writedata
-		.master_waitrequest      (sdram_write_avalon_master_waitrequest), //                  .waitrequest
-		.control_fixed_location  (sdram_write_control_fixed_location),    //           control.export
-		.control_write_base      (sdram_write_control_write_base),        //                  .export
-		.control_write_length    (sdram_write_control_write_length),      //                  .export
-		.control_go              (sdram_write_control_go),                //                  .export
-		.control_done            (sdram_write_control_done),              //                  .export
-		.user_write_buffer       (sdram_write_user_write_buffer),         //              user.export
-		.user_buffer_input_data  (sdram_write_user_buffer_input_data),    //                  .export
-		.user_buffer_full        (sdram_write_user_buffer_full),          //                  .export
-		.master_read             (),                                      //       (terminated)
-		.master_readdata         (16'b0000000000000000),                  //       (terminated)
-		.master_readdatavalid    (1'b0),                                  //       (terminated)
-		.master_burstcount       (),                                      //       (terminated)
-		.control_read_base       (32'b00000000000000000000000000000000),  //       (terminated)
-		.control_read_length     (32'b00000000000000000000000000000000),  //       (terminated)
-		.control_early_done      (),                                      //       (terminated)
-		.user_read_buffer        (1'b0),                                  //       (terminated)
-		.user_buffer_output_data (),                                      //       (terminated)
-		.user_data_available     ()                                       //       (terminated)
+		.clk                     (clk_clk),                                                              //       clock_reset.clk
+		.reset                   (rst_controller_reset_out_reset),                                       // clock_reset_reset.reset
+		.master_address          (sdram_write_avalon_master_address),                                    //     avalon_master.address
+		.master_write            (sdram_write_avalon_master_write),                                      //                  .write
+		.master_byteenable       (sdram_write_avalon_master_byteenable),                                 //                  .byteenable
+		.master_writedata        (sdram_write_avalon_master_writedata),                                  //                  .writedata
+		.master_waitrequest      (sdram_write_avalon_master_waitrequest),                                //                  .waitrequest
+		.control_fixed_location  (sdram_write_control_fixed_location),                                   //           control.export
+		.control_write_base      (sdram_write_control_write_base),                                       //                  .export
+		.control_write_length    (sdram_write_control_write_length),                                     //                  .export
+		.control_go              (sdram_write_control_go),                                               //                  .export
+		.control_done            (sdram_write_control_done),                                             //                  .export
+		.user_write_buffer       (sdram_write_user_write_buffer),                                        //              user.export
+		.user_buffer_input_data  (sdram_write_user_buffer_input_data),                                   //                  .export
+		.user_buffer_full        (sdram_write_user_buffer_full),                                         //                  .export
+		.master_read             (),                                                                     //       (terminated)
+		.master_readdata         (64'b0000000000000000000000000000000000000000000000000000000000000000), //       (terminated)
+		.master_readdatavalid    (1'b0),                                                                 //       (terminated)
+		.master_burstcount       (),                                                                     //       (terminated)
+		.control_read_base       (32'b00000000000000000000000000000000),                                 //       (terminated)
+		.control_read_length     (32'b00000000000000000000000000000000),                                 //       (terminated)
+		.control_early_done      (),                                                                     //       (terminated)
+		.user_read_buffer        (1'b0),                                                                 //       (terminated)
+		.user_buffer_output_data (),                                                                     //       (terminated)
+		.user_data_available     ()                                                                      //       (terminated)
 	);
 
 	qsys_mm_interconnect_0 mm_interconnect_0 (

@@ -42,7 +42,7 @@ module qsys (
 	output		sdram_read_control_done;
 	output		sdram_read_control_early_done;
 	input		sdram_read_user_read_buffer;
-	output	[15:0]	sdram_read_user_buffer_output_data;
+	output	[63:0]	sdram_read_user_buffer_output_data;
 	output		sdram_read_user_data_available;
 	output	[12:0]	sdram_wire_addr;
 	output	[1:0]	sdram_wire_ba;
@@ -59,6 +59,6 @@ module qsys (
 	input		sdram_write_control_go;
 	output		sdram_write_control_done;
 	input		sdram_write_user_write_buffer;
-	input	[15:0]	sdram_write_user_buffer_input_data;
+	input	[63:0]	sdram_write_user_buffer_input_data;
 	output		sdram_write_user_buffer_full;
 endmodule

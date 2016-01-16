@@ -118,8 +118,8 @@ agreement for further details.
 	(port
 		(pt 0 672)
 		(input)
-		(text "sdram_write_user_buffer_input_data[15..0]" (rect 0 0 173 12)(font "Arial" (font_size 8)))
-		(text "sdram_write_user_buffer_input_data[15..0]" (rect 4 661 250 672)(font "Arial" (font_size 8)))
+		(text "sdram_write_user_buffer_input_data[63..0]" (rect 0 0 174 12)(font "Arial" (font_size 8)))
+		(text "sdram_write_user_buffer_input_data[63..0]" (rect 4 661 250 672)(font "Arial" (font_size 8)))
 		(line (pt 0 672)(pt 240 672)(line_width 3))
 	)
 	(port
@@ -146,8 +146,8 @@ agreement for further details.
 	(port
 		(pt 0 328)
 		(output)
-		(text "sdram_read_user_buffer_output_data[15..0]" (rect 0 0 179 12)(font "Arial" (font_size 8)))
-		(text "sdram_read_user_buffer_output_data[15..0]" (rect 4 317 250 328)(font "Arial" (font_size 8)))
+		(text "sdram_read_user_buffer_output_data[63..0]" (rect 0 0 180 12)(font "Arial" (font_size 8)))
+		(text "sdram_read_user_buffer_output_data[63..0]" (rect 4 317 250 328)(font "Arial" (font_size 8)))
 		(line (pt 0 328)(pt 240 328)(line_width 3))
 	)
 	(port
