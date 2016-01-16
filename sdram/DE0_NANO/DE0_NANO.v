@@ -102,6 +102,11 @@ module DE0_NANO(
     reg [15:0]  r_q = 16'b0;
 
     reg [1:0] key_edge_detect = 2'b00;
+    
+    reg [7:0] r_write_length = 8'd2;  // 16 bit word
+    reg [7:0] r_read_length = 8'd2;  // 16 bit word
+    wire [7:0] write_length;
+    wire [7:0] read_length; 
    
     
 //=======================================================
@@ -128,7 +133,7 @@ module DE0_NANO(
 
         .sdram_read_control_fixed_location  (1'b1), // do not auto increment address
         .sdram_read_control_read_base       (read_base),
-        .sdram_read_control_read_length     (32'd2), // 16 bit word
+        .sdram_read_control_read_length     (read_length),
         .sdram_read_control_go              (read_go),
         .sdram_read_control_done            (read_done),
         .sdram_read_control_early_done      (read_early_done),
@@ -141,7 +146,7 @@ module DE0_NANO(
         .sdram_write_user_buffer_full       (write_buffer_full),
         .sdram_write_control_fixed_location (1'b1), // do not auto increment address
         .sdram_write_control_write_base     (write_base),
-        .sdram_write_control_write_length   (32'd2),  // 16 bit word
+        .sdram_write_control_write_length   (write_length),
         .sdram_write_control_go             (write_go),
         .sdram_write_control_done           (write_done)
     );
@@ -154,6 +159,10 @@ module DE0_NANO(
     assign input_data   = r_input_data;
     assign write_base   = r_write_address;
     assign write_go     = r_write_en;
+    
+    assign write_length = r_write_length;
+    assign read_length  = r_read_length;
+    
 
     assign LED = r_q[7:0];
     
@@ -168,7 +177,7 @@ module DE0_NANO(
             if (r_write_en) begin
                 r_write_buffer <= 1'b0;
                 r_write_en = 1'b0;
-                r_write_address <= r_write_address + 32'd2;
+                r_write_address <= r_write_address + write_length;
             end else if (write_done && !write_buffer_full) begin
                 r_input_data <= counter_0[15:0];
                 r_write_buffer <= 1'b1;
@@ -241,7 +250,7 @@ module DE0_NANO(
                 if (r_read_address > 32'd512) begin
                     r_read_address <= 32'd0;
                 end else begin
-                    r_read_address <= r_read_address + 32'd2;
+                    r_read_address <= r_read_address + read_length;
                 end
             end 
         end
